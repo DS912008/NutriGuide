@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Matrix</title>
+    <style>
+       body {
+    background-color: black;
+    margin: 0;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px 70px;
+    width: 70%;
+    height: auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+        .image-box {
+            background: green;
+            padding: 3px;
+            border-radius: 15px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+        }
+        img {
+            width: 100%;
+            height: auto;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+        } .nav__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+}
+
+.nav_menu_btn {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    width: 30px;
+    height: 30px;
+}
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+     <div class="nav__header">
+    <div class="nav_menu_btn" id="menu-btn">
+     <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
+     </div>
+    <div class="nav__logo">
+   Aryuvedic 
+    </div>
+    <div class="nav_menu_btn" >
+     <img src="clogo.png" alt="Menu" class="menu-icon">
+    </div>
+  </div>
+    <div class="container">
+        <div class="image-box">
+            <a href="cold.html">
+                <img src="image1.jpg" alt="Image 1">
+            </a>
+            <p>Cold</p>
+        </div>
+        <div class="image-box">
+            <a href="fever.html">
+                <img src="image2.jpg" alt="Image 2">
+            </a>
+            <p>Fever</p>
+        </div>
+        <div style="grid-column: 1 / span 2; height: 70px;"></div> <!-- Increased spacing between rows -->
+        <div class="image-box">
+            <a href="immunity.html">
+                <img src="image3.jpg" alt="Image 3">
+            </a>
+            <p>Strong Immunity</p>
+        </div>
+        <div class="image-box">
+            <a href="tea.html">
+                <img src="image4.jpg" alt="Image 4">
+            </a>
+            <p>Tea</p>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

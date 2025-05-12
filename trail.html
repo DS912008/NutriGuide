@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Preference</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form id="dietForm">
+            <h2>Diet Preference</h2>
+            
+            <!-- Step 1: Vegetarian or Non-Vegetarian -->
+            <div id="step1">
+                <label for="vegPreference">Are you a vegetarian or non-vegetarian?</label><br>
+                <input type="radio" name="vegPreference" id="veg" value="veg">
+                <label for="veg">Vegetarian</label><br>
+                <input type="radio" name="vegPreference" id="nonVeg" value="non-veg">
+                <label for="nonVeg">Non-Vegetarian</label><br><br>
+                <button type="button" onclick="nextStep('step2')">Next</button><br><br>
+            </div>
+            
+            <!-- Step 2: Budget Preference -->
+            <div id="step2" style="display: none;">
+                <label for="budgetPreference">Do you want recipes within your recommended budget or using ingredients already available at home?</label><br>
+                <input type="radio" name="budgetPreference" id="recommendedBudget" value="recommendedBudget">
+                <label for="recommendedBudget">Recommended Budget</label><br>
+                <input type="radio" name="budgetPreference" id="availableIngredients" value="availableIngredients">
+                <label for="availableIngredients">Available Ingredients</label><br><br>
+                <button type="button" onclick="handleBudgetPreference()">Next</button><br><br>
+            </div>
+            
+            <!-- Step 3a: Budget Amount -->
+            <div id="step3a" style="display: none;">
+                <label for="budgetAmount">What is your budget (in INR)? (Minimum 100 rupees)</label><br>
+                <input type="number" name="budgetAmount" id="budgetAmount" min="100" step="1" value="100"><br><br>
+                <button type="button" onclick="nextStep('step4')">Next</button><br><br>
+            </div>
+
+            <!-- Step 3b: Available Ingredients -->
+            <div id="step3b" style="display: none;">
+                <label for="availableItems">Please list the ingredients you have available at home:</label><br>
+                <textarea name="availableItems" id="availableItems" rows="4" cols="40"></textarea><br><br>
+                <button type="button" onclick="nextStep('step4')">Next</button><br><br>
+            </div>
+            
+            <!-- Step 4: Medical Condition -->
+            <div id="step4" style="display: none;">
+                <label for="medicalCondition">Do you have any medical condition that restricts your diet?</label><br>
+                <input type="radio" name="condition" id="conditionYes" value="yes">
+                <label for="conditionYes">Yes</label><br>
+                <input type="radio" name="condition" id="conditionNo" value="no">
+                <label for="conditionNo">No</label><br><br>
+                <button type="button" onclick="handleMedicalCondition()">Next</button><br><br>
+            </div>
+            
+            <!-- Step 4a: Medical Warning -->
+            <div id="step4a" style="display: none;">
+                <p>Follow our recommended diet at your own risk. Please consult your doctor if needed.</p>
+                <button type="button" onclick="nextStep('step5')">Acknowledge and Continue</button>
+                <button type="button" onclick="goBackToStep('step4')">Go Back</button><br><br>
+            </div>
+            
+            <!-- Step 5: Recipe Reason -->
+            <div id="step5" style="display: none;">
+                <label for="recipeReason">Why do you need recipes?</label><br>
+                <input type="radio" name="recipeReason" id="weight" value="weight">
+                <label for="weight">To work on weight</label><br>
+                <input type="radio" name="recipeReason" id="sick" value="sick">
+                <label for="sick">Because I am sick</label><br><br>
+                <button type="button" onclick="nextStep('step6')">Next</button><br><br>
+            </div>
+
+            <!-- Step 6: Final Step for Diet/Sick Status -->
+            <div id="step6" style="display: none;">
+                <label for="dietOrSick">Are you on a diet or feeling sick?</label><br>
+                <input type="radio" name="dietOrSick" id="diet" value="diet">
+                <label for="diet">I am on a diet</label><br>
+                <input type="radio" name="dietOrSick" id="sick" value="sick">
+                <label for="sick">I am sick</label><br><br>
+                <button type="button" id="nextButton" onclick="handleFinalStep()">Next</button><br><br>
+            </div>
+        </form>
+    </div>
+
+    <script src="trail.js"></script>
+</body>
+</html>

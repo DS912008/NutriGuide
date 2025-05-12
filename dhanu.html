@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrie Guide</title>
+    <link rel="stylesheet" href="dhanu.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="logo.jpg" alt="Nutrie Guide Logo" class="stick-logo">
+        <a href="#" class="logo">NutriGuide</a>
+        <ul>
+            <li><a href="dhanu.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="sdg.html">SDG </a></li>
+            <li><a href="drishti.html">Login</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search pages...">
+            <button onclick="handleSearch()">Search</button>
+            <ul id="suggestionsList" class="search-suggestions">
+                <!-- Suggestions will appear here -->
+            </ul>
+        </div>
+        <!-- Profile Icon Placeholder -->
+<div class="profile-icon" id="profileIcon" style="display: none;">
+    <a href="profile.html">
+        <img src="profile-pic.jpg" alt="Profile" class="circle-icon">
+    </a>
+</div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Your Personalized Nutrition Companion</h1>
+            <p>Discover healthy recipes, nutrition plans, and tools tailored for you.</p>
+        </div>
+    </header>
+
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <div class="highlight-item">
+            <h2>Weight Management</h2>
+            <p>Get meal plans tailored to your dietary needs and goals.</p>
+            <a href="weight.html">Get Started</a>
+        </div>
+        <div class="highlight-item">
+            <h2>Calorie Counter</h2>
+            <p>Track your daily calorie intake with our easy-to-use calculator.</p>
+            <a href="calorie.html">Start Counting</a>
+        </div>
+        <div class="highlight-item">
+            <h2>Exercises</h2>
+            <p>Find the perfect workout routines for your fitness goals.</p>
+            <a href="exercise.html">Explore Workouts</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">"Nutrie Guide has transformed my eating habits! The personalized meal plans are amazing!" - Deshna Jain</div>
+        <div class="testimonial">"I love how easy it is to track my nutrition and stay on top of my health goals." - DHRUV</div>
+        <div class="testimonial">"The recipes are delicious and the workout plans are perfect for my schedule!" - GARIMA</div>
+    </section>
+
+    <!-- Counter Section -->
+    <div class="counter-container">
+        <h2>Join Our Growing Community</h2>
+        <div class="counter">100000+</div>
+        <p>Happy Users and Counting</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Nutrie Guide. All rights reserved.</p>
+    </footer>
+
+    <!-- Add chatbot container at the end of body -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" onclick="toggleChatbot()">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <span>NutriGuide Assistant</span>
+                <button onclick="toggleChatbot()" style="background: none; border: none; color: white;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="quick-actions">
+                <button class="quick-action-btn" onclick="sendQuickMessage('diet recipes')">Diet Recipes</button>
+                <button class="quick-action-btn" onclick="sendQuickMessage('calorie counter')">Calorie Counter</button>
+                <button class="quick-action-btn" onclick="sendQuickMessage('ayurveda recipes')">Ayurveda Recipes</button>
+                <button class="quick-action-btn" onclick="sendQuickMessage('exercises')">Exercises</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages"></div>
+            <div class="chatbot-input">
+                <button class="voice-button" onclick="startVoiceInput()">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dhanu.js"></script>
+   <script>
+  // Simulate login status - use real login logic in production
+  const isLoggedIn = localStorage.getItem("loggedIn");
+
+  if (isLoggedIn === "true") {
+      document.getElementById("profileIcon").style.display = "block";
+  }
+
+  // Example: Set this when login happens (in your login logic)
+  localStorage.setItem("loggedIn", "true");
+
+  // Example: Logout - clear login
+   localStorage.removeItem("loggedIn");
+</script>
+
+</body>
+</html>

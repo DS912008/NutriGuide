@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile - Nutrie Guide</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+ <style>
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #1f1f1f;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 2px solid #4CAF50;
+    }
+
+    .sidebar h4 {
+      color: #4CAF50;
+      margin-bottom: 30px;
+      font-size: 1.5em;
+    }
+
+    .sidebar nav {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .sidebar nav a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .sidebar nav a:hover {
+      color: white;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 50px;
+    }
+
+    .profile-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background: #1e1e1e;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,255,0,0.05);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #4CAF50;
+    }
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.5em;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background-size: cover; /* Ensures the image covers the entire div */
+  background-position: center; /* Centers the image */
+}
+
+.profile-pic input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+
+    .profile-info h2 {
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+
+    .profile-info p {
+      margin: 6px 0;
+    }
+
+    .editable-input {
+      background-color: #2a2a2a;
+      color: #fff;
+      border: 1px solid #4CAF50;
+      padding: 8px;
+      margin: 5px 0 10px 0;
+      border-radius: 5px;
+      width: 100%;
+      display: none;
+    }
+
+    .profile-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .profile-actions button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .edit-profile {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .logout {
+      background: #f44336;
+      color: white;
+    }
+
+    .profile-actions button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logo.jpg" alt="Logo" />
+    <h4>NUTRIE GUIDE</h4>
+    <nav>
+      <a href="dhanu.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="sdg.html">SDG</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="profile-container">
+      <div class="profile-header">
+        <div class="profile-pic" id="profilePic">
+          <input type="file" accept="image/*" onchange="changeProfilePic(event)">
+          <span id="profileInitials">U</span>
+        </div>
+        <div class="profile-info">
+          <h2 id="userName">User Name</h2>
+          <p id="userEmail">Email: user@example.com</p>
+          <p id="userPhoneText">Phone: +91-XXXXXXXXXX</p>
+          <input type="text" id="userPhoneInput" class="editable-input" value="+91-XXXXXXXXXX">
+          <p id="userAddressText">Address: City, State</p>
+          <input type="text" id="userAddressInput" class="editable-input" value="City, State">
+          <p id="fatherNameText">Father's Name: John Doe</p>
+          <input type="text" id="fatherNameInput" class="editable-input" value="John Doe">
+          <p id="userProfessionText">Profession: Software Engineer</p>
+          <input type="text" id="userProfessionInput" class="editable-input" value="Software Engineer">
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <button class="edit-profile" onclick="editProfile()">Edit Profile</button>
+        <button class="edit-profile" id="saveBtn" onclick="saveProfile()" style="display:none;">Save</button>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function editProfile() {
+      document.getElementById("saveBtn").style.display = "inline-block";
+      toggleField("userPhone");
+      toggleField("userAddress");
+      toggleField("fatherName");
+      toggleField("userProfession");
+    }
+
+    function saveProfile() {
+      document.getElementById("saveBtn").style.display = "none";
+      saveField("userPhone");
+      saveField("userAddress");
+      saveField("fatherName");
+      saveField("userProfession");
+    }
+
+    function toggleField(id) {
+      document.getElementById(id + "Text").style.display = "none";
+      document.getElementById(id + "Input").style.display = "block";
+    }
+
+    function saveField(id) {
+      const value = document.getElementById(id + "Input").value;
+      const labelMap = {
+        userPhone: "Phone",
+        userAddress: "Address",
+        fatherName: "Father's Name",
+        userProfession: "Profession"
+      };
+      document.getElementById(id + "Text").textContent = `${labelMap[id]}: ${value}`;
+      document.getElementById(id + "Text").style.display = "block";
+      document.getElementById(id + "Input").style.display = "none";
+    }
+
+    function changeProfilePic(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById("profilePic").style.backgroundImage = `url('${e.target.result}')`;
+          document.getElementById("profileInitials").style.display = "none";
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function logout() {
+      localStorage.clear();
+      alert("Logging out...");
+      window.location.href = 'drishti.html'; 
+    }
+
+    window.onload = function () {
+      const name = localStorage.getItem('userName') || "User Name";
+      const email = localStorage.getItem('userEmail') || "user@example.com";
+
+      document.getElementById("userName").textContent = name;
+      document.getElementById("userEmail").textContent = "Email: " + email;
+
+      const initials = name.charAt(0).toUpperCase();
+      document.getElementById("profileInitials").textContent = initials;
+    };
+  </script>
+
+</body>
+</html>

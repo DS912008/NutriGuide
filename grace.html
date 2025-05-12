@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriGuide - Sign Up</title>
+  <link rel="stylesheet" href="grace.css">
+</head>
+
+<body>
+    <div class="nav__header">
+        <div class="nav_menu_btn" id="menu-btn">
+            <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
+        </div>
+        <div class="nav__logo">
+            Signup
+        </div>
+        <div class="nav_menu_btn">
+            <img src="clogo.png" alt="Menu" class="menu-icon">
+        </div>
+    </div>
+
+  <div class="login-container">
+    <h1>Create Your Account</h1>
+    <form id="signupForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Create a password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Re-enter your password" required>
+      </div>
+      <div class="form-group">
+        <label>I agree to the <a href="#">Terms & Conditions</a><input type="checkbox"></label>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+ 
+    <div class="footer-links">
+      <p>Already have an account? <a href="profile.html">Log In</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+      
+      // Store the user's details in local storage (new code)
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+
+      localStorage.setItem('userName', name);  // Save name in local storage
+      localStorage.setItem('userEmail', email); // Save email in local storage
+
+      alert('Account created successfully!');
+      
+      // Redirect to the profile page or dashboard after signup (update this line to redirect where needed)
+      window.location.href = 'profile.html';  // Redirect to profile page
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+/* Body styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url('login.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 97vw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Center container */
+body > .login-container {
+  margin: auto; /* This centers it both vertically and horizontally */
+}
+
+/* Navigation Header */
+.nav__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 1rem;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1abc9c;
+}
+
+.menu-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Form Container */
+.login-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* Form Fields */
+.form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  border-color: #1abc9c;
+  outline: none;
+}
+
+/* Checkbox inline label */
+.form-group input[type="checkbox"] {
+  margin-left: 0.5rem;
+  transform: scale(1.2);
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #1abc9c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #16a085;
+}
+
+/* Footer Links */
+.footer-links {
+  margin-top: 1rem;
+}
+
+.footer-links a {
+  color: #1abc9c;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}

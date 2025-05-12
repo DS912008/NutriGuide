@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Nutrie Guide</title>
+   
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <h4>WELCOME</h4>
+        <nav class="website">
+            <a href="contact2.html">NEXT</a>
+        </nav>
+    </header>
+    <div class="form">
+        <form id="loginForm">
+            <h3>LOGIN</h3>
+            <div class="input_box">
+                <input type="text" id="username" placeholder="     Username" required>
+                <i class='bx bxs-user'></i>
+            </div><br>
+            <div class="input_box">
+                <input type="password" id="password" placeholder="     Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div><br>
+            <div class="remember">
+                <label> <input type="checkbox" id="rememberMe"> remember me </label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="login"><button type="submit">LOGIN</button></div>
+            <div class="signup">
+                <p class="p">Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            // Get users from localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Find user
+            const user = users.find(u => u.username === username && u.password === password);
+            
+            if (user) {
+                // Store current user
+                const currentUser = {
+                    name: user.name,
+                    email: user.email,
+                    username: user.username
+                };
+                
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                
+                // If remember me is checked, store credentials
+                if (rememberMe) {
+                    localStorage.setItem('rememberedUser', JSON.stringify({
+                        username: username,
+                        password: password
+                    }));
+                } else {
+                    localStorage.removeItem('rememberedUser');
+                }
+                
+                // Redirect to profile
+                window.location.href = 'profile.html';
+            } else {
+                alert('Invalid username or password');
+            }
+        });
+
+        // Check for remembered user
+        window.onload = function() {
+            const rememberedUser = JSON.parse(localStorage.getItem('rememberedUser'));
+            if (rememberedUser) {
+                document.getElementById('username').value = rememberedUser.username;
+                document.getElementById('password').value = rememberedUser.password;
+                document.getElementById('rememberMe').checked = true;
+            }
+        };
+    </script>
+</body>
+</html>

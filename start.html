@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="start.css">
+</head>
+<body>
+    <div class="nav__header">
+        <div class="nav_menu_btn" id="menu-btn">
+            <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
+        </div>
+        <div class="nav__logo">
+            <a href="dhanu.html">Dietry Recipes</a>
+        </div>
+        <div class="nav_menu_btn">
+            <img src="clogo.png" alt="Menu" class="menu-icon">
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Recipe Finder</h1>
+        <div class="input-section">
+            <input type="text" id="ingredients" placeholder="Enter ingredients (comma-separated)" autofocus />
+            <button id="search-btn">Search Recipes</button>
+        </div>
+        
+        <h2>Suggested Recipes</h2>
+        <div id="recipe-results" class="recipes"></div>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal" class="modal">
+        <div class="modal-content" id="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+        </div>
+    </div>
+
+    <script src="start.js"></script>
+</body>
+</html>

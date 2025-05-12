@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nutrie Guide - Your personalized nutrition companion for healthy living">
+    <meta name="theme-color" content="#4CAF50">
+    <title>Nutrie Guide</title>
+    <link rel="stylesheet" href="nutri.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+   
+</head>
+<body>
+    <!-- Skip to Main Content Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <img src="logo.jpg" alt="Nutrie Guide Logo" class="stick-logo">
+        <a href="#" class="logo" aria-label="Nutrie Guide Home">Nutrie Guide</a>
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul>
+            <li><a href="dhanu.html" aria-current="page">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="sdg.html">SDG</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search pages..." aria-label="Search">
+            <button aria-label="Search">Search</button>
+            <ul id="suggestionsList" class="search-suggestions" role="listbox">
+                <!-- Suggestions will appear here -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <header class="hero" role="banner">
+            <div class="hero-content">
+                <h1>Your Personalized Nutrition Companion</h1>
+                <p>Discover healthy recipes, nutrition plans, and tools tailored for you.</p>
+                <button class="cta-button" aria-label="Get started with Nutrie Guide" ><a href="dhanu.html">Get Started</a></button>
+            </div>
+        </header>
+
+       
+    </main>
+
+    <!-- Popup Image Viewer -->
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <img class="popup-image" src="" alt="Website Introduction">
+           
+            <button class="popup-button" id="nextButton">Next</button>
+        </div>
+    </div>
+    
+    <script src="nutri.js"></script>
+
+   
+</body>
+</html>

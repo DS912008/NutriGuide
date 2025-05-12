@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurvedic Recipes for Immunity Boost</title>
+    <style>
+         
+         body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            margin: 0;
+            padding-bottom: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 80%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-box {
+            background: green;
+            padding: 4px;
+            border-radius: 15px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+         width: 300px;
+        }
+        img {
+            width: 100%;
+            height: 100hV;
+            max-height: 3000px;
+            object-fit: cover;
+            border-radius: 10px;
+            aspect-ratio: 16/6;
+        }
+        .close-btn2 {
+            display: block;
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+        
+        p {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            max-width: 400px;
+            width: 90%;
+        }
+        .popup-content h2 {
+            text-align: center;
+        }
+        .popup-content ol {
+            padding-left: 20px;
+        }
+        .popup-content .advantages {
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .close-btn {
+            display: block;
+            background: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .nav__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+}
+
+.nav_menu_btn {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    width: 30px;
+    height: 30px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="nav__header">
+        <div class="nav_menu_btn" id="menu-btn">
+         <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
+         </div>
+        <div class="nav__logo">
+       Immunity
+        </div>
+        <div class="nav_menu_btn" >
+         <img src="clogo.png" alt="Menu" class="menu-icon">
+        </div>
+      </div>
+    <div class="container">
+        <div class="image-box" onclick="showPopup(0)">
+            <img src="t.png" alt="Recipe 1">
+            <p>Turmeric Golden Milk</p>
+        </div>
+        <div class="image-box" onclick="showPopup(1)">
+            <img src="a.png" alt="Recipe 2">
+            <p>Amla Juice</p>
+        </div>
+        <div class="image-box" onclick="showPopup(2)">
+            <img src="g.png" alt="Recipe 3">
+            <p>Ginger-Lemon Honey Tea</p>
+        </div>
+        <div class="image-box" onclick="showPopup(3)">
+            <img src="kadha.jpg" alt="Recipe 4">
+            <p>Herbal Kadha</p>
+        </div>
+        <div class="image-box" onclick="showPopup(4)">
+            <img src="j.png" alt="Recipe 5">
+            <p>Fresh Orange Juice</p>
+        </div>
+        <div class="image-box" onclick="showPopup(5)">
+            <img src="d.png" alt="Recipe 6">
+            <p>Beetroot & Carrot Juice</p>
+        </div>
+        <div class="image-box" onclick="showPopup(6)">
+            <img src="pomegranate.jpg" alt="Recipe 7">
+            <p>Pomegranate Juice</p>
+        </div>
+        <div class="image-box" onclick="showPopup(7)">
+            <img src="s.png" alt="Recipe 8">
+            <p>Spinach & Apple Juice</p>
+        </div>
+        <div class="image-box" onclick="showPopup(8)">
+            <img src="k.png" alt="Recipe 9">
+            <p>Lemon Honey Water</p>
+        </div>
+    </div>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2 id="recipe-title"></h2>
+            <ol id="recipe-steps"></ol>
+            <p class="advantages" id="recipe-advantages"></p>
+            <button class="close-btn" onclick="hidePopup()">Back</button>
+        </div>
+    </div>
+    <a href="aryuveda.html"><button class="close-btn2" >Back</button></a>
+    <script>
+        const recipes = [
+            { title: "Turmeric Golden Milk", steps: ["Heat 1 cup milk until warm.", "Add 1/2 tsp turmeric","1/4 tsp black pepper","and 1 tsp honey.", "Mix well and drink warm."], advantages: "Strengthens immunity, reduces inflammation - 5 days a week" },
+            { title: "Amla Juice", steps: ["Blend 2 amla with 1 cup water.", "Strain and add 1 tsp honey.", "Drink fresh."], advantages: "Rich in Vitamin C, detoxifies the body- Daily" },
+            { title: "Ginger-Lemon Honey Tea", steps: ["Steep 1 tsp grated ginger in 1 cup hot water ( 5 minutes).", "Add 1/2 lemon juice ","and  1 tsp honey.", "Drink warm."], advantages: "Boosts metabolism, fights infections - 4-5 days a week" },
+            { title: "Herbal Kadha", steps: ["Boil 2 cups water with 8-10 tulsi leaves, 1 tsp grated ginger, 1 small cinnamon stick, and black pepper.", "Simmer for 10 minutes, strain and drink."], advantages: "Boosts immunity, relieves fever- 3-4 times a week" },
+            { title: "Fresh Orange Juice", steps: ["Squeeze juice from 2 oranges.", "Add a pinch of black salt and stir.", "Drink fresh."], advantages: "Rich in Vitamin C, boosts immunity-Daily (in moderation)" },
+            { title: "Beetroot & Carrot Juice", steps: ["Blend 1 beetroot ","and 2 carrots with 1/2 cup water.", "Strain and drink fresh."], advantages: "Improves blood circulation, strengthens immunity- 3-4 times a week" },
+            { title: "Pomegranate Juice", steps: ["Blend 1 pomegranate and strain.", "Drink fresh."], advantages: "Rich in antioxidants, improves immunity- Daily" },
+            { title: "Spinach & Apple Juice", steps: ["Blend 1 cup spinach with 1 apple"," and 1/2 cup water.", "Strain and drink fresh."], advantages: "Rich in iron, supports immunity- 4-5 days a week" },
+            { title: "Lemon Honey Water", steps: ["Mix juice of 1 lemon with 1 tsp honey in 1 cup warm water.", "Drink fresh in the morning."], advantages: "Detoxifies, strengthens immunity- Daily" }
+        ];
+        function showPopup(index) { document.getElementById("recipe-title").innerText = recipes[index].title; document.getElementById("recipe-steps").innerHTML = recipes[index].steps.map(step => `<li>${step}</li>`).join(" "); document.getElementById("recipe-advantages").innerText = recipes[index].advantages; document.getElementById("popup").style.display = "flex"; }
+        function hidePopup() { document.getElementById("popup").style.display = "none"; }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Recommendation</title>
+</head>
+<body>
+    <h2>Enter Your Preferences</h2>
+    <form action="/recommend" method="post">
+        <label>Are you vegetarian or non-vegetarian?</label>
+        <select name="preference">
+            <option value="veg">Vegetarian</option>
+            <option value="non-veg">Non-Vegetarian</option>
+        </select>
+        
+        <label>Goal:</label>
+        <select name="goal">
+            <option value="gain">Gain Weight</option>
+            <option value="lose">Lose Weight</option>
+            <option value="maintain">Maintain Weight</option>
+        </select>
+        
+        <label>Are you sick?</label>
+        <select name="sick">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+        </select>
+        
+        <button type="submit">Get Recommendation</button>
+    </form>
+</body>
+</html>

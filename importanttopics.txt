@@ -1,0 +1,11 @@
+Basic commands and navigation 1: man, info, history, ls, id,
+uname, date, cal, hostname, reboot
+
+Basic commands and navigation 2: clear, rm, whatis, help, uptime,
+free, tty, directory related commands, file related commands,
+comparing files etc
+
+path---absolute/relative
+links--soft and hard link
+vi editor till modes
+file permission (very important)

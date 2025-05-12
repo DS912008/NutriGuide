@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Preference</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="nav__header">
+       <div class="nav_menu_btn" id="menu-btn">
+        <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
+        </div>
+       <div class="nav__logo">
+      Aryuvedic 
+       </div>
+       <div class="nav_menu_btn" >
+        <img src="clogo.png" alt="Menu" class="menu-icon">
+       </div>
+     </div>
+    <div class="container">
+        <form id="dietForm">
+            <h2>Diet Preference</h2>
+
+            <!-- Step 1: Medical Condition -->
+            <div id="step1">
+                <label>Do you have any medical condition that restricts your diet?</label><br>
+                <input type="radio" name="condition" id="conditionYes" value="yes">
+                <label for="conditionYes">Yes</label><br>
+                <input type="radio" name="condition" id="conditionNo" value="no">
+                <label for="conditionNo">No</label><br><br>
+                <button type="button" onclick="handleMedicalCondition()">Next</button><br><br>
+            </div>
+
+            <!-- Step 1a: Medical Warning -->
+            <div id="step1a" style="display: none;">
+                <p class="warning">Follow our recommended diet at your own risk. Please consult your doctor if needed.</p>
+                <button type="button" onclick="nextStep('step2')">Acknowledge and Continue</button>
+                <button type="button" onclick="goBackToStep('step1')">Go Back</button><br><br>
+            </div>
+
+            <!-- Step 2: Recipe Reason -->
+            <div id="step2" style="display: none;">
+                <label>Why do you need recipes?</label><br>
+                <input type="radio" name="recipeReason" id="weight" value="weight">
+                <label for="weight">To work on weight</label><br>
+                <input type="radio" name="recipeReason" id="sick" value="sick">
+                <label for="sick">Because I am sick</label><br><br>
+                <button type="button" onclick="handleFinalStep()">Next</button><br><br>
+            </div>
+        </form>
+    </div>
+
+    <script src="user.js"></script>
+</body>
+</html>

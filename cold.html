@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurvedic Recipes</title>
+    <style>
+         
+         
+         body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            margin: 0;
+            padding-bottom: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 80%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-box {
+            background: green;
+            padding: 7px;
+            border-radius: 15px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            max-width: 200px;
+        }
+        img {
+            width: 100%;
+            height: 100hV;
+            max-height: 3000px;
+            object-fit: cover;
+            border-radius: 10px;
+            aspect-ratio: 16/6;
+        }
+        .close-btn2 {
+            display: block;
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+        
+        p {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            max-width: 400px;
+            width: 90%;
+        }
+        .popup-content h2 {
+            text-align: center;
+        }
+        .popup-content ol {
+            padding-left: 20px;
+        }
+        .popup-content .advantages {
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .close-btn {
+            display: block;
+            background: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .nav__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+}
+
+.nav_menu_btn {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    width: 30px;
+    height: 30px;
+}
+    </style>
+</head>
+<body>
+    <div class="nav__header">
+        <div class="nav_menu_btn" id="menu-btn">
+         <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
+         </div>
+        <div class="nav__logo">
+       Cold & Cough
+        </div>
+        <div class="nav_menu_btn" >
+         <img src="clogo.png" alt="Menu" class="menu-icon">
+        </div>
+      </div>
+    <div class="container">
+        <div class="image-box" onclick="showPopup(0)">
+            <img src="tur.jpg" alt="Recipe 1">
+            <p>Turmeric Milk (Haldi Doodh)</p>
+        </div>
+        <div class="image-box" onclick="showPopup(1)">
+            <img src="tul.jpg" alt="Recipe 2">
+            <p>Tulsi-Ginger Tea</p>
+        </div>
+        <div class="image-box" onclick="showPopup(2)">
+            <img src="ajw.jpg" alt="Recipe 3">
+            <p>Ajwain Kadha</p>
+        </div>
+        <div class="image-box" onclick="showPopup(3)">
+            <img src="jeer.jpg" alt="Recipe 4">
+            <p>Jeera Water</p>
+        </div>
+        <div class="image-box" onclick="showPopup(4)">
+            <img src="amla.jpg" alt="Recipe 5">
+            <p>Amla Murabba</p>
+        </div>
+        <div class="image-box" onclick="showPopup(5)">
+            <img src="butter.jpg" alt="Recipe 6">
+            <p>Buttermilk with Hing</p>
+        </div>
+        <div class="image-box" onclick="showPopup(6)">
+            <img src="chyam.jpg" alt="Recipe 7">
+            <p>Chyawanprash</p>
+        </div>
+        <div class="image-box" onclick="showPopup(7)">
+            <img src="ashwa.jpg" alt="Recipe 8">
+            <p>Ashwagandha Milk</p>
+        </div>
+        <div class="image-box" onclick="showPopup(8)">
+            <img src="rasam.jpg" alt="Recipe 9">
+            <p>Rasam with Garlic</p>
+        </div>
+    </div>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2 id="recipe-title"></h2>
+            <ol id="recipe-steps"></ol>
+            <p class="advantages" id="recipe-advantages"></p>
+            <button class="close-btn" onclick="hidePopup()">Back</button>
+        </div>
+    </div>
+    <a href="aryuveda.html"><button class="close-btn2" >Back</button></a>
+    <script>
+        
+        const recipes = [
+            {
+                title: "Turmeric Milk (Haldi Doodh)",
+                steps: [
+                    " Heat a cup of milk in a saucepan.",
+                    " Add 1/2 teaspoon turmeric powder.",
+                    " Add a pinch of black pepper.",
+                    " Stir well and bring to a boil.",
+                    " Let it cool slightly and add honey if desired.",
+                    " Drink warm before bedtime."
+                ],
+                advantages: "Boosts immunity, fights infections, and reduces inflammation." 
+
+            },
+            {
+                title: "Tulsi-Ginger Tea",
+                steps: [
+                    " Boil 2 cups of water.",
+                    " Add 5-6 fresh tulsi leaves.",
+                    " Add 1 teaspoon grated ginger.",
+                    " Simmer for 5 minutes.",
+                    " Strain into a cup and add honey if desired.",
+                    " Drink warm."
+                ],
+                 advantages: "Soothes throat irritation, clears congestion, and improves digestion."
+
+            },
+            {
+                title: "Ajwain Kadha",
+                steps: [
+                    " Boil 2 cups of water.",
+                    " Add 1 teaspoon ajwain (carom seeds).",
+                    " Add a pinch of black pepper.",
+                    " Simmer for 10 minutes.",
+                    " Strain and add honey for taste.",
+                    " Drink warm."
+                ],
+                advantages: "Relieves cold, improves digestion, and reduces bloating."
+                
+            },
+            {
+                title: "Jeera Water",
+                steps: [
+                    " Soak 1 teaspoon cumin seeds in a glass of water overnight.",
+                    " In the morning, boil the water for 5 minutes.",
+                    " Strain and drink warm."
+                ],
+                advantages: "Improves digestion, reduces acidity, and aids in weight loss." 
+            },
+            {
+                title: "Amla Murabba",
+                steps: [
+                    " Wash and boil amlas until soft.",
+                    " Peel and mash them.",
+                    " Add jaggery and mix well.",
+                    " Let it cool and store in a jar.",
+                    " Eat 1-2 pieces daily."
+                ],
+                advantages: "Rich in Vitamin C, boosts immunity, and improves skin health."
+            },
+            {
+                title: "Buttermilk with Hing",
+                steps: [
+                    " Take a glass of buttermilk.",
+                    " Add a pinch of asafoetida (hing).",
+                    " Add 2-3 curry leaves.",
+                    " Stir well and drink after meals."
+                ],
+                advantages: "Aids digestion, prevents acidity, and cools the stomach."
+            },
+            {
+                title: "Chyawanprash",
+                steps: [
+                    " Mix amla paste with honey and ghee.",
+                    " Add Ayurvedic herbs like ashwagandha and guduchi.",
+                    " Store in a jar.",
+                    " Eat 1 teaspoon daily for immunity."
+                ],
+                advantages: "Boosts immunity, enhances strength, and revitalizes energy."
+            },
+            {
+                title: "Ashwagandha Milk",
+                steps: [
+                    " Heat a cup of milk.",
+                    " Add 1/2 teaspoon ashwagandha powder.",
+                    " Add cardamom and saffron for flavor.",
+                    " Stir well and drink warm before bed."
+                ],
+                 advantages: "Reduces stress, improves sleep, and boosts stamina."
+            },
+            {
+                title: "Rasam with Garlic",
+                steps: [
+                    " Boil tamarind water in a pot.",
+                    " Add crushed garlic and black pepper.",
+                    " Add salt and curry leaves.",
+                    " Simmer for 10 minutes.",
+                    " Drink warm with rice or as a soup."
+                ],
+                advantages: "Enhances immunity, detoxifies the body, and improves digestion."
+            }
+        ];
+        function showPopup(index) {
+            document.getElementById("recipe-title").innerText = recipes[index].title;
+            document.getElementById("recipe-steps").innerHTML = recipes[index].steps.map(step => `<li>${step}</li>`).join("");
+            document.getElementById("recipe-advantages").innerText = recipes[index].advantages;
+            document.getElementById("popup").style.display = "flex";
+        }
+        function hidePopup() { document.getElementById("popup").style.display = "none"; }
+    </script>
+</body>
+</html>

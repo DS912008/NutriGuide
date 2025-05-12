@@ -1,0 +1,145 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    background: linear-gradient(to right, #e0f7fa, #fff);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+    font-size: 16px;
+    padding: 40px 15px;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Form Styling */
+form {
+    background-color: #ffffff;
+    padding: 25px 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+}
+
+form:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+h2 {
+    text-align: center;
+    color: #2e7d32;
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    color: #444;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: #f7f7f7;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #66bb6a;
+    outline: none;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #43a047;
+}
+
+/* Result Styling */
+#bmiResult {
+    margin-top: 18px;
+    font-size: 17px;
+    text-align: center;
+    color: #555;
+}
+
+/* Dynamic styles */
+.highlight {
+    border: 2px solid #4caf50;
+    background-color: #f1f8e9;
+}
+
+.error {
+    border: 2px solid #f44336;
+    background-color: #ffebee;
+}
+.nav_menu_btn {
+    display: flex;
+    width:30px;
+    height: 30px;
+} 
+.nav__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+.nav__header a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+}.menu-icon {
+    display: flex;
+    width: 30px;
+    height: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    form {
+        padding: 20px 15px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+}

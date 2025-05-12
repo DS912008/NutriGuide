@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Management</title>
+    <link rel="stylesheet" href="weight.css">
+</head>
+<body>
+    <div class="nav__header">
+        <div class="nav_menu_btn" id="menu-btn">
+         <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
+         </div>
+        <div class="nav__logo">
+          <a href="dhanu.html">BMI</a>
+        </div>
+        <div class="nav_menu_btn" >
+         <img src="clogo.png" alt="Menu" class="menu-icon">
+        </div>
+      </div>
+    <div class="container">
+        <form id="bmiForm">
+            <h2>Weight Management</h2>
+            <label for="weight">Enter your weight (kg):</label>
+            <input type="text" name="weight" id="weight">
+
+            <label for="height">Enter your height (cm):</label>
+            <input type="text" name="height" id="height">
+
+            <label for="age">Enter your age:</label>
+            <input type="text" name="age" id="age">
+
+            <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+            <p id="bmiResult"></p>
+
+            <!-- Placeholder for future logic -->
+            <div id="nextButtonPlaceholder"></div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

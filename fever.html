@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurvedic Recipes for Fever</title>
+    <style>
+       
+       body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            margin: 0;
+            padding-bottom: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 80%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-box {
+            background: green;
+            padding: 7px;
+            border-radius: 15px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            max-width: 200px;
+        }
+        img {
+            width: 100%;
+            height: 100hV;
+            max-height: 3000px;
+            object-fit: cover;
+            border-radius: 10px;
+            aspect-ratio: 16/6;
+        }
+        .close-btn2 {
+            display: block;
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+        
+        p {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            max-width: 400px;
+            width: 90%;
+        }
+        .popup-content h2 {
+            text-align: center;
+        }
+        .popup-content ol {
+            padding-left: 20px;
+        }
+        .popup-content .advantages {
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .close-btn {
+            display: block;
+            background: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .nav__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+}
+
+.nav_menu_btn {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    width: 30px;
+    height: 30px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="nav__header">
+        <div class="nav_menu_btn" id="menu-btn">
+         <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
+         </div>
+        <div class="nav__logo">
+       Fever
+        </div>
+        <div class="nav_menu_btn" >
+         <img src="clogo.png" alt="Menu" class="menu-icon">
+        </div>
+      </div>
+    
+    <div class="container">
+        <div class="image-box" onclick="showPopup(0)">
+            <img src="tulsi.jpg" alt="Recipe 1">
+            <p>Tulsi (Holy Basil) Kadha</p>
+        </div>
+        <div class="image-box" onclick="showPopup(1)">
+            <img src="coriander.jpg" alt="Recipe 2">
+            <p>Coriander Seed Tea</p>
+        </div>
+        <div class="image-box" onclick="showPopup(2)">
+            <img src="giloy.jpg" alt="Recipe 3">
+            <p>Giloy (Guduchi) Juice</p>
+        </div>
+        <div class="image-box" onclick="showPopup(3)">
+            <img src="ginger.jpg" alt="Recipe 4">
+            <p>Dry Ginger & Pepper Decoction</p>
+        </div>
+        <div class="image-box" onclick="showPopup(4)">
+            <img src="fenugreek.jpg" alt="Recipe 5">
+            <p>Fenugreek (Methi) Water</p>
+        </div>
+        <div class="image-box" onclick="showPopup(5)">
+            <img src="ajwain.jpg" alt="Recipe 6">
+            <p>Ajwain (Carom Seeds) Water</p>
+        </div>
+        <div class="image-box" onclick="showPopup(6)">
+            <img src="kadha.jpg" alt="Recipe 7">
+            <p>Kadha for Viral Fever</p>
+        </div>
+        <div class="image-box" onclick="showPopup(7)">
+            <img src="pomegranate.jpg" alt="Recipe 8">
+            <p>Pomegranate Juice</p>
+        </div>
+        <div class="image-box" onclick="showPopup(8)">
+            <img src="kanji.jpg" alt="Recipe 9">
+            <p>Rice Gruel (Kanji)</p>
+        </div>
+    </div>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2 id="recipe-title"></h2>
+            <ol id="recipe-steps"></ol>
+            <p class="advantages" id="recipe-advantages"></p>
+            <button class="close-btn" onclick="hidePopup()">Back</button>
+        </div>
+    </div>
+    <a href="aryuveda.html"><button class="close-btn2" >Back</button></a>
+    <script>
+        const recipes = [
+            { title: "Tulsi (Holy Basil) Kadha", steps: ["Boil 2 cups of water.", "Add 8-10 tulsi leaves","1 tsp grated ginger"," and a pinch of black pepper.", "Simmer for 10 minutes and strain.", "Add 1 tsp honey and drink warm."], advantages: "Boosts immunity, reduces fever." },
+            { title: "Coriander Seed Tea", steps: ["Boil 2 cups of water, add 1 tbsp coriander seeds.", "Simmer for 5 minutes and strain.", "Add 1 tsp honey"," and drink warm."], advantages: "Reduces body heat, aids digestion." },
+            { title: "Giloy (Guduchi) Juice", steps: ["Blend 2-3 fresh giloy stems with 1 cup water.", "Strain ","and drink fresh."], advantages: "Boosts immunity, reduces fever." },
+            { title: "Dry Ginger & Pepper Decoction", steps: ["Boil 2 cups of water"," add 1 tsp dry ginger ","1/2 tsp black pepper.", "Simmer for 10 minutes, strain, and drink."], advantages: "Relieves cold and fever." },
+            { title: "Fenugreek (Methi) Water", steps: ["Soak 1 tbsp fenugreek seeds overnight in 1 cup water.", "Strain and drink in the morning."], advantages: "Detoxifies, controls fever." },
+            { title: "Ajwain (Carom Seeds) Water", steps: ["Boil 2 cups of water, add 1 tsp ajwain seeds.", "Simmer for 5 minutes, strain, and drink."], advantages: "Relieves cough and fever." },
+            { title: "Kadha for Viral Fever", steps: ["Boil 2 cups of water"," add 8-10 tulsi leaves, 1 small cinnamon stick, and a pinch of black pepper.", "Simmer for 15 minutes, strain, and drink."], advantages: "Boosts immunity, relieves fever." },
+            { title: "Pomegranate Juice", steps: ["Deseed 2 pomegranates.", "Blend seeds lightly (don’t over-blend).","Strain through a sieve or cloth.","Optional: Add sugar, honey, or black salt.","Serve chilled."], advantages: "Rich in antioxidants, boosts immunity." },
+            { title: "Rice Gruel (Kanji)", steps: ["Soak 1/2 cup rice in water overnight.", "Blend with 2 cups water and strain.", "Add a pinch of salt and drink."], advantages: "Hydrating, easy to digest." }
+        ];
+        function showPopup(index) { document.getElementById("recipe-title").innerText = recipes[index].title; document.getElementById("recipe-steps").innerHTML = recipes[index].steps.map(step => `<li>${step}</li>`).join(" "); document.getElementById("recipe-advantages").innerText = recipes[index].advantages; document.getElementById("popup").style.display = "flex"; }
+        function hidePopup() { document.getElementById("popup").style.display = "none"; }
+    </script>
+</body>
+</html>

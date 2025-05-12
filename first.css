@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh; 
+    background-image: url('bg1.jpg'); 
+    color:white;
+  
+   background-position:center; background-size:cover;
+}
+ .form{
+ background-color:purple;
+ padding:20px;
+ border-radius:10px;
+ box-shadow: 30px 0 100px green;
+ color:#fff;
+ background:transparent;
+ backdrop-filter:blur(10px);
+ 
+ box-shadow:0px 0px 10px 10px 10px ;
+ }
+ .input_box input{
+    border-radius:50px;
+    background:transparent;
+   color:white;
+   width:300px;
+   height:40px;
+ }
+ h3{
+    text-align:center;
+    margin:20px;
+    padding:10px;
+    font-size:30px;
+    text-shadow: 2px 0 10px yellow;
+ }
+.remember{
+    text-align:center;
+    margin:2px;
+}
+.remember :hover{
+    color:lightgreen;
+}
+
+.login button {
+    border-radius:50px;
+    background:white;
+ 
+   width:300px;
+   height:40px;
+}
+.login  :hover{
+    background-color:lightgreen;
+}
+
+.input_box input::placeholder{
+    color:white;
+    font-style:bold;
+
+}
+header{
+    display:flex;
+    position:fixed;
+    padding:30px ;
+    background:transparent;
+    backdrop-filter:blur(5px);
+    justify-content:space-between;
+    width:95%;
+   align-items:center;
+   }
+   
+   .website a{
+    color:white;
+    justify-content:space-between;
+    animation: a 5s linear  infinite alternate;
+   }
+   h4{
+    color:white;
+    font-size:40px;
+    animation: a 5s linear  infinite alternate;
+   }
+   @keyframes a {
+    0%   {color:orange; left:0px; top:0px;}
+    25%  {color:yellow; left:200px; top:0px;}
+    50%  {color:lightgreen; left:200px; top:200px;}
+    75%  {color:green; left:0px; top:200px;}
+   
+  }
+  .p{
+    text-align:center;
+  }

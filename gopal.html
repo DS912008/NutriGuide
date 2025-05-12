@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Your Fitness Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #1e1e2f;
+            color: #fff;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        .search-box {
+            position: relative;
+            margin-left: 2rem;
+        }
+
+        .search-box input {
+            padding: 0.5rem;
+            border-radius: 20px;
+            border: none;
+            width: 180px;
+        }
+
+        .suggestions {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+        }
+
+        .suggestions li {
+            padding: 0.5rem;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .suggestions li:hover {
+            background: #f1f1f1;
+        }
+
+        .hero {
+            padding: 4rem 2rem;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+        }
+
+        .section {
+            padding: 3rem 2rem;
+        }
+
+        .section h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .highlights, .testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .highlight-item, .testimonial {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 300px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .highlight-item.animate, .testimonial.animate {
+            opacity: 1;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial h4 {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #1e1e2f;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .highlights, .testimonials {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FitLife</h1>
+        <div style="display: flex; align-items: center;">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <ul class="suggestions" id="suggestionsList"></ul>
+            </div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Classes</a>
+                <a href="#">Trainers</a>
+                <a href="#">Sign In</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>Welcome to FitLife</h2>
+        <p>Your journey to a healthier and stronger you starts here. Explore our services, meet our expert trainers, and find the perfect class for your fitness goals.</p>
+    </section>
+
+    <section class="section">
+        <h3>Highlights</h3>
+        <div class="highlights">
+            <div class="highlight-item">🏋️‍♂️ Top-tier Equipment</div>
+            <div class="highlight-item">🍎 Personalized Diet Plans</div>
+            <div class="highlight-item">💪 Certified Trainers</div>
+            <div class="highlight-item">🧘‍♀️ Yoga & Meditation</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3>What Our Members Say</h3>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"FitLife transformed my fitness journey. The trainers are incredible and very motivating!"</p>
+                <h4>- Aditi</h4>
+            </div>
+            <div class="testimonial">
+                <p>"I love the variety of classes available. The app makes it easy to track my progress."</p>
+                <h4>- Rahul</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Highly recommend FitLife for anyone serious about getting fit the right way."</p>
+                <h4>- Sneha</h4>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 FitLife. All rights reserved.
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const suggestionsList = document.getElementById('suggestionsList');
+
+        const pages = [
+            { name: 'Home', link: '#' },
+            { name: 'Services', link: '#' },
+            { name: 'Classes', link: '#' },
+            { name: 'Trainers', link: '#' },
+            { name: 'Sign In', link: '#' }
+        ];
+
+        searchInput.addEventListener('input', () => {
+            const input = searchInput.value.toLowerCase();
+            suggestionsList.innerHTML = '';
+
+            if (!input) {
+                suggestionsList.style.display = 'none';
+                return;
+            }
+
+            const filteredPages = pages.filter(page => page.name.toLowerCase().includes(input));
+            if (filteredPages.length === 0) {
+                suggestionsList.style.display = 'none';
+                return;
+            }
+
+            filteredPages.forEach(page => {
+                const li = document.createElement('li');
+                li.textContent = page.name;
+                li.onclick = () => {
+                    window.location.href = page.link;
+                };
+                suggestionsList.appendChild(li);
+            });
+
+            suggestionsList.style.display = 'block';
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.highlight-item, .testimonial').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

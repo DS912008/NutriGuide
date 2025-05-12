@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Counter</title>
+    <link rel="icon" href="Screenshot (108).png" type="image/x-icon">
+    <style>
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #28a745, 0 0 20px #28a745; }
+            50% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #28a745, 0 0 40px #28a745; }
+            100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #28a745, 0 0 20px #28a745; }
+        }
+
+        /* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            background-image: url(Screenshot\ \(126\)-Photoroom.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 80vh;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-out 0.3s backwards;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .input-section, .results-section {
+            flex: 1;
+            max-width: 350px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .results-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .results-section.visible {
+            display: block;
+        }
+
+        /* Typography */
+        h1 {
+            text-align: center;
+            color: #13135d;
+            text-shadow: 5px 10px 5px rgba(0, 0, 0, 0.3);
+            animation: glow 2s infinite;
+        }
+
+        .name {
+            font-size: 50px;
+            margin-bottom: 30px;
+            animation: sparkle 2s infinite;
+        }
+
+        .white {
+            color: #13135d;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Form Elements */
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out 0.6s backwards;
+        }
+
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 15px;
+            font-size: 16px;
+            height: 40px;
+            width: 87%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-weight: bold;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+            outline: none;
+            transform: scale(1.02);
+        }
+
+        /* Buttons */
+        button {
+            padding: 15px;
+            background: linear-gradient(45deg, #28a745, #218838);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 5px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(45deg, #218838, #28a745);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Results Display */
+        .calorie-display {
+            font-size: 36px;
+            font-weight: bold;
+            color: #28a745;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+            animation: sparkle 2s infinite;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        #food-details {
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Suggestions */
+        .suggestions {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            width: calc(100% - 40px);
+            max-height: 150px;
+            overflow-y: auto;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .suggestion-item {
+            padding: 12px;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .suggestion-item:hover {
+            background: rgba(40, 167, 69, 0.3);
+            transform: translateX(5px);
+        }
+
+        /* Custom Food Modal */
+        .custom-food-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            width: 300px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .custom-food-modal.visible {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .custom-food-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            color: white;
+        }
+      .container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: flex-start; /* Keeps it at the top */
+     /* Adjust as needed */
+}
+
+
+img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+        .custom-food-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 15px;
+        }
+
+        .custom-food-label {
+            color: white;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Navigation */
+        .back {
+           
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            
+        }
+
+       
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .header {
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            animation: fadeIn 1s ease-out 1.2s backwards;
+        }
+
+        /* Sparkle Effect */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <a href="dhanu.html"> <img src="logo.jpg" alt="Centered Image"></a>
+      
+    </div>
+    
+    
+    <br><br>
+    <div class="wrapper">
+        <div class="container">
+            <h1 class="name">Calorie Counter</h1>
+            
+            <div class="main-content">
+                <div class="input-section">
+                    <div class="instructions" style="color: white; margin-bottom: 15px; text-align: center;">
+                        <p>1. Enter food name and quantity</p>
+                        <p>2. Click Calculate to see calories</p>
+                        <p>3. Use Clear to start over</p>
+                    </div>
+                    
+                    <form id="calorie-form">
+                        <label for="food-name" class="white">Food Name:</label>
+                        <input type="text" id="food-name" autocomplete="off" placeholder="e.g., apple, rice, chicken" />
+                        <div id="suggestions" class="suggestions"></div>
+
+                        <label for="quantity" class="white">Quantity (grams):</label>
+                        <input type="number" id="quantity" min="1" required placeholder="Enter quantity in grams" />
+
+                        <div class="button-group">
+                            <button type="submit" id="calculate-btn">Calculate</button>
+                            <button type="button" id="clear-button">Clear</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="results-section" id="results-section">
+                    <h2 class="white" style="text-align: center;">Calorie Results</h2>
+                    <div class="calorie-display">
+                        <span id="total-calories">0</span> calories
+                    </div>
+                    <div id="food-details"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-food-modal" id="customFoodModal">
+        <h3 style="color: white; text-align: center; margin-bottom: 15px;">Add Custom Food</h3>
+        <label class="custom-food-label">Food Name:</label>
+        <input type="text" id="customFoodName" class="custom-food-input" placeholder="Enter food name">
+        <label class="custom-food-label">Calories per 100g:</label>
+        <input type="number" id="customFoodCalories" class="custom-food-input" placeholder="Enter calories" min="0">
+        <div class="custom-food-buttons">
+            <button class="cancel-custom" onclick="closeCustomFoodModal()">Cancel</button>
+            <button class="save-custom" onclick="saveCustomFood()">Save</button>
+        </div>
+    </div>
+
+    
+
+    <script>
+        // Food calorie database
+        const foodCalories = {
+            'apple': 52,
+            'banana': 89,
+            'orange': 47,
+            'rice': 130,
+            'chicken': 165,
+            'beef': 250,
+            'fish': 120,
+            'egg': 70,
+            'bread': 79,
+            'milk': 103,
+            'yogurt': 59,
+            'cheese': 113,
+            'pasta': 131,
+            'potato': 77,
+            'carrot': 41,
+            'broccoli': 34,
+            'spinach': 23,
+            'tomato': 22,
+            'cucumber': 16,
+            'lettuce': 5,
+            'peanut butter': 94,
+            'almonds': 7,
+            'walnuts': 26,
+            'chocolate': 150,
+            'ice cream': 137,
+            'pizza': 285,
+            'burger': 354,
+            'fries': 365,
+            'soda': 150,
+            'coffee': 2,
+            'tea': 0,
+            'water': 0
+        };
+
+        // Custom foods storage
+        let customFoods = JSON.parse(localStorage.getItem('customFoods') || '{}');
+
+        // Function to save custom foods
+        function saveCustomFoods() {
+            localStorage.setItem('customFoods', JSON.stringify(customFoods));
+        }
+
+        // Function to add new food to database
+        function addNewFood(foodName, calories) {
+            customFoods[foodName.toLowerCase()] = calories;
+            saveCustomFoods();
+            return calories;
+        }
+
+        // Add sparkle effect
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+
+        // Add sparkle effect on button clicks
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const rect = button.getBoundingClientRect();
+                createSparkle(rect.left + rect.width/2, rect.top + rect.height/2);
+            });
+        });
+
+        // Function to show custom food modal
+        function showCustomFoodModal(foodName) {
+            const modal = document.getElementById('customFoodModal');
+            document.getElementById('customFoodName').value = foodName;
+            modal.classList.add('visible');
+        }
+
+        // Function to close custom food modal
+        function closeCustomFoodModal() {
+            const modal = document.getElementById('customFoodModal');
+            modal.classList.remove('visible');
+            document.getElementById('customFoodName').value = '';
+            document.getElementById('customFoodCalories').value = '';
+        }
+
+        // Function to save custom food
+        function saveCustomFood() {
+            const foodName = document.getElementById('customFoodName').value.trim();
+            const calories = parseFloat(document.getElementById('customFoodCalories').value);
+
+            if (!foodName || isNaN(calories) || calories < 0) {
+                alert("Please enter valid food name and calories");
+                return;
+            }
+
+            addNewFood(foodName, calories);
+            closeCustomFoodModal();
+            
+            // Update the current calculation
+            document.getElementById('food-name').value = foodName;
+            calculateCalories();
+        }
+
+        // Function to calculate and display calories
+        function calculateCalories() {
+            const foodName = document.getElementById('food-name').value.toLowerCase();
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            if (!foodName || !quantity) {
+                alert("Please enter both food name and quantity");
+                return;
+            }
+
+            let caloriesPerItem = foodCalories[foodName] || customFoods[foodName];
+
+            if (caloriesPerItem === undefined) {
+                showCustomFoodModal(foodName);
+                return;
+            }
+
+            const totalCalories = caloriesPerItem * quantity;
+            document.getElementById('total-calories').textContent = totalCalories;
+            
+            // Update food details
+            const foodDetails = document.getElementById('food-details');
+            foodDetails.innerHTML = `
+                <p>${foodName.charAt(0).toUpperCase() + foodName.slice(1)}</p>
+                <p>${quantity}g x ${caloriesPerItem} calories = ${totalCalories} total calories</p>
+                ${customFoods[foodName] ? '<p style="color: #ff6b35;">(Custom food item)</p>' : ''}
+            `;
+
+            // Show results section
+            document.getElementById('results-section').classList.add('visible');
+            
+            // Add sparkle effect
+            const totalCaloriesElement = document.getElementById('total-calories');
+            const rect = totalCaloriesElement.getBoundingClientRect();
+            createSparkle(rect.left + rect.width/2, rect.top + rect.height/2);
+        }
+
+        // Handle form submission
+        document.getElementById('calorie-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            calculateCalories();
+        });
+
+        // Clear button click handler
+        document.getElementById('clear-button').addEventListener('click', function() {
+            document.getElementById('food-name').value = '';
+            document.getElementById('quantity').value = '';
+            document.getElementById('total-calories').textContent = '0';
+            document.getElementById('food-details').innerHTML = '';
+            document.getElementById('results-section').classList.remove('visible');
+        });
+
+        // Show suggestions as user types
+        document.getElementById('food-name').addEventListener('input', function() {
+            const input = this.value.toLowerCase();
+            const suggestionsBox = document.getElementById('suggestions');
+            suggestionsBox.innerHTML = '';
+
+            if (input.length >= 1) {
+                // Combine standard and custom foods
+                const allFoods = {...foodCalories, ...customFoods};
+                const matches = Object.keys(allFoods).filter(food => 
+                    food.toLowerCase().includes(input)
+                );
+
+                matches.forEach(match => {
+                    const div = document.createElement('div');
+                    div.textContent = match + (customFoods[match] ? ' (Custom)' : '');
+                    div.className = 'suggestion-item';
+                    div.onclick = () => {
+                        document.getElementById('food-name').value = match;
+                        suggestionsBox.innerHTML = '';
+                    };
+                    suggestionsBox.appendChild(div);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

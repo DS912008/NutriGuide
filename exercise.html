@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ex.css" />
+    <title>Yoga & Gym Facilities - Nutrie Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF6B6B;
+            --secondary-color: #4ECDC4;
+            --accent-color: #FFE66D;
+            --dark-color: #2C3E50;
+            --light-color: #F7F9FC;
+            --text-color: #2C3E50;
+            --white: #ffffff;
+            --black: #000000;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            --shadow-hover: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .navbar a:hover {
+            transform: translateY(-2px);
+        }
+
+        .container {
+    max-width: 1000px; /* Shrunk from 1200px */
+    margin: 2rem auto;
+    padding: 0 15px;
+}
+
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            font-size: 3em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .yoga-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .yoga-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .yoga-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .yoga-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .yoga-card:hover::before {
+            opacity: 1;
+        }
+
+        .yoga-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .yoga-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .yoga-info {
+            padding: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .yoga-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .yoga-info p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-size: 1em;
+        }
+
+        .calories {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--white);
+            margin: 3rem auto;
+            padding: 3rem;
+            border-radius: 25px;
+            max-width: 900px;
+            position: relative;
+            box-shadow: var(--shadow-hover);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+            color: var(--secondary-color);
+        }
+
+        .exercise-details {
+            margin-top: 2rem;
+        }
+
+        .exercise-details h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.5em;
+            font-weight: 800;
+        }
+
+        .exercise-details p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.2em;
+        }
+
+        .steps {
+            margin-top: 2rem;
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .steps h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .steps ol {
+            padding-left: 2rem;
+        }
+
+        .steps li {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        .steps li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: -1.5rem;
+        }
+.facility__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            .yoga-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+        .nav_menu_btn {
+            display: flex;
+            width:30px;
+            height: 30px;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav__header">
+          <div class="nav_menu_btn" id="menu-btn">
+           <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
+           </div>
+          <div class="nav__logo">
+            <a href="dhanu.html">Yoga & Gym</a>
+          </div>
+          <div class="nav_menu_btn" id="menu-btn">
+           <img src="clogo.png" alt="Menu" class="menu-icon">
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#yoga">Yoga</a></li>
+          <li><a href="#gym">Gym</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="yoga" class="section_container">
+      <h1>Yoga Exercises</h1>
+      <div id="yogaGrid" class="yoga-grid"></div>
+    </section>
+
+    <section id="gym" class="section_container">
+      <h1>Gym Facilities</h1>
+      <div class="facility__grid">
+        <div class="facility__card">
+          <img src="ex1.png" alt="Gym Facility">
+        </div>
+        <div class="facility__card">
+          <img src="ex2.png" alt="Gym Facility">
+        </div>
+        <div class="facility__card">
+          <img src="ex3.png" alt="Gym Facility">
+        </div>
+        <div class="facility__card">
+          <img src="ex4.png" alt="Gym Facility">
+        </div>
+        <div class="facility__card">
+          <img src="ex5.png" alt="Gym Facility">
+        </div>
+        <div class="facility__card">
+            <img src="gym.png" alt="Gym Facility">
+          </div>  <div class="facility__card">
+            <img src="gym3.png" alt="Gym Facility">
+          </div> <div class="facility__card">
+            <img src="gym4.png" alt="Gym Facility">
+          </div>
+      </div>
+    </section>
+
+    <div id="exerciseModal" class="modal">
+      <div id="modalContent" class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="section_container footer_container">
+        <div class="footer__col">
+          <h4>Contact Us</h4>
+          <ul class="footer__links">
+            <li>
+              <a href="#">
+                <span><i class="ri-phone-line"></i></span> +91 78140XXXXX
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-map-pin-line"></i></span> Chitkara University, INDIA
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Opening Hours</h4>
+          <ul class="footer__links">
+            <li>Monday - Friday: 5am - 10pm</li>
+            <li>Saturday: 5am - 10pm</li>
+            <li>Sunday: 5am - 1pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bar">
+        Copyright © 2024 Yoga & Gym Facilities. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main2.js"></script>
+    <script>
+        const yogaExercises = [
+            {
+                name: "Surya Namaskar",
+                image: "surya.png",
+                calories: "150-200",
+                description: "A complete body workout that includes 12 powerful yoga poses.",
+                steps: [
+                    "Stand straight with feet together and hands in prayer position",
+                    "Raise arms overhead and arch back",
+                    "Bend forward and touch the ground",
+                    "Step back into plank position",
+                    "Lower body to the ground",
+                    "Push up into upward dog",
+                    "Push back into downward dog",
+                    "Step forward and touch the ground",
+                    "Raise arms overhead and arch back",
+                    "Return to standing position"
+                ]
+            },
+            {
+                name: "Tadasana",
+                image: "tada.png",
+                calories: "30-50",
+                description: "The foundation of all standing poses, improves posture and balance.",
+                steps: [
+                    "Stand with feet together",
+                    "Distribute weight evenly on both feet",
+                    "Engage thigh muscles",
+                    "Lift chest and roll shoulders back",
+                    "Extend arms alongside body",
+                    "Hold for 30-60 seconds"
+                ]
+            },
+            {
+                name: "Vrikshasana",
+                image: "tree.png",
+                calories: "40-60",
+                description: "Improves balance and strengthens legs and core.",
+                steps: [
+                    "Stand straight with feet together",
+                    "Shift weight to left foot",
+                    "Place right foot on left inner thigh",
+                    "Bring hands to prayer position",
+                    "Hold for 30-60 seconds",
+                    "Repeat on other side"
+                ]
+            },
+            {
+                name: "Adho Mukha Svanasana",
+                image: "yog.png",
+                calories: "50-70",
+                description: "Stretches the entire body and strengthens arms and legs.",
+                steps: [
+                    "Start on hands and knees",
+                    "Lift hips up and back",
+                    "Straighten legs and arms",
+                    "Press hands into ground",
+                    "Hold for 30-60 seconds"
+                ]
+            },
+            {
+                name: "Bhujangasana",
+                image: "yog1.png",
+                calories: "40-60",
+                description: "Strengthens the spine and opens the chest.",
+                steps: [
+                    "Lie on stomach",
+                    "Place hands under shoulders",
+                    "Lift chest off ground",
+                    "Keep elbows close to body",
+                    "Hold for 15-30 seconds"
+                ]
+            },
+            {
+                name: "Balasana",
+                image: "yog2.png",
+                calories: "20-30",
+                description: "A resting pose that stretches the back and hips.",
+                steps: [
+                    "Kneel on the floor",
+                    "Sit back on heels",
+                    "Fold forward",
+                    "Rest forehead on ground",
+                    "Extend arms forward",
+                    "Hold for 30-60 seconds"
+                ]
+            },
+            {
+                name: "Virabhadrasana I",
+                image: "yog3.png",
+                calories: "50-70",
+                description: "Strengthens legs and improves balance.",
+                steps: [
+                    "Step one foot back",
+                    "Bend front knee to 90 degrees",
+                    "Raise arms overhead",
+                    "Square hips forward",
+                    "Hold for 30-60 seconds",
+                    "Repeat on other side"
+                ]
+            },
+            {
+                name: "Virabhadrasana II",
+                image: "yog4.png",
+                calories: "50-70",
+                description: "Strengthens legs and improves stamina.",
+                steps: [
+                    "Step feet wide apart",
+                    "Turn one foot out",
+                    "Bend front knee to 90 degrees",
+                    "Extend arms parallel to ground",
+                    "Hold for 30-60 seconds",
+                    "Repeat on other side"
+                ]
+            },
+            {
+                name: "Trikonasana",
+                image: "yog5.png",
+                calories: "40-60",
+                description: "Stretches the sides of the body and improves balance.",
+                steps: [
+                    "Stand with feet wide apart",
+                    "Turn one foot out",
+                    "Extend arms parallel to ground",
+                    "Bend at hip to reach front foot",
+                    "Hold for 30-60 seconds",
+                    "Repeat on other side"
+                ]
+            },
+            {
+                name: "Setu Bandhasana",
+                image: "yog6.png",
+                calories: "40-60",
+                description: "Strengthens the back and opens the chest.",
+                steps: [
+                    "Lie on back",
+                    "Bend knees and place feet flat",
+                    "Lift hips up",
+                    "Clasp hands under back",
+                    "Hold for 30-60 seconds"
+                ]
+            },
+            {
+                name: "Dhanurasana",
+                image: "yog7.png",
+                calories: "50-70",
+                description: "Strengthens the back and improves flexibility.",
+                steps: [
+                    "Lie on stomach",
+                    "Bend knees and grab ankles",
+                    "Lift chest and thighs",
+                    "Hold for 15-30 seconds"
+                ]
+            },
+            {
+                name: "Savasana",
+                image: "yog8.png",
+                calories: "20-30",
+                description: "A relaxation pose that calms the mind and body.",
+                steps: [
+                    "Lie flat on back",
+                    "Extend arms and legs",
+                    "Close eyes",
+                    "Relax completely",
+                    "Hold for 5-10 minutes"
+                ]
+            }
+        ];
+
+        function createYogaCards() {
+            const grid = document.getElementById('yogaGrid');
+            yogaExercises.forEach(exercise => {
+                const card = document.createElement('div');
+                card.className = 'yoga-card';
+                card.innerHTML = `
+                    <img src="${exercise.image}" alt="${exercise.name}">
+                    <div class="yoga-info">
+                        <h3>${exercise.name}</h3>
+                        <p>${exercise.description}</p>
+                        <span class="calories">${exercise.calories} calories</span>
+                    </div>
+                `;
+                card.onclick = () => showExerciseDetails(exercise);
+                grid.appendChild(card);
+            });
+        }
+        function showExerciseDetails(exercise) {
+    const modal = document.getElementById('exerciseModal');
+    const content = document.getElementById('modalContent');
+    
+    content.innerHTML = `
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img src="${exercise.image}" alt="${exercise.name}" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 10px;">
+        <div class="exercise-details">
+            <h2>${exercise.name}</h2>
+            <p>${exercise.description}</p>
+            <p><strong>Calories Burned:</strong> ${exercise.calories} per session</p>
+            <div class="steps">
+                <h3>Steps:</h3>
+                <ol>
+                    ${exercise.steps.map(step => `<li>${step}</li>`).join('')}
+                </ol>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+}
+
+
+        function closeModal() {
+            document.getElementById('exerciseModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('exerciseModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', createYogaCards);
+    </script>
+  </body>
+</html>

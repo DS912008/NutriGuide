@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <div class="page-wrapper">
+
+        <nav class="nav__header">
+          <div class="nav__menu-btn" id="menu-btn">
+            <a href="dhanu.html">
+              <img src="logo.jpg" alt="NutriGuide Home" class="menu-icon">
+            </a>
+          </div>
+          <div class="nav__logo">CONTACT US</div>
+          <div class="nav__menu-btn">
+            <img src="clogo.png" alt="Company Logo" class="menu-icon">
+          </div>
+        </nav>
+<section class="contact">
+    
+    <div class="content">
+       
+        
+    </div>
+    <div class="container">
+        <div class="contactInfo">
+            <div class="box">
+                <div class="icon"><i class='bx bxs-map'></i></div>
+                <div class="text">
+                    <h3>Address</h3>
+                    <p>Chitkara University, Baddi<br>Himachal Pradesh<br>173205</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class='bx bxs-phone'></i></div>
+                <div class="text">
+                    <h3>Phone</h3>
+                    <p>78140-XXXXX</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class='bx bx-envelope'></i></div>
+                <div class="text">
+                    <h3>Email</h3>
+                    <p>XXXX24@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="contactForm">
+            <form action="https://api.web3forms.com/submit" method="POST">
+               
+
+                <h2>Send Message</h2>
+                <input type="hidden" name="access_key" value="1dec791a-8be9-47e2-85cc-fddb20154d49">
+                <div class="inputBox">
+                    <input type="text" name="name" required="required">
+                    <span>Full Name</span>
+                </div>
+                <div class="inputBox">
+                    <input type="email" name="email" required="required">
+                    <span>Email</span>
+                </div>
+                <div class="inputBox">
+                    <textarea name="message" required="required"></textarea>
+                    <span>Type your message</span>
+                </div>
+                <div class="inputBox">
+                    <input type="submit" value="Send">
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</section>
+
+<script>
+    // Function to display a thank-you message
+    function showThankYouMessage(event) {
+        event.preventDefault(); // Prevent the default form submission
+        alert("Thank you for reaching us. We will contact you soon!");
+        // Optionally, submit the form after showing the alert
+        event.target.submit();
+    }
+
+    // Add an event listener to the form
+    document.querySelector('form').addEventListener('submit', showThankYouMessage);
+</script>
+</body>
+</html>

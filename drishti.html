@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriGuide Login</title>
+  <link rel="stylesheet" href="grace.css" />
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <!-- Navigation Header -->
+    <nav class="nav__header">
+      <div class="nav__menu-btn" id="menu-btn">
+        <a href="dhanu.html">
+          <img src="logo.jpg" alt="NutriGuide Home" class="menu-icon">
+        </a>
+      </div>
+      <div class="nav__logo">LOGIN</div>
+      <div class="nav__menu-btn">
+        <img src="clogo.png" alt="Company Logo" class="menu-icon">
+      </div>
+    </nav>
+  </div>
+    <!-- Login Form Container -->
+    <div class="login-container">
+      <h1>Welcome Back!</h1>
+      <form id="loginForm" action="#" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required />
+        </div>
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" id="remember" name="remember" />
+            Remember Me
+          </label>
+        </div>
+        <button type="submit">Log In</button>
+      </form>
+
+      <div class="footer-links">
+        <p><a href="#">Forgot Password?</a></p>
+        <p>Don’t have an account? <a href="grace.html">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript to handle login form -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      })
+        .then(async response => {
+          const data = await response.json();
+
+          if (response.ok) {
+            // Save user info to localStorage (new code)
+            localStorage.setItem('userName', data.name); // Save the user's name
+            localStorage.setItem('userEmail', data.email); // Save the user's email
+
+            alert('Login successful!');
+            window.location.href = 'profile.html';  // Redirect to profile page after login
+          } else {
+            alert(data.message || 'Login failed! Please check your credentials.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred during login.');
+        });
+    });
+  </script>
+</body>
+
+</html>
