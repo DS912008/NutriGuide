@@ -1,0 +1,1052 @@
+[
+    {
+        "day": "Day 1",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 2",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 3",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 4",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 5",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 6",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 7",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 8",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 9",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 10",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 11",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 12",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 13",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 14",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 15",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 16",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 17",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 18",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 19",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 20",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 21",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 22",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 23",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 24",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 25",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 26",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 27",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 28",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 29",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    },
+    {
+        "day": "Day 30",
+        "early_morning": {
+            "milk_glass": 1,
+            "egg_whites_or_banana": "2 egg whites or 2 bananas",
+            "soaked_almonds_g": 10
+        },
+        "breakfast": "Vegetable stuffed paratha (2) + 1 cup curd (paneer stuffing optional)",
+        "mid_morning": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful",
+            "Lassi (1 glass)"
+        ],
+        "lunch": {
+            "sprout_salad_cup": 1,
+            "chapati": 2,
+            "vegetable": "2 cups (potato/cauliflower/etc.)",
+            "dal_legumes": "1 cup (mung/soybean/etc.)",
+            "rice_or_pulav": "1 cup (veg/non-veg)"
+        },
+        "evening_snack": [
+            "Tea or coffee (1 cup)",
+            "Cookies (4 pcs)"
+        ],
+        "mid_evening": [
+            "Groundnut or dry-fruit chikki (3-4 pcs)",
+            "Roasted almonds/soybeans handful"
+        ],
+        "dinner": "Same as lunch",
+        "bedtime": {
+            "milk_glass": 1,
+            "banana": 2,
+            "soaked_almonds_g": 10
+        }
+    }
+]

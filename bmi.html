@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BMI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-semibold text-center text-green-700 mb-6">Tell Us About Yourself</h2>
+
+    <!-- Mode Switch -->
+    <div class="flex justify-center mb-6">
+      <button id="calcBtn" class="px-6 py-2 rounded-l-full bg-green-400 text-white font-semibold focus:outline-none">Calculate BMI</button>
+      <button id="directBtn" class="px-6 py-2 rounded-r-full bg-gray-200 text-green-700 font-semibold focus:outline-none">Enter BMI Directly</button>
+    </div>
+
+    <!-- Form -->
+    <form id="bmiForm" onsubmit="return handleForm(event)" class="space-y-4">
+      <!-- Gender -->
+      <div>
+        <label class="block text-sm font-semibold">Gender</label>
+        <select id="gender" required class="w-full p-2 border rounded">
+          <option value="">Select Gender</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+        </select>
+      </div>
+
+      <!-- Sick? -->
+      <div>
+        <label class="block text-sm font-semibold">Are you sick?</label>
+        <select id="sick" required class="w-full p-2 border rounded">
+          <option value="">Select an option</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <!-- BMI Mode Fields -->
+      <div id="calcFields">
+        <div>
+          <label class="block text-sm font-semibold">Age</label>
+          <input type="number" id="age" required class="w-full p-2 border rounded" placeholder="Enter your age" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold">Height (cm)</label>
+          <input type="number" id="height" required class="w-full p-2 border rounded" placeholder="Enter height in cm" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold">Weight (kg)</label>
+          <input type="number" id="weight" required class="w-full p-2 border rounded" placeholder="Enter weight in kg" />
+        </div>
+      </div>
+
+      <!-- Direct BMI Field -->
+      <div id="bmiDirectField" class="hidden">
+        <label class="block text-sm font-semibold">BMI</label>
+        <input type="number" id="directBMI" step="0.1" class="w-full p-2 border rounded" placeholder="Enter your BMI (e.g., 22.5)" />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full bg-gray-300 text-green-700 font-semibold py-2 rounded hover:bg-green-600 hover:text-white transition">
+        ENTER
+      </button>
+    </form>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const calcBtn = document.getElementById('calcBtn');
+    const directBtn = document.getElementById('directBtn');
+    const calcFields = document.getElementById('calcFields');
+    const bmiDirectField = document.getElementById('bmiDirectField');
+    const sickSelect = document.getElementById('sick');
+
+    let currentMode = "calc";
+
+    // Toggle between modes
+    calcBtn.addEventListener('click', () => {
+      currentMode = "calc";
+      calcFields.classList.remove('hidden');
+      bmiDirectField.classList.add('hidden');
+      calcBtn.classList.replace("bg-gray-200", "bg-green-400");
+      calcBtn.classList.replace("text-green-700", "text-white");
+      directBtn.classList.replace("bg-green-400", "bg-gray-200");
+      directBtn.classList.replace("text-white", "text-green-700");
+    });
+
+    directBtn.addEventListener('click', () => {
+      currentMode = "direct";
+      calcFields.classList.add('hidden');
+      bmiDirectField.classList.remove('hidden');
+      directBtn.classList.replace("bg-gray-200", "bg-green-400");
+      directBtn.classList.replace("text-green-700", "text-white");
+      calcBtn.classList.replace("bg-green-400", "bg-gray-200");
+      calcBtn.classList.replace("text-white", "text-green-700");
+    });
+
+    // Handle form submission
+    function handleForm(event) {
+      event.preventDefault();
+
+      const gender = document.getElementById('gender').value;
+      const sick = document.getElementById('sick').value;
+      let bmi = 0;
+
+      if (!gender || !sick) {
+        alert("Please complete all fields.");
+        return false;
+      }
+
+      if (currentMode === "calc") {
+        const height = parseFloat(document.getElementById('height').value);
+        const weight = parseFloat(document.getElementById('weight').value);
+        if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+          alert("Please enter valid height and weight.");
+          return false;
+        }
+        bmi = weight / ((height / 100) ** 2);
+      } else {
+        bmi = parseFloat(document.getElementById('directBMI').value);
+        if (isNaN(bmi) || bmi <= 0) {
+          alert("Please enter a valid BMI.");
+          return false;
+        }
+      }
+
+      // Sick?
+      if (sick === "yes") {
+        window.location.href = "aryuvedic.html";
+        return false;
+      }
+
+      const isUnderweight = (gender === "female" && bmi < 18) || (gender === "male" && bmi < 18.5);
+
+      if (isUnderweight) {
+        const choice = confirm("Do you want to gain weight using Yoga? Click OK for Yoga, Cancel for Food.");
+        if (choice) {
+          window.location.href = "underweightyoga.html";
+        } else {
+          window.location.href = "underweight.html";
+        }
+      } else {
+        const choice = confirm("Do you want to lose weight using Yoga? Click OK for Yoga, Cancel for Food.");
+        if (choice) {
+          window.location.href = "overweightyoga.html";
+        } else {
+          window.location.href = "overweight.html";
+        }
+      }
+
+      return false;
+    }
+  </script>
+</body>
+</html>

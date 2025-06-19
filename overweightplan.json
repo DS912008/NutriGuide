@@ -1,0 +1,1684 @@
+{
+  "plan": [
+    {
+      "day": 1,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 2,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 3,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 4,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 5,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 6,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 7,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 8,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 9,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 10,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 11,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 12,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 13,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 14,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 15,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 16,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 17,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 18,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 19,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 20,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 21,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 22,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 23,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 24,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 25,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 26,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 27,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 28,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    },
+    {
+      "day": 29,
+      "veg": {
+        "breakfast": {
+          "name": "Poha with Veggies",
+          "image": "https://example.com/poha.jpg",
+          "recipe": [
+            "Rinse poha and saute veggies",
+            "Add seasoning and mix well",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Rajma with Brown Rice",
+          "image": "https://example.com/rajma.jpg",
+          "recipe": [
+            "Cook rajma in tomato gravy",
+            "Serve with brown rice"
+          ]
+        },
+        "dinner": {
+          "name": "Tandoori Roti with Mix Veg",
+          "image": "https://example.com/mixveg.jpg",
+          "recipe": [
+            "Cook assorted vegetables with masala",
+            "Serve with roti"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Boiled Eggs with Idli",
+          "image": "https://example.com/eggs-idli.jpg",
+          "recipe": [
+            "Boil eggs and steam idli",
+            "Serve with chutney"
+          ]
+        },
+        "lunch": {
+          "name": "Chicken Curry with Rice",
+          "image": "https://example.com/chicken-curry.jpg",
+          "recipe": [
+            "Cook chicken with spices",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Fish Fry with Veg Pulao",
+          "image": "https://example.com/fish-fry.jpg",
+          "recipe": [
+            "Marinate and fry fish",
+            "Serve with veg pulao"
+          ]
+        }
+      }
+    },
+    {
+      "day": 30,
+      "veg": {
+        "breakfast": {
+          "name": "Idli with Sambar",
+          "image": "https://example.com/idli.jpg",
+          "recipe": [
+            "Steam idlis",
+            "Prepare sambar with dal and veggies",
+            "Serve hot"
+          ]
+        },
+        "lunch": {
+          "name": "Paneer Bhurji with Roti",
+          "image": "https://example.com/paneer.jpg",
+          "recipe": [
+            "Scramble paneer with spices",
+            "Serve with whole wheat roti"
+          ]
+        },
+        "dinner": {
+          "name": "Vegetable Upma",
+          "image": "https://example.com/upma.jpg",
+          "recipe": [
+            "Roast rava and cook with veggies",
+            "Serve hot"
+          ]
+        }
+      },
+      "nonveg": {
+        "breakfast": {
+          "name": "Chicken Keema Toast",
+          "image": "https://example.com/keema-toast.jpg",
+          "recipe": [
+            "Cook minced chicken with spices",
+            "Serve on toasted bread"
+          ]
+        },
+        "lunch": {
+          "name": "Egg Curry with Roti",
+          "image": "https://example.com/egg-curry.jpg",
+          "recipe": [
+            "Boil eggs and prepare curry",
+            "Serve with rice or roti"
+          ]
+        },
+        "dinner": {
+          "name": "Chicken Stew with Appam",
+          "image": "https://example.com/chicken-stew.jpg",
+          "recipe": [
+            "Cook chicken with coconut milk and spices",
+            "Serve with appam"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Underweight Yoga Plan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Header -->
+  <header class="flex justify-between bg-gradient-to-r from-blue-700 via-blue-400 to-blue-500 w-full p-4 text-white">
+    <div>
+      <span id="dayLabel" class="font-bold text-xs sm:text-2xl">Day 1</span><br>
+      Your personalized Yoga plan
+    </div>
+    <div>
+      Plan Type <br>
+      <span class="font-bold text-xs sm:text-2xl">Underweight</span>
+    </div>
+  </header>
+
+  <!-- Yoga Cards -->
+  <div id="yogaContainer" class="grid grid-cols-1 sm:grid-cols-3 gap-6 px-4 my-8"></div>
+
+  <!-- Navigation -->
+  <div class="flex items-center justify-center pb-10">
+    <section class="flex flex-col items-center justify-center shadow-lg p-6 bg-white rounded-xl space-y-4">
+      <span class="font-bold text-lg">You're on Day <span id="currentDayDisplay">1</span></span>
+      <p class="text-center text-gray-600">Complete today’s yoga and navigate your plan.</p>
+
+      <div class="flex space-x-4">
+        <button id="prevDayBtn" class="bg-gray-300 text-gray-800 px-4 py-2 font-semibold rounded-lg hover:bg-gray-400 transition disabled:opacity-50" disabled>
+          ← Previous
+        </button>
+        <button id="nextDayBtn" class="bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-2 font-bold rounded-lg hover:shadow-lg transition">
+          Day <span id="nextDayBtnText">2</span> →
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Pop-up Modal -->
+  <div id="popupModal" class="fixed inset-0 hidden bg-black bg-opacity-60 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-xl p-6 max-w-2xl w-full relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl">&times;</button>
+      <h2 id="poseTitle" class="text-xl font-bold mb-2"></h2>
+      <img id="poseImage" class="w-full rounded-lg mb-3" alt="Yoga Pose" />
+      <ul id="poseSteps" class="list-disc list-inside text-sm text-gray-800 mb-3"></ul>
+      <iframe id="poseVideo" class="w-full aspect-video rounded-lg" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    let currentDay = 1;
+    const totalDays = 30;
+    const apiUrl = "underweightyoga.json";
+
+    const dayLabel = document.getElementById("dayLabel");
+    const currentDayDisplay = document.getElementById("currentDayDisplay");
+    const nextDayBtnText = document.getElementById("nextDayBtnText");
+    const yogaContainer = document.getElementById("yogaContainer");
+    const nextDayBtn = document.getElementById("nextDayBtn");
+    const prevDayBtn = document.getElementById("prevDayBtn");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateDay();
+      nextDayBtn.addEventListener("click", () => {
+        if (currentDay < totalDays) {
+          currentDay++;
+          updateDay();
+        }
+      });
+
+      prevDayBtn.addEventListener("click", () => {
+        if (currentDay > 1) {
+          currentDay--;
+          updateDay();
+        }
+      });
+    });
+
+    function updateDay() {
+      dayLabel.textContent = `Day ${currentDay}`;
+      currentDayDisplay.textContent = currentDay;
+      nextDayBtnText.textContent = currentDay < totalDays ? currentDay + 1 : totalDays;
+      prevDayBtn.disabled = currentDay === 1;
+      nextDayBtn.disabled = currentDay === totalDays;
+      fetchAndDisplayYoga();
+    }
+
+    function fetchAndDisplayYoga() {
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          const today = data.plan.find(day => day.day === `Day ${currentDay}`);
+          if (!today) {
+            yogaContainer.innerHTML = "<p class='text-red-500'>No yoga poses found for this day.</p>";
+            return;
+          }
+          yogaContainer.innerHTML = today.poses.map((pose, index) => `
+            <div class="bg-white rounded-2xl shadow-md p-4 hover:shadow-xl transition-all cursor-pointer" onclick="openModal(${currentDay}, ${index})">
+              <div class="relative mb-3">
+                <img src="${pose.image}" alt="${pose.name}" class="w-full h-48 object-cover rounded-xl">
+              </div>
+              <h3 class="text-lg font-semibold">${pose.name}</h3>
+            </div>
+          `).join("");
+        })
+        .catch(() => {
+          yogaContainer.innerHTML = "<p class='text-red-500'>Unable to load yoga poses.</p>";
+        });
+    }
+
+    function openModal(day, index) {
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          const pose = data.plan.find(d => d.day === `Day ${day}`).poses[index];
+          document.getElementById("poseTitle").textContent = pose.name;
+          document.getElementById("poseImage").src = pose.image;
+          document.getElementById("poseSteps").innerHTML = pose.steps.map(step => `<li>${step}</li>`).join("");
+          document.getElementById("poseVideo").src = pose.video.replace("watch?v=", "embed/");
+          document.getElementById("popupModal").classList.remove("hidden");
+        });
+    }
+
+    function closeModal() {
+      document.getElementById("popupModal").classList.add("hidden");
+      document.getElementById("poseVideo").src = "";
+    }
+  </script>
+</body>
+</html>

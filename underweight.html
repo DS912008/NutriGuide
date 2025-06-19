@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UnderWeightplan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-orange-400 to-orange-600 text-white p-4 flex justify-between">
+    <div>
+      <span id="day-title" class="font-bold text-2xl transition-opacity duration-300">Day 1</span><br>
+      Weight gain meal plan
+    </div>
+    <div class="hidden sm:block">
+      Plan Type
+      <br>
+      <span class="font-bold text-lg">UnderWeight</span>
+    </div>
+  </header>
+
+  <!-- Meal Plan Section -->
+  <section id="meal-plan" class="transition-opacity duration-300 ease-in-out opacity-100 p-4 flex-grow">
+    <!-- Dynamic meal content will be injected here -->
+  </section>
+
+  <!-- Next Day CTA -->
+  <section class="py-4 bg-white border-t">
+    <div class="flex flex-col items-center justify-center p-4">
+      <span id="cta-title" class="font-bold text-xl mb-2">Let's start your journey!</span>
+      <p class="text-center mb-4">
+        Are you ready to continue your journey?
+      </p>
+      <div class="flex gap-4">
+        <button id="prev-button" class="bg-gray-300 hover:bg-gray-400 rounded-lg px-6 py-2 font-semibold text-black transition-transform transform disabled:opacity-50 disabled:cursor-not-allowed">
+          ← Previous
+        </button>
+        <button id="next-button" class="bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 rounded-lg px-6 py-2 font-bold text-white transition-transform transform">
+          Yes, I am →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const apiUrl = "underweight.json"; // Your JSON file
+
+    let currentDayIndex = 0;
+    let mealPlans = [];
+
+    const dayTitle = document.getElementById("day-title");
+    const section = document.getElementById("meal-plan");
+    const nextButton = document.getElementById("next-button");
+    const prevButton = document.getElementById("prev-button");
+    const ctaTitle = document.getElementById("cta-title");
+
+    function updateDayTitle(dayNum) {
+      dayTitle.textContent = `Day ${dayNum}`;
+      if (dayNum > 1) {
+        ctaTitle.textContent = `Great job completing Day ${dayNum }!`;
+      } else {
+        ctaTitle.textContent = `Let's start your journey!`;
+      }
+    }
+
+    function renderMealPlan(dayData) {
+      const dayNumber = parseInt(dayData.day.replace("Day ", ""));
+      updateDayTitle(dayNumber);
+
+      section.innerHTML = `
+        <div class="space-y-6">
+          <h2 class="text-2xl font-bold text-center">${dayData.day} Meal Plan</h2>
+
+          <div class="bg-orange-100 rounded-lg p-4 shadow">
+            <h3 class="text-xl font-semibold mb-2">Early Morning</h3>
+            <ul class="list-disc pl-6 text-gray-700">
+              <li>Milk: ${dayData.early_morning.milk_glass} glass</li>
+              <li>${dayData.early_morning.egg_whites_or_banana}</li>
+              <li>Soaked Almonds: ${dayData.early_morning.soaked_almonds_g} g</li>
+            </ul>
+          </div>
+
+          <div class="bg-orange-100 rounded-lg p-4 shadow">
+            <h3 class="text-xl font-semibold mb-2">Breakfast</h3>
+            <p class="text-gray-700">${dayData.breakfast}</p>
+          </div>
+
+          <div class="bg-orange-100 rounded-lg p-4 shadow">
+            <h3 class="text-xl font-semibold mb-2">Mid Morning</h3>
+            <ul class="list-disc pl-6 text-gray-700">
+              ${dayData.mid_morning.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="bg-orange-100 rounded-lg p-4 shadow">
+            <h3 class="text-xl font-semibold mb-2">Lunch</h3>
+            <ul class="list-disc pl-6 text-gray-700">
+              <li>Sprout Salad: ${dayData.lunch.sprout_salad_cup} cup</li>
+              <li>Chapati: ${dayData.lunch.chapati}</li>
+              <li>Vegetables: ${dayData.lunch.vegetable}</li>
+              <li>Dal/Legumes: ${dayData.lunch.dal_legumes}</li>
+              <li>Rice/Pulav: ${dayData.lunch.rice_or_pulav}</li>
+            </ul>
+          </div>
+
+          <div class="bg-orange-100 rounded-lg p-4 shadow">
+            <h3 class="text-xl font-semibold mb-2">Evening Snack</h3>
+            <ul class="list-disc pl-6 text-gray-700">
+              ${dayData.evening_snack.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="bg-orange-100 rounded-lg p-4 shadow">
+            <h3 class="text-xl font-semibold mb-2">Mid Evening</h3>
+            <ul class="list-disc pl-6 text-gray-700">
+              ${dayData.mid_evening.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="bg-orange-100 rounded-lg p-4 shadow">
+            <h3 class="text-xl font-semibold mb-2">Dinner</h3>
+            <p class="text-gray-700">${dayData.dinner}</p>
+          </div>
+
+          <div class="bg-orange-100 rounded-lg p-4 shadow">
+            <h3 class="text-xl font-semibold mb-2">Bedtime</h3>
+            <ul class="list-disc pl-6 text-gray-700">
+              <li>Milk: ${dayData.bedtime.milk_glass} glass</li>
+              <li>Banana: ${dayData.bedtime.banana}</li>
+              <li>Soaked Almonds: ${dayData.bedtime.soaked_almonds_g} g</li>
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateButtons() {
+      prevButton.disabled = currentDayIndex === 0;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          mealPlans = data;
+          if (mealPlans.length > 0) {
+            renderMealPlan(mealPlans[currentDayIndex]);
+            updateButtons();
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          section.innerHTML = `<p class="text-red-500 text-center">Failed to load data.</p>`;
+        });
+
+      nextButton.addEventListener("click", () => {
+        if (currentDayIndex < mealPlans.length - 1) {
+          currentDayIndex++;
+          renderMealPlan(mealPlans[currentDayIndex]);
+          updateButtons();
+        } else {
+          alert("🎉 You've completed all 30 days!");
+        }
+      });
+
+      prevButton.addEventListener("click", () => {
+        if (currentDayIndex > 0) {
+          currentDayIndex--;
+          renderMealPlan(mealPlans[currentDayIndex]);
+          updateButtons();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
