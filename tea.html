@@ -1,204 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tea Recipes for Health</title>
-    <style>
-         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: black;
-            margin: 0;
-            padding-bottom: 20px;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            width: 80%;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .image-box {
-            background: green;
-            padding: 7px;
-            border-radius: 15px;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            max-width: 200px;
-        }
-        img {
-            width: 100%;
-            height: 100hV;
-            max-height: 3000px;
-            object-fit: cover;
-            border-radius: 10px;
-            aspect-ratio: 16/6;
-        }
-        .close-btn2 {
-            display: block;
-            background: green;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 30px;
-        }
-        
-        p {
-            margin-bottom: 10px;
-            font-size: 18px;
-            color: white;
-            font-weight: bold;
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-        }
-        .popup-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            max-width: 400px;
-            width: 90%;
-        }
-        .popup-content h2 {
-            text-align: center;
-        }
-        .popup-content ol {
-            padding-left: 20px;
-        }
-        .popup-content .advantages {
-            color: green;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .close-btn {
-            display: block;
-            background: green;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            margin-top: 10px;
-        }
-        .nav__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.nav__logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: white;
-    font-size: 24px;
-}
-
-.nav_menu_btn {
-    display: flex;
-    align-items: center;
-}
-
-.menu-icon {
-    width: 30px;
-    height: 30px;
-}
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tea Recipes for Health</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="nav__header">
-        <div class="nav_menu_btn" id="menu-btn">
-         <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
-         </div>
-        <div class="nav__logo">
-       Different Types of Tea
-        </div>
-        <div class="nav_menu_btn" >
-         <img src="clogo.png" alt="Menu" class="menu-icon">
-        </div>
-      </div>
-    <div class="container">
-        <div class="image-box" onclick="showPopup(0)">
-            <img src="tea1.png" alt="Chamomile Tea">
-            <p>Chamomile Tea</p>
-        </div>
-        <div class="image-box" onclick="showPopup(1)">
-            <img src="tea2.png" alt="Peppermint Tea">
-            <p>Peppermint Tea</p>
-        </div>
-        <div class="image-box" onclick="showPopup(2)">
-            <img src="tea3.png" alt="Green Tea">
-            <p>Green Tea</p>
-        </div>
-        <div class="image-box" onclick="showPopup(3)">
-            <img src="tea4.png" alt="Ginger Tea">
-            <p>Ginger Tea</p>
-        </div>
-        <div class="image-box" onclick="showPopup(4)">
-            <img src="tea5.png" alt="Lemon Balm Tea">
-            <p>Lemon Balm Tea</p>
-        </div>
-        <div class="image-box" onclick="showPopup(5)">
-            <img src="tae6.png" alt="Hibiscus Tea">
-            <p>Hibiscus Tea</p>
-        </div>
+<body class="bg-black text-white min-h-screen flex flex-col items-center">
+
+  <!-- Navbar -->
+  <header class="w-full bg-gray-800 flex justify-between items-center px-6 py-4">
+    <div class="flex items-center gap-3">
+      <a href="dhanu.html">
+        <img src="logo.jpg" alt="Menu" class="w-8 h-8 rounded-full"/>
+      </a>
+      <span class="text-2xl font-bold">Different Types of Tea</span>
     </div>
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <h2 id="recipe-title"></h2>
-            <ol id="recipe-steps"></ol>
-            <p class="advantages" id="recipe-advantages"></p>
-            <p class="disadvantages" id="recipe-disadvantages"></p>
-            <button class="close-btn" onclick="hidePopup()">Back</button>
-        </div>
+    <div>
+      <img src="clogo.png" alt="Logo" class="w-8 h-8 rounded-full"/>
     </div>
-    <a href="aryuveda.html"><button class="close-btn2" >Back</button></a>
-    <script>
-        const recipes = [
-            { title: "Chamomile Tea", steps: ["Boil 1 cup of water.", "Add 1 tsp dried chamomile flowers.", "Steep for 5-7 minutes.", "Strain and enjoy."], advantages: "Promotes relaxation and sleep - 3-4 times a week.", disadvantages: "May cause drowsiness, avoid before driving. However, in proper amounts, it is safe and beneficial." },
-            { title: "Peppermint Tea", steps: ["Boil 1 cup of water.", "Add 1 tsp dried peppermint leaves.", "Steep for 5 minutes.", "Strain and serve."], advantages: "Aids digestion and refreshes breath - Daily, max 2 cups.", disadvantages: "May trigger acid reflux in some people, but moderate intake is generally safe." },
-            { title: "Green Tea", steps: ["Heat water to 80°C (not boiling).", "Add 1 tsp green tea leaves.", "Steep for 2-3 minutes.", "Strain and drink."], advantages: "Boosts metabolism, avoid at night - 1-2 cups daily.", disadvantages: "High caffeine content, may cause insomnia if overconsumed." },
-            { title: "Ginger Tea", steps: ["Boil 1 cup of water.", "Add 1 tsp grated ginger.", "Simmer for 5 minutes.", "Strain and add honey if desired."], advantages: "Reduces inflammation and aids digestion - 4-5 times a week.", disadvantages: "May cause heartburn or stomach upset in some people, but safe when taken in moderation." },
-            { title: "Lemon Balm Tea", steps: ["Boil 1 cup of water.", "Add 1 tsp dried lemon balm leaves.", "Steep for 5 minutes.", "Strain and drink."], advantages: "Relieves stress and supports digestion - 3-4 times a week.", disadvantages: "May cause dizziness or allergic reactions, but only in rare cases of excessive intake." },
-            { title: "Hibiscus Tea", steps: ["Boil 1 cup of water.", "Add 1 tsp dried hibiscus flowers.", "Steep for 5-7 minutes.", "Strain and serve."], advantages: "Lowers blood pressure, rich in Vitamin C - 4-5 times a week.", disadvantages: "May lower blood pressure too much if consumed in excess, but is safe in regular amounts." }
-        ];
-        
-        function showPopup(index) {
-            document.getElementById("recipe-title").innerText = recipes[index].title;
-            document.getElementById("recipe-steps").innerHTML = recipes[index].steps.map(step => `<li>${step}</li>`).join('');
-            document.getElementById("recipe-advantages").innerText = recipes[index].advantages;
-            document.getElementById("recipe-disadvantages").innerText = recipes[index].disadvantages;
-            document.getElementById("popup").style.display = "flex";
+  </header>
+
+  <!-- Recipe Grid -->
+  <main class="w-full max-w-6xl mt-8 px-4">
+    <!-- Large screen layout -->
+    <div id="lg-cards" class="hidden lg:grid grid-cols-3 gap-8 justify-items-center"></div>
+
+    <!-- Small/Medium layout -->
+    <div class="lg:hidden flex flex-col gap-6 items-center">
+      <div id="smmd-cards" class="flex justify-center gap-6 flex-wrap"></div>
+    </div>
+  </main>
+
+  <!-- Popup -->
+  <div id="popup" role="dialog" aria-modal="true" class="fixed inset-0 hidden bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
+    <div class="bg-white rounded-xl p-6 w-11/12 max-w-md text-black">
+      <h2 id="recipe-title" class="text-xl font-bold text-center mb-4"></h2>
+      <ol id="recipe-steps" class="list-decimal list-inside space-y-1"></ol>
+      <p id="recipe-advantages" class="mt-4 font-bold text-green-700"></p>
+      <p id="recipe-disadvantages" class="mt-2 text-red-600 font-medium"></p>
+      <button onclick="hidePopup()" class="mt-6 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Back</button>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="aryuveda.html" class="mt-8">
+    <button class="bg-gradient-to-r from-green-500 to-gray-500 text-white font-bold py-2 px-6 rounded hover:bg-green-700">
+      Back
+    </button>
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    const recipes = [
+      {
+        title: "Chamomile Tea", img: "tea1.png",
+        steps: ["Boil 1 cup of water.", "Add 1 tsp dried chamomile flowers.", "Steep for 5-7 minutes.", "Strain and enjoy."],
+        advantages: "Promotes relaxation and sleep - 3-4 times a week.",
+        disadvantages: "May cause drowsiness, avoid before driving."
+      },
+      {
+        title: "Peppermint Tea", img: "tea2.png",
+        steps: ["Boil 1 cup of water.", "Add 1 tsp dried peppermint leaves.", "Steep for 5 minutes.", "Strain and serve."],
+        advantages: "Aids digestion and refreshes breath - Daily, max 2 cups.",
+        disadvantages: "May trigger acid reflux in some people."
+      },
+      {
+        title: "Green Tea", img: "tea3.png",
+        steps: ["Heat water to 80°C (not boiling).", "Add 1 tsp green tea leaves.", "Steep for 2-3 minutes.", "Strain and drink."],
+        advantages: "Boosts metabolism, avoid at night - 1-2 cups daily.",
+        disadvantages: "High caffeine content, may cause insomnia if overconsumed."
+      },
+      {
+        title: "Ginger Tea", img: "tea4.png",
+        steps: ["Boil 1 cup of water.", "Add 1 tsp grated ginger.", "Simmer for 5 minutes.", "Strain and add honey if desired."],
+        advantages: "Reduces inflammation and aids digestion - 4-5 times a week.",
+        disadvantages: "May cause heartburn or stomach upset in some people."
+      },
+      {
+        title: "Lemon Balm Tea", img: "tea5.png",
+        steps: ["Boil 1 cup of water.", "Add 1 tsp dried lemon balm leaves.", "Steep for 5 minutes.", "Strain and drink."],
+        advantages: "Relieves stress and supports digestion - 3-4 times a week.",
+        disadvantages: "May cause dizziness or allergic reactions (rare)."
+      },
+      {
+        title: "Hibiscus Tea", img: "tae6.png",
+        steps: ["Boil 1 cup of water.", "Add 1 tsp dried hibiscus flowers.", "Steep for 5-7 minutes.", "Strain and serve."],
+        advantages: "Lowers blood pressure, rich in Vitamin C - 4-5 times a week.",
+        disadvantages: "May lower blood pressure too much if overconsumed."
+      }
+    ];
+
+    function createCard(recipe, index) {
+      return `
+        <div onclick="showPopup(${index})" class="bg-gradient-to-r from-green-500 to-gray-500 p-3 rounded-xl shadow-lg cursor-pointer transition-transform hover:scale-105 w-[300px] h-[220px]">
+          <img src="${recipe.img}" alt="${recipe.title}" class="w-full h-[150px] object-cover rounded-md"/>
+          <p class="mt-3 font-semibold text-center">${recipe.title}</p>
+        </div>
+      `;
+    }
+
+    document.getElementById("lg-cards").innerHTML = recipes.map((r, i) => createCard(r, i)).join("");
+
+    const smmdContainer = document.getElementById("smmd-cards");
+    for (let i = 0; i < recipes.length;) {
+      const group = document.createElement("div");
+      group.className = "flex justify-center gap-6 mb-4 flex-wrap";
+
+      if (i % 3 === 0) {
+        group.innerHTML = createCard(recipes[i], i);
+        i++;
+      } else {
+        for (let j = 0; j < 2 && i < recipes.length; j++, i++) {
+          group.innerHTML += createCard(recipes[i], i);
         }
-        function hidePopup() {
-            document.getElementById("popup").style.display = "none";
-        }
-    </script>
+      }
+      smmdContainer.appendChild(group);
+    }
+
+    function showPopup(index) {
+      const r = recipes[index];
+      document.getElementById("recipe-title").innerText = r.title;
+      document.getElementById("recipe-steps").innerHTML = r.steps.map(step => `<li>${step}</li>`).join("");
+      document.getElementById("recipe-advantages").innerText = r.advantages;
+      document.getElementById("recipe-disadvantages").innerText = r.disadvantages;
+      document.getElementById("popup").classList.remove("hidden");
+    }
+
+    function hidePopup() {
+      document.getElementById("popup").classList.add("hidden");
+    }
+  </script>
 </body>
 </html>
