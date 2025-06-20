@@ -296,18 +296,24 @@
         const searchInput = document.getElementById('searchInput');
         const suggestionsList = document.getElementById('suggestionsList');
 
-        const pages = [
-            { name: 'Home', url: 'dhanu.html' },
-            { name: 'About Us', url: 'about.html' },
-            { name: 'Login', url: 'drishti.html' },
-            { name: 'Weight Management', url: 'weight.html' },
-            { name: 'Calorie Counter', url: 'calorie.html' },
-            { name: 'Exercise', url: 'exercise.html' },
-            { name: 'Yoga', url: 'exercise.html' },
-            { name: 'Recipes', url: 'start.html' },
-            { name: 'Ayurveda', url: 'ayurveda.html' },
-            { name: 'Contact', url: 'contact.html' }
-        ];
+       const pages = [
+  { name: "Home", link: "dhanu.html" },
+  { name: "About", link: "about.html" },
+  { name: "SDG", link: "sdg.html" },
+  { name: "Login", link: "drishti.html" },
+  { name: "Contact", link: "contact.html" },
+  { name: "Recipes", link: "overweight.html" },
+  { name: "OverweightRecipes", link: "overweight.html" },
+  { name: "UnderRecipes", link: "underrweight.html" },
+  { name: "Ayurveda", link: "aryuveda.html" },
+  { name: "Cold", link: "cold.html" },
+  { name: "Fever", link: "fever.html" },
+  { name: "Tea", link: "tea.html" },
+  { name: "Immunity", link: "immunity.html" },
+  { name: "Exercise", link: "Overweightyoga.html" },
+  { name: "OverweightExercise", link: "overweightyoga.html" },
+  { name: "UnderExercise", link: "underweightyoga.html" }
+];
 
         function showSuggestions(searchTerm) {
             suggestionsList.innerHTML = '';
