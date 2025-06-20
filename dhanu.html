@@ -6,9 +6,46 @@
   <title>NutriGuide</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    .message {
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      max-width: 80%;
+    }
+    .user-message {
+      background-color: #dcfce7;
+      align-self: flex-end;
+      color: #065f46;
+    }
+    .bot-message {
+      background-color: #f1f5f9;
+      color: #1f2937;
+      align-self: flex-start;
+    }
+    
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .chat-enter {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  .voice-pulse {
+    animation: pulse 1.5s infinite;
+  }
+
+  </style>
 </head>
 <body class="bg-gradient-to-br from-white to-green-100 text-gray-800 font-sans">
-
   <!-- Navbar -->
   <nav class="sticky top-0 z-50 bg-gradient-to-r from-green-600 to-green-800 text-white shadow-md px-6 py-4 flex justify-between items-center">
     <div class="flex items-center space-x-4">
@@ -22,9 +59,10 @@
       <li><a href="drishti.html" class="hover:text-yellow-300">Login</a></li>
       <li><a href="contact.html" class="hover:text-yellow-300">Contact</a></li>
     </ul>
-    <div class="hidden md:flex items-center space-x-2">
+    <div class="hidden md:flex items-center space-x-2 relative">
       <input type="text" id="searchInput" placeholder="Search pages..." class="px-3 py-1 rounded-full text-black focus:outline-none w-40" />
       <button onclick="handleSearch()" class="bg-yellow-300 text-green-900 px-3 py-1 rounded-full hover:bg-white transition">Search</button>
+      <ul id="suggestionsList" class="absolute top-12 left-0 bg-white text-black rounded-lg shadow-md w-full hidden max-h-60 overflow-y-auto z-50"></ul>
       <a href="profile.html">
         <img src="profile-pic.jpg" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-md" />
       </a>
@@ -80,13 +118,49 @@
     <p>&copy; 2025 NutriGuide. All rights reserved.</p>
   </footer>
 
-  <!-- Chatbot Button -->
-  <div class="fixed bottom-6 right-6 z-50">
-    <button class="w-14 h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg text-xl flex items-center justify-center">
-      <i class="fas fa-robot"></i>
+  <!-- Chatbot Window -->
+  <!-- Chatbot Window -->
+<div id="chatbotWindow" class="hidden fixed bottom-24 right-6 w-80 h-[28rem] bg-white rounded-xl shadow-2xl flex flex-col z-50 border-2 border-green-500 overflow-hidden transform transition-all duration-300">
+  <div class="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-3 font-semibold flex justify-between items-center rounded-t-xl">
+    <div class="flex items-center space-x-2">
+      <i class="fas fa-robot text-yellow-200"></i>
+      <span class="text-sm">NutriGuide Assistant</span>
+    </div>
+    <div class="flex items-center space-x-2">
+      <button id="voiceToggle" onclick="toggleVoice()" class="text-yellow-200 hover:text-white transition">
+        <i class="fas fa-volume-up"></i>
+      </button>
+      <button onclick="toggleChatbot()" class="text-yellow-200 hover:text-white transition">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  
+  <div id="chatbotMessages" class="flex-1 p-4 overflow-y-auto flex flex-col space-y-3 bg-gradient-to-b from-green-50 to-white">
+    <!-- Messages will appear here -->
+  </div>
+  
+  <div class="p-3 border-t border-green-200 bg-white flex items-center gap-2">
+    <button id="micButton" onclick="startVoiceInput()" class="w-10 h-10 flex items-center justify-center rounded-full bg-green-100 text-green-700 hover:bg-green-200 transition">
+      <i class="fas fa-microphone"></i>
+    </button>
+    <input id="userInput" type="text" placeholder="Type your message..." 
+           class="flex-1 p-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" />
+    <button onclick="sendMessage()" class="w-10 h-10 flex items-center justify-center rounded-full bg-green-600 text-white hover:bg-green-700 transition">
+      <i class="fas fa-paper-plane"></i>
     </button>
   </div>
+</div>
 
+<!-- Chatbot Toggle Button -->
+<div class="fixed bottom-6 right-6 z-50">
+  <button onclick="toggleChatbot()" class="w-14 h-14 bg-gradient-to-br from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110">
+    <i class="fas fa-robot text-xl"></i>
+    <span class="absolute -top-1 -right-1 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center text-xs font-bold text-green-800 animate-pulse">AI</span>
+  </button>
+</div>
+
+  <!-- Scripts -->
   <script src="dhanu.js"></script>
 </body>
 </html>
