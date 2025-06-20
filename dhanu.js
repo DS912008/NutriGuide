@@ -11,8 +11,8 @@ const pages = [
      { name: "Cold", link: "cold.html" },
      { name: "Fever", link: "fever.html" },
 
-     { name: "Tea", link: "Tea.html" },
-     { name: "Immunity", link: "Immunity.html" },
+     { name: "Tea", link: "tea.html" },
+     { name: "Immunity", link: "immunity.html" },
     
   { name: "Exercise", link: "Overweightyoga.html" },
      { name: "OverweightExercise", link: "overweightyoga.html" },
