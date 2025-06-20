@@ -1,616 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="ex.css" />
-    <title>Yoga & Gym Facilities - Nutrie Guide</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #FF6B6B;
-            --secondary-color: #4ECDC4;
-            --accent-color: #FFE66D;
-            --dark-color: #2C3E50;
-            --light-color: #F7F9FC;
-            --text-color: #2C3E50;
-            --white: #ffffff;
-            --black: #000000;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-            --shadow-hover: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-        }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personalized Yoga Plan | Wellness Journey</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3b82f6;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .yoga-card {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .yoga-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .modal-content {
+      animation: modalOpen 0.4s ease-out;
+    }
+    
+    @keyframes modalOpen {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .tab-btn.active {
+      color: #3b82f6;
+      border-bottom: 2px solid #3b82f6;
+    }
+    
+    #planHeader.overweight {
+      background: linear-gradient(to right, #4ade80, #3b82f6);
+    }
+    
+    #planHeader.underweight {
+      background: linear-gradient(to right, #1d4ed8, #60a5fa);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--text-color);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            padding: 1rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            transition: var(--transition);
-        }
-
-        .navbar a:hover {
-            transform: translateY(-2px);
-        }
-
-        .container {
-    max-width: 1000px; /* Shrunk from 1200px */
-    margin: 2rem auto;
-    padding: 0 15px;
-}
-
-
-        h1 {
-            text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            font-size: 3em;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .yoga-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .yoga-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .yoga-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .yoga-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .yoga-card:hover::before {
-            opacity: 1;
-        }
-
-        .yoga-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .yoga-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .yoga-info {
-            padding: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .yoga-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.3em;
-            font-weight: 700;
-        }
-
-        .yoga-info p {
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-            font-size: 1em;
-        }
-
-        .calories {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: var(--white);
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-size: 1em;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            overflow-y: auto;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background: var(--white);
-            margin: 3rem auto;
-            padding: 3rem;
-            border-radius: 25px;
-            max-width: 900px;
-            position: relative;
-            box-shadow: var(--shadow-hover);
-            animation: slideUp 0.4s ease;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1rem;
-            cursor: pointer;
-            color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .close-modal:hover {
-            transform: rotate(90deg);
-            color: var(--secondary-color);
-        }
-
-        .exercise-details {
-            margin-top: 2rem;
-        }
-
-        .exercise-details h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 2.5em;
-            font-weight: 800;
-        }
-
-        .exercise-details p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            font-size: 1.2em;
-        }
-
-        .steps {
-            margin-top: 2rem;
-            background: var(--light-color);
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .steps h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8em;
-            font-weight: 700;
-        }
-
-        .steps ol {
-            padding-left: 2rem;
-        }
-
-        .steps li {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            font-size: 1.1em;
-            position: relative;
-        }
-
-        .steps li::before {
-            content: '•';
-            color: var(--primary-color);
-            font-weight: bold;
-            position: absolute;
-            left: -1.5rem;
-        }
-.facility__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        @media (max-width: 768px) {
-            .yoga-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .modal-content {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-
-            h1 {
-                font-size: 2.5em;
-            }
-        }
-        .nav_menu_btn {
-            display: flex;
-            width:30px;
-            height: 30px;
-        }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="nav__header">
-          <div class="nav_menu_btn" id="menu-btn">
-           <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
-           </div>
-          <div class="nav__logo">
-            <a href="dhanu.html">Yoga & Gym</a>
+  <!-- Plan Selection Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-12">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl font-bold text-gray-800 mb-2 animate__animated animate__fadeIn">Personalized Yoga Journey</h1>
+      <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
+        Select the plan that aligns with your wellness goals. Our expert-designed programs help you achieve balance and health.
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-8 animate__animated animate__fadeInUp animate__delay-2s">
+        <div class="plan-card bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
+          <div class="h-48 bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center">
+            <i class="fas fa-weight text-white text-6xl"></i>
           </div>
-          <div class="nav_menu_btn" id="menu-btn">
-           <img src="clogo.png" alt="Menu" class="menu-icon">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Weight Management</h3>
+            <p class="text-gray-600 mb-4">Gentle yet effective yoga sequences designed to support healthy weight loss and metabolism.</p>
+            <button id="overweightBtn" class="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 rounded-lg font-medium hover:from-green-600 hover:to-blue-600 transition">
+              Select Plan
+            </button>
           </div>
         </div>
-        <ul class="nav__links" id="nav-links">
-          <li><a href="#yoga">Yoga</a></li>
-          <li><a href="#gym">Gym</a></li>
-        </ul>
-      </nav>
+        
+        <div class="plan-card bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
+          <div class="h-48 bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
+            <i class="fas fa-weight-hanging text-white text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Healthy Weight Gain</h3>
+            <p class="text-gray-600 mb-4">Yoga poses focused on building strength, improving digestion, and increasing appetite.</p>
+            <button id="underweightBtn" class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition">
+              Select Plan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yoga Plan Container (hidden initially) -->
+  <div id="yogaPlanContainer" class="hidden">
+    <!-- Header -->
+    <header id="planHeader" class="sticky top-0 z-10 flex flex-col justify-between w-full p-4 text-white shadow-md">
+      <div class="flex justify-between items-center">
+        <div>
+          <span id="dayLabel" class="font-bold text-xl sm:text-2xl">Day 1</span>
+          <span class="block text-sm opacity-90">Your personalized Yoga plan</span>
+        </div>
+        <div class="text-right">
+          <span class="block text-sm opacity-90">Plan Type</span>
+          <span id="planTypeLabel" class="font-bold text-xl sm:text-2xl"></span>
+        </div>
+      </div>
+      
+      <!-- Progress bar -->
+      <div class="w-full bg-white bg-opacity-30 rounded-full h-2.5 mt-3">
+        <div id="progressBar" class="bg-white h-2.5 rounded-full" style="width: 3%"></div>
+      </div>
     </header>
 
-    <section id="yoga" class="section_container">
-      <h1>Yoga Exercises</h1>
-      <div id="yogaGrid" class="yoga-grid"></div>
-    </section>
-
-    <section id="gym" class="section_container">
-      <h1>Gym Facilities</h1>
-      <div class="facility__grid">
-        <div class="facility__card">
-          <img src="ex1.png" alt="Gym Facility">
-        </div>
-        <div class="facility__card">
-          <img src="ex2.png" alt="Gym Facility">
-        </div>
-        <div class="facility__card">
-          <img src="ex3.png" alt="Gym Facility">
-        </div>
-        <div class="facility__card">
-          <img src="ex4.png" alt="Gym Facility">
-        </div>
-        <div class="facility__card">
-          <img src="ex5.png" alt="Gym Facility">
-        </div>
-        <div class="facility__card">
-            <img src="gym.png" alt="Gym Facility">
-          </div>  <div class="facility__card">
-            <img src="gym3.png" alt="Gym Facility">
-          </div> <div class="facility__card">
-            <img src="gym4.png" alt="Gym Facility">
-          </div>
-        <div class="facility__card">
-            <img src="gym10.png" alt="Gym Facility">
-          </div>  <div class="facility__card">
-            <img src="gym11.png" alt="Gym Facility">
-          </div> 
-      </div>
-    </section>
-
-    <div id="exerciseModal" class="modal">
-      <div id="modalContent" class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
+    <!-- Yoga Cards -->
+    <div id="yogaContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 my-8 max-w-7xl mx-auto">
+      <!-- Loading state -->
+      <div id="loadingState" class="col-span-full flex flex-col items-center justify-center py-12">
+        <div class="loader"></div>
+        <p class="text-gray-500 mt-4">Loading your yoga plan...</p>
       </div>
     </div>
 
-    <footer class="footer">
-      <div class="section_container footer_container">
-        <div class="footer__col">
-          <h4>Contact Us</h4>
-          <ul class="footer__links">
-            <li>
-              <a href="#">
-                <span><i class="ri-phone-line"></i></span> +91 78140XXXXX
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span><i class="ri-map-pin-line"></i></span> Chitkara University, INDIA
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Opening Hours</h4>
-          <ul class="footer__links">
-            <li>Monday - Friday: 5am - 10pm</li>
-            <li>Saturday: 5am - 10pm</li>
-            <li>Sunday: 5am - 1pm</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bar">
-        Copyright © 2024 Yoga & Gym Facilities. All rights reserved.
-      </div>
-    </footer>
+    <!-- Navigation -->
+    <div class="flex items-center justify-center pb-10">
+      <section class="flex flex-col items-center justify-center shadow-lg p-6 bg-white rounded-xl space-y-4">
+        <span class="font-bold text-lg">You're on Day <span id="currentDayDisplay">1</span></span>
+        <p class="text-center text-gray-600">Complete today's yoga and navigate your plan.</p>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="main2.js"></script>
-    <script>
-        const yogaExercises = [
-            {
-                name: "Surya Namaskar",
-                image: "surya.png",
-                calories: "150-200",
-                description: "A complete body workout that includes 12 powerful yoga poses.",
-                steps: [
-                    "Stand straight with feet together and hands in prayer position",
-                    "Raise arms overhead and arch back",
-                    "Bend forward and touch the ground",
-                    "Step back into plank position",
-                    "Lower body to the ground",
-                    "Push up into upward dog",
-                    "Push back into downward dog",
-                    "Step forward and touch the ground",
-                    "Raise arms overhead and arch back",
-                    "Return to standing position"
-                ]
-            },
-            {
-                name: "Tadasana",
-                image: "tada.png",
-                calories: "30-50",
-                description: "The foundation of all standing poses, improves posture and balance.",
-                steps: [
-                    "Stand with feet together",
-                    "Distribute weight evenly on both feet",
-                    "Engage thigh muscles",
-                    "Lift chest and roll shoulders back",
-                    "Extend arms alongside body",
-                    "Hold for 30-60 seconds"
-                ]
-            },
-            {
-                name: "Vrikshasana",
-                image: "tree.png",
-                calories: "40-60",
-                description: "Improves balance and strengthens legs and core.",
-                steps: [
-                    "Stand straight with feet together",
-                    "Shift weight to left foot",
-                    "Place right foot on left inner thigh",
-                    "Bring hands to prayer position",
-                    "Hold for 30-60 seconds",
-                    "Repeat on other side"
-                ]
-            },
-            {
-                name: "Adho Mukha Svanasana",
-                image: "yog.png",
-                calories: "50-70",
-                description: "Stretches the entire body and strengthens arms and legs.",
-                steps: [
-                    "Start on hands and knees",
-                    "Lift hips up and back",
-                    "Straighten legs and arms",
-                    "Press hands into ground",
-                    "Hold for 30-60 seconds"
-                ]
-            },
-            {
-                name: "Bhujangasana",
-                image: "yog1.png",
-                calories: "40-60",
-                description: "Strengthens the spine and opens the chest.",
-                steps: [
-                    "Lie on stomach",
-                    "Place hands under shoulders",
-                    "Lift chest off ground",
-                    "Keep elbows close to body",
-                    "Hold for 15-30 seconds"
-                ]
-            },
-            {
-                name: "Balasana",
-                image: "yog2.png",
-                calories: "20-30",
-                description: "A resting pose that stretches the back and hips.",
-                steps: [
-                    "Kneel on the floor",
-                    "Sit back on heels",
-                    "Fold forward",
-                    "Rest forehead on ground",
-                    "Extend arms forward",
-                    "Hold for 30-60 seconds"
-                ]
-            },
-            {
-                name: "Virabhadrasana I",
-                image: "yog3.png",
-                calories: "50-70",
-                description: "Strengthens legs and improves balance.",
-                steps: [
-                    "Step one foot back",
-                    "Bend front knee to 90 degrees",
-                    "Raise arms overhead",
-                    "Square hips forward",
-                    "Hold for 30-60 seconds",
-                    "Repeat on other side"
-                ]
-            },
-            {
-                name: "Virabhadrasana II",
-                image: "yog4.png",
-                calories: "50-70",
-                description: "Strengthens legs and improves stamina.",
-                steps: [
-                    "Step feet wide apart",
-                    "Turn one foot out",
-                    "Bend front knee to 90 degrees",
-                    "Extend arms parallel to ground",
-                    "Hold for 30-60 seconds",
-                    "Repeat on other side"
-                ]
-            },
-            {
-                name: "Trikonasana",
-                image: "yog5.png",
-                calories: "40-60",
-                description: "Stretches the sides of the body and improves balance.",
-                steps: [
-                    "Stand with feet wide apart",
-                    "Turn one foot out",
-                    "Extend arms parallel to ground",
-                    "Bend at hip to reach front foot",
-                    "Hold for 30-60 seconds",
-                    "Repeat on other side"
-                ]
-            },
-            {
-                name: "Setu Bandhasana",
-                image: "yog6.png",
-                calories: "40-60",
-                description: "Strengthens the back and opens the chest.",
-                steps: [
-                    "Lie on back",
-                    "Bend knees and place feet flat",
-                    "Lift hips up",
-                    "Clasp hands under back",
-                    "Hold for 30-60 seconds"
-                ]
-            },
-            {
-                name: "Dhanurasana",
-                image: "yog7.png",
-                calories: "50-70",
-                description: "Strengthens the back and improves flexibility.",
-                steps: [
-                    "Lie on stomach",
-                    "Bend knees and grab ankles",
-                    "Lift chest and thighs",
-                    "Hold for 15-30 seconds"
-                ]
-            },
-            {
-                name: "Savasana",
-                image: "yog8.png",
-                calories: "20-30",
-                description: "A relaxation pose that calms the mind and body.",
-                steps: [
-                    "Lie flat on back",
-                    "Extend arms and legs",
-                    "Close eyes",
-                    "Relax completely",
-                    "Hold for 5-10 minutes"
-                ]
-            }
-        ];
+        <div class="flex space-x-4">
+          <button id="prevDayBtn" class="bg-gray-300 text-gray-800 px-4 py-2 font-semibold rounded-lg hover:bg-gray-400 transition disabled:opacity-50" disabled>
+            ← Previous
+          </button>
+          <button id="nextDayBtn" class="bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-2 font-bold rounded-lg hover:shadow-lg transition">
+            Day <span id="nextDayBtnText">2</span> →
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
 
-        function createYogaCards() {
-            const grid = document.getElementById('yogaGrid');
-            yogaExercises.forEach(exercise => {
-                const card = document.createElement('div');
-                card.className = 'yoga-card';
-                card.innerHTML = `
-                    <img src="${exercise.image}" alt="${exercise.name}">
-                    <div class="yoga-info">
-                        <h3>${exercise.name}</h3>
-                        <p>${exercise.description}</p>
-                        <span class="calories">${exercise.calories} calories</span>
-                    </div>
-                `;
-                card.onclick = () => showExerciseDetails(exercise);
-                grid.appendChild(card);
-            });
-        }
-        function showExerciseDetails(exercise) {
-    const modal = document.getElementById('exerciseModal');
-    const content = document.getElementById('modalContent');
-    
-    content.innerHTML = `
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <img src="${exercise.image}" alt="${exercise.name}" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 10px;">
-        <div class="exercise-details">
-            <h2>${exercise.name}</h2>
-            <p>${exercise.description}</p>
-            <p><strong>Calories Burned:</strong> ${exercise.calories} per session</p>
-            <div class="steps">
-                <h3>Steps:</h3>
-                <ol>
-                    ${exercise.steps.map(step => `<li>${step}</li>`).join('')}
-                </ol>
+  <!-- Pop-up Modal -->
+  <div id="popupModal" class="fixed inset-0 hidden bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+      <div class="flex justify-between items-center border-b p-4">
+        <h2 id="poseTitle" class="text-2xl font-bold text-gray-800"></h2>
+        <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
+          &times;
+        </button>
+      </div>
+      
+      <div class="flex border-b">
+        <button id="detailsTab" class="tab-btn active px-6 py-3 font-medium text-blue-600 border-b-2 border-blue-600">
+          Details
+        </button>
+        <button id="benefitsTab" class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-gray-700">
+          Benefits
+        </button>
+        <button id="variationsTab" class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-gray-700">
+          Variations
+        </button>
+      </div>
+      
+      <div class="flex-1 overflow-y-auto p-6">
+        <div id="detailsContent" class="tab-content active">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <img id="poseImage" class="w-full rounded-lg shadow-md mb-4" alt="Yoga Pose" />
+              <div class="flex items-center space-x-4 mb-4">
+                <span class="flex items-center text-gray-600">
+                  <i class="far fa-clock mr-2"></i>
+                  <span id="poseDuration"></span> mins
+                </span>
+                <span id="poseDifficulty" class="px-3 py-1 rounded-full text-xs font-semibold"></span>
+              </div>
             </div>
+            <div>
+              <h3 class="font-bold text-lg mb-2">How to perform:</h3>
+              <ul id="poseSteps" class="list-disc list-inside text-gray-700 space-y-2"></ul>
+            </div>
+          </div>
         </div>
-    `;
-    
-    modal.style.display = 'block';
-}
+        
+        <div id="benefitsContent" class="tab-content hidden">
+          <h3 class="font-bold text-lg mb-4">Key Benefits:</h3>
+          <ul id="poseBenefits" class="grid grid-cols-1 md:grid-cols-2 gap-4"></ul>
+        </div>
+        
+        <div id="variationsContent" class="tab-content hidden">
+          <h3 class="font-bold text-lg mb-4">Variations:</h3>
+          <div id="poseVariations" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+        </div>
+      </div>
+      
+      <div class="border-t p-4 bg-gray-50">
+        <div class="aspect-w-16 aspect-h-9">
+          <iframe id="poseVideo" class="w-full rounded-lg" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <script>
+    let currentDay = 1;
+    const totalDays = 30;
+    let currentPlan = null;
+    let currentApiUrl = "";
 
-        function closeModal() {
-            document.getElementById('exerciseModal').style.display = 'none';
-        }
+    // DOM Elements
+    const dayLabel = document.getElementById("dayLabel");
+    const currentDayDisplay = document.getElementById("currentDayDisplay");
+    const nextDayBtnText = document.getElementById("nextDayBtnText");
+    const yogaContainer = document.getElementById("yogaContainer");
+    const nextDayBtn = document.getElementById("nextDayBtn");
+    const prevDayBtn = document.getElementById("prevDayBtn");
+    const planTypeLabel = document.getElementById("planTypeLabel");
+    const yogaPlanContainer = document.getElementById("yogaPlanContainer");
+    const planHeader = document.getElementById("planHeader");
+    const overweightBtn = document.getElementById("overweightBtn");
+    const underweightBtn = document.getElementById("underweightBtn");
+    const loadingState = document.getElementById("loadingState");
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('exerciseModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load any saved progress
+      loadProgress();
+      
+      // Set up plan selection buttons
+      overweightBtn.addEventListener("click", () => loadPlan("overweight"));
+      underweightBtn.addEventListener("click", () => loadPlan("underweight"));
+      
+      // Set up day navigation
+      nextDayBtn.addEventListener("click", nextDay);
+      prevDayBtn.addEventListener("click", prevDay);
+      
+      // Set up modal tabs
+      setupTabs();
+    });
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', createYogaCards);
-    </script>
-  </body>
+    function loadPlan(planType) {
+      currentPlan = planType;
+      currentDay = 1;
+      
+      // Update UI
+      yogaPlanContainer.classList.remove("hidden");
+      planTypeLabel.textContent = planType.charAt(0).toUpperCase() + planType.slice(1);
+      planHeader.className = `sticky top-0 z-10 flex flex-col justify-between w-full p-4 text-white shadow-md ${planType}`;
+      
+      // Set the correct API URL
+      currentApiUrl = `${planType}yoga.json`;
+      
+      // Scroll to plan
+      yogaPlanContainer.scrollIntoView({ behavior: 'smooth' });
+      
+      // Load the first day
+      updateDay();
+    }
+
+    function nextDay() {
+      if (currentDay < totalDays) {
+        currentDay++;
+        updateDay();
+      }
+    }
+
+    function prevDay() {
+      if (currentDay > 1) {
+        currentDay--;
+        updateDay();
+      }
+    }
+
+    function updateDay() {
+      dayLabel.textContent = `Day ${currentDay}`;
+      currentDayDisplay.textContent = currentDay;
+      nextDayBtnText.textContent = currentDay < totalDays ? currentDay + 1 : totalDays;
+      prevDayBtn.disabled = currentDay === 1;
+      nextDayBtn.disabled = currentDay === totalDays;
+      updateProgressBar();
+      fetchAndDisplayYoga();
+      saveProgress();
+    }
+
+    function updateProgressBar() {
+      const progress = (currentDay / totalDays) * 100;
+      document.getElementById('progressBar').style.width = `${progress}%`;
+    }
+
+    function fetchAndDisplayYoga() {
+      loadingState.classList.remove('hidden');
+      yogaContainer.innerHTML = '';
+      
+      fetch(currentApiUrl)
+        .then(res => res.json())
+        .then(data => {
+          const today = data.plan.find(day => day.day === `Day ${currentDay}`);
+          if (!today) {
+            yogaContainer.innerHTML = `
+              <div class="col-span-full text-center py-12">
+                <i class="fas fa-heart-broken text-4xl text-gray-400 mb-4"></i>
+                <h3 class="text-xl font-bold text-gray-700 mb-2">No yoga poses found</h3>
+                <p class="text-gray-500">We couldn't find any yoga poses for day ${currentDay}.</p>
+              </div>
+            `;
+            return;
+          }
+          
+          yogaContainer.innerHTML = today.poses.map((pose, index) => `
+            <div class="yoga-card bg-white rounded-xl shadow-md overflow-hidden">
+              <div class="relative h-48 overflow-hidden">
+                <img src="${pose.image}" alt="${pose.name}" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                <span class="absolute top-3 right-3 px-2 py-1 bg-white bg-opacity-90 rounded-full text-xs font-semibold ${getDifficultyClass(pose.difficulty)}">
+                  ${pose.difficulty || 'Beginner'}
+                </span>
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">${pose.name}</h3>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">
+                    <i class="far fa-clock mr-1"></i> ${pose.duration || 5} mins
+                  </span>
+                  <button onclick="openModal(${currentDay}, ${index})" class="text-blue-500 hover:text-blue-700 text-sm font-medium">
+                    View Details <i class="fas fa-chevron-right ml-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `).join("");
+        })
+        .catch(() => {
+          yogaContainer.innerHTML = `
+            <div class="col-span-full text-center py-12">
+              <i class="fas fa-exclamation-triangle text-4xl text-red-400 mb-4"></i>
+              <h3 class="text-xl font-bold text-gray-700 mb-2">Error Loading Plan</h3>
+              <p class="text-gray-500">We couldn't load the yoga poses. Please try again later.</p>
+              <button onclick="fetchAndDisplayYoga()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                Retry
+              </button>
+            </div>
+          `;
+        })
+        .finally(() => {
+          loadingState.classList.add('hidden');
+        });
+    }
+
+    function openModal(day, index) {
+      document.getElementById('popupModal').classList.remove('hidden');
+      loadingState.classList.remove('hidden');
+      
+      fetch(currentApiUrl)
+        .then(res => res.json())
+        .then(data => {
+          const pose = data.plan.find(d => d.day === `Day ${day}`).poses[index];
+          
+          // Basic info
+          document.getElementById("poseTitle").textContent = pose.name;
+          document.getElementById("poseImage").src = pose.image;
+          document.getElementById("poseDuration").textContent = pose.duration || '5';
+          document.getElementById("poseDifficulty").textContent = pose.difficulty || 'Beginner';
+          document.getElementById("poseDifficulty").className = `px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyClass(pose.difficulty)}`;
+          
+          // Steps
+          document.getElementById("poseSteps").innerHTML = pose.steps.map(step => 
+            `<li class="mb-2">${step}</li>`
+          ).join("");
+          
+          // Benefits
+          document.getElementById("poseBenefits").innerHTML = pose.benefits?.map(benefit => 
+            `<li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>${benefit}</span>
+            </li>`
+          ).join("") || '<p class="text-gray-500">No benefits information available</p>';
+          
+          // Variations
+          document.getElementById("poseVariations").innerHTML = pose.variations?.map(variation => 
+            `<div class="bg-gray-50 rounded-lg p-3">
+              <h4 class="font-medium mb-1">${variation.name}</h4>
+              <p class="text-sm text-gray-600">${variation.description}</p>
+            </div>`
+          ).join("") || '<p class="text-gray-500">No variations available</p>';
+          
+          // Video
+          if(pose.video) {
+            document.getElementById("poseVideo").src = pose.video.includes('youtube.com') ? 
+              pose.video.replace("watch?v=", "embed/") : 
+              pose.video;
+          }
+        })
+        .catch(error => {
+          console.error("Error loading pose details:", error);
+          alert("Could not load pose details. Please try again later.");
+        })
+        .finally(() => {
+          loadingState.classList.add('hidden');
+        });
+    }
+
+    function closeModal() {
+      document.getElementById("popupModal").classList.add("hidden");
+      document.getElementById("poseVideo").src = "";
+    }
+
+    function setupTabs() {
+      const tabs = ['details', 'benefits', 'variations'];
+      tabs.forEach(tab => {
+        document.getElementById(`${tab}Tab`).addEventListener('click', () => {
+          tabs.forEach(t => {
+            document.getElementById(`${t}Tab`).classList.remove('active', 'text-blue-600', 'border-blue-600');
+            document.getElementById(`${t}Tab`).classList.add('text-gray-500');
+            document.getElementById(`${t}Content`).classList.add('hidden');
+          });
+          
+          document.getElementById(`${tab}Tab`).classList.add('active', 'text-blue-600', 'border-blue-600');
+          document.getElementById(`${tab}Tab`).classList.remove('text-gray-500');
+          document.getElementById(`${tab}Content`).classList.remove('hidden');
+        });
+      });
+    }
+
+    function getDifficultyClass(difficulty) {
+      const classes = {
+        'Beginner': 'text-green-600',
+        'Intermediate': 'text-yellow-600',
+        'Advanced': 'text-red-600'
+      };
+      return classes[difficulty] || 'text-gray-600';
+    }
+
+    function saveProgress() {
+      const progress = {
+        plan: currentPlan,
+        day: currentDay,
+        lastAccessed: new Date().toISOString()
+      };
+      localStorage.setItem('yogaProgress', JSON.stringify(progress));
+    }
+
+    function loadProgress() {
+      const saved = JSON.parse(localStorage.getItem('yogaProgress'));
+      if (saved && saved.plan) {
+        loadPlan(saved.plan);
+        currentDay = saved.day || 1;
+      }
+    }
+  </script>
+</body>
 </html>
