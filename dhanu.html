@@ -1,134 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrie Guide</title>
-    <link rel="stylesheet" href="dhanu.css">    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-   
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriGuide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <img src="logo.jpg" alt="Nutrie Guide Logo" class="stick-logo">
-        <a href="#" class="logo">NutriGuide</a>
-        <ul>
-            <li><a href="dhanu.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="sdg.html">SDG </a></li>
-            <li><a href="drishti.html">Login</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search pages...">
-            <button onclick="handleSearch()">Search</button>
-            <ul id="suggestionsList" class="search-suggestions">
-                <!-- Suggestions will appear here -->
-            </ul>
-        </div>
-        <!-- Profile Icon Placeholder -->
-<div class="profile-icon" id="profileIcon" style="display: none;">
-    <a href="profile.html">
-        <img src="profile-pic.jpg" alt="Profile" class="circle-icon">
-    </a>
-</div>
+<body class="bg-gradient-to-br from-white to-green-100 text-gray-800 font-sans">
 
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Your Personalized Nutrition Companion</h1>
-            <p>Discover healthy recipes, nutrition plans, and tools tailored for you.</p>
-        </div>
-    </header>
-
-    <!-- Highlights Section -->
-    <section class="highlights">
-        <div class="highlight-item">
-            <h2>Weight Management</h2>
-            <p>Get meal plans tailored to your dietary needs and goals.</p>
-            <a href="bmi.html">Get Started</a>
-        </div>
-        <div class="highlight-item">
-            <h2>Aryuvedic Recipes</h2>
-            <p>Boost Your Health with Proven Ayurvedic Remedies</p>
-            <a href="aryuveda.html">Get Started </a>
-        </div>
-        <div class="highlight-item">
-            <h2>Exercises</h2>
-            <p>Find the perfect workout routines for your fitness goals.</p>
-            <a href="exercise.html">Explore Workouts</a>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <h2>What Our Users Say</h2>
-        <div class="testimonial">"Nutrie Guide has transformed my eating habits! The personalized meal plans are amazing!" - Deshna Jain</div>
-        <div class="testimonial">"I love how easy it is to track my nutrition and stay on top of my health goals." - DHRUV</div>
-        <div class="testimonial">"The recipes are delicious and the workout plans are perfect for my schedule!" - GARIMA</div>
-    </section>
-
-    <!-- Counter Section -->
-    <div class="counter-container">
-        <h2>Join Our Growing Community</h2>
-        <div class="counter">100000+</div>
-        <p>Happy Users and Counting</p>
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-gradient-to-r from-green-600 to-green-800 text-white shadow-md px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-4">
+      <img src="logo.jpg" alt="Nutrie Guide Logo" class="w-10 h-10 rounded-full shadow-md" />
+      <a href="#" class="text-2xl font-bold tracking-wide hover:text-yellow-300">NutriGuide</a>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Nutrie Guide. All rights reserved.</p>
-    </footer>
-
-    <!-- Add chatbot container at the end of body -->
-    <div class="chatbot-container">
-        <button class="chatbot-button" onclick="toggleChatbot()">
-            <i class="fas fa-robot"></i>
-        </button>
-        <div class="chatbot-window" id="chatbotWindow">
-            <div class="chatbot-header">
-                <span>NutriGuide Assistant</span>
-                <button onclick="toggleChatbot()" style="background: none; border: none; color: white;">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="quick-actions">
-                <button class="quick-action-btn" onclick="sendQuickMessage('diet recipes')">Diet Recipes</button>
-                <button class="quick-action-btn" onclick="sendQuickMessage('calorie counter')">Calorie Counter</button>
-                <button class="quick-action-btn" onclick="sendQuickMessage('ayurveda recipes')">Ayurveda Recipes</button>
-                <button class="quick-action-btn" onclick="sendQuickMessage('exercises')">Exercises</button>
-            </div>
-            <div class="chatbot-messages" id="chatbotMessages"></div>
-            <div class="chatbot-input">
-                <button class="voice-button" onclick="startVoiceInput()">
-                    <i class="fas fa-microphone"></i>
-                </button>
-                <input type="text" id="userInput" placeholder="Type your message...">
-                <button onclick="sendMessage()">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
+    <ul class="hidden md:flex space-x-6 font-semibold">
+      <li><a href="dhanu.html" class="hover:text-yellow-300">Home</a></li>
+      <li><a href="about.html" class="hover:text-yellow-300">About</a></li>
+      <li><a href="sdg.html" class="hover:text-yellow-300">SDG</a></li>
+      <li><a href="drishti.html" class="hover:text-yellow-300">Login</a></li>
+      <li><a href="contact.html" class="hover:text-yellow-300">Contact</a></li>
+    </ul>
+    <div class="hidden md:flex items-center space-x-2">
+      <input type="text" id="searchInput" placeholder="Search pages..." class="px-3 py-1 rounded-full text-black focus:outline-none w-40" />
+      <button onclick="handleSearch()" class="bg-yellow-300 text-green-900 px-3 py-1 rounded-full hover:bg-white transition">Search</button>
+      <a href="profile.html">
+        <img src="profile-pic.jpg" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+      </a>
     </div>
+  </nav>
 
-    <script src="dhanu.js"></script>
-   <script>
-  // Simulate login status - use real login logic in production
-  const isLoggedIn = localStorage.getItem("loggedIn");
+  <!-- Hero -->
+  <header class="text-center py-24 bg-gradient-to-r from-green-100 to-green-300">
+    <h1 class="text-4xl md:text-5xl font-bold text-green-900 mb-4">Your Personalized Nutrition Companion</h1>
+    <p class="text-xl text-green-800 max-w-2xl mx-auto">Discover healthy recipes, nutrition plans, and tools tailored for you.</p>
+  </header>
 
-  if (isLoggedIn === "true") {
-      document.getElementById("profileIcon").style.display = "block";
-  }
+  <!-- Highlights -->
+  <section class="py-16 px-6 bg-gradient-to-br from-white to-green-50">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-center">
+      <div class="bg-gradient-to-tr from-green-100 to-white p-8 rounded-lg shadow-lg hover:scale-105 transition-transform">
+        <h2 class="text-2xl font-bold text-green-700 mb-2">Weight Management</h2>
+        <p class="mb-4 text-gray-700">Get meal plans tailored to your dietary needs and goals.</p>
+        <a href="bmi.html" class="inline-block bg-green-600 text-white px-5 py-2 rounded-full hover:bg-green-700">Get Started</a>
+      </div>
+      <div class="bg-gradient-to-tr from-green-100 to-white p-8 rounded-lg shadow-lg hover:scale-105 transition-transform">
+        <h2 class="text-2xl font-bold text-green-700 mb-2">Ayurvedic Recipes</h2>
+        <p class="mb-4 text-gray-700">Boost your health with proven Ayurvedic remedies.</p>
+        <a href="aryuveda.html" class="inline-block bg-green-600 text-white px-5 py-2 rounded-full hover:bg-green-700">Get Started</a>
+      </div>
+      <div class="bg-gradient-to-tr from-green-100 to-white p-8 rounded-lg shadow-lg hover:scale-105 transition-transform">
+        <h2 class="text-2xl font-bold text-green-700 mb-2">Exercises</h2>
+        <p class="mb-4 text-gray-700">Find the perfect workout routines for your fitness goals.</p>
+        <a href="exercise.html" class="inline-block bg-green-600 text-white px-5 py-2 rounded-full hover:bg-green-700">Explore Workouts</a>
+      </div>
+    </div>
+  </section>
 
-  // Example: Set this when login happens (in your login logic)
-  localStorage.setItem("loggedIn", "true");
+  <!-- Testimonials -->
+  <section class="bg-gradient-to-l from-green-50 to-white py-20 text-center">
+    <h2 class="text-3xl font-bold text-green-800 mb-8">What Our Users Say</h2>
+    <div class="max-w-4xl mx-auto space-y-6">
+      <blockquote class="bg-white shadow-md rounded-lg p-6 italic border-l-4 border-green-600">"NutriGuide has transformed my eating habits! The personalized meal plans are amazing!" – <strong>Deshna Jain</strong></blockquote>
+      <blockquote class="bg-white shadow-md rounded-lg p-6 italic border-l-4 border-green-600">"I love how easy it is to track my nutrition and stay on top of my health goals." – <strong>Dhruv</strong></blockquote>
+      <blockquote class="bg-white shadow-md rounded-lg p-6 italic border-l-4 border-green-600">"The recipes are delicious and the workout plans are perfect for my schedule!" – <strong>Garima</strong></blockquote>
+    </div>
+  </section>
 
-  // Example: Logout - clear login
-   localStorage.removeItem("loggedIn");
-</script>
+  <!-- Counter -->
+  <section class="bg-gradient-to-r from-green-800 to-green-600 text-white text-center py-16">
+    <h2 class="text-3xl font-bold mb-4">Join Our Growing Community</h2>
+    <div class="text-5xl font-extrabold text-yellow-300 mb-2">100,000+</div>
+    <p class="text-lg">Happy Users and Counting</p>
+  </section>
 
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-green-900 to-green-700 text-white text-center py-6 mt-10">
+    <p>&copy; 2025 NutriGuide. All rights reserved.</p>
+  </footer>
+
+  <!-- Chatbot Button -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button class="w-14 h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg text-xl flex items-center justify-center">
+      <i class="fas fa-robot"></i>
+    </button>
+  </div>
+
+  <script src="dhanu.js"></script>
 </body>
 </html>
