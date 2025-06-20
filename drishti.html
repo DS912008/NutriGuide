@@ -1,92 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NutriGuide Login</title>
-  <link rel="stylesheet" href="grace.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriGuide - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .auth-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
-
-<body>
-  <div class="page-wrapper">
-
-    <!-- Navigation Header -->
-    <nav class="nav__header">
-      <div class="nav__menu-btn" id="menu-btn">
-        <a href="dhanu.html">
-          <img src="logo.jpg" alt="NutriGuide Home" class="menu-icon">
-        </a>
-      </div>
-      <div class="nav__logo">LOGIN</div>
-      <div class="nav__menu-btn">
-        <img src="clogo.png" alt="Company Logo" class="menu-icon">
-      </div>
+<body class="min-h-screen bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex justify-between">
+                <div class="flex items-center">
+                    <a href="dhanu.html" class="flex items-center">
+                        <img class="h-8 w-auto" src="logo.jpg" alt="NutriGuide">
+                        <span class="ml-2 text-xl font-bold text-green-600">NutriGuide</span>
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <a href="signup.html" class="text-sm font-medium text-green-600 hover:text-green-800">Sign Up</a>
+                </div>
+            </div>
+        </div>
     </nav>
-  </div>
-    <!-- Login Form Container -->
-    <div class="login-container">
-      <h1>Welcome Back!</h1>
-      <form id="loginForm" action="#" method="POST">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center py-12 px-4">
+        <div class="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="auth-bg p-8 text-white text-center">
+                <h2 class="text-2xl font-bold">Welcome Back</h2>
+                <p class="mt-2">Continue your nutrition journey</p>
+            </div>
+            
+            <div class="p-8">
+                <div id="error-message" class="hidden mb-4 p-3 rounded bg-red-100 text-red-700 text-sm"></div>
+                
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input type="email" id="email" required
+                                class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                                placeholder="your@email.com">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input type="password" id="password" required
+                                class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                                placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember"
+                                class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                            <label for="remember" class="ml-2 block text-sm text-gray-700">
+                                Remember me
+                            </label>
+                        </div>
+                        <a href="#" class="text-sm text-green-600 hover:underline">Forgot password?</a>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-2 px-4 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                        Login
+                    </button>
+                </form>
+
+                <div class="mt-4 text-center text-sm text-gray-600">
+                    Don't have an account? 
+                    <a href="signup.html" class="font-medium text-green-600 hover:underline">Sign up here</a>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" required />
-        </div>
-        <div class="form-group checkbox-group">
-          <label>
-            <input type="checkbox" id="remember" name="remember" />
-            Remember Me
-          </label>
-        </div>
-        <button type="submit">Log In</button>
-      </form>
+    </main>
 
-      <div class="footer-links">
-        <p><a href="#">Forgot Password?</a></p>
-        <p>Don’t have an account? <a href="grace.html">Sign Up</a></p>
-      </div>
-    </div>
-  </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            document.getElementById('error-message').classList.add('hidden');
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-  <!-- JavaScript to handle login form -->
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+            try {
+                const response = await fetch('http://localhost:5000/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
 
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+                const data = await response.json();
 
-      fetch('http://localhost:5000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-      })
-        .then(async response => {
-          const data = await response.json();
-
-          if (response.ok) {
-            // Save user info to localStorage (new code)
-            localStorage.setItem('userName', data.name); // Save the user's name
-            localStorage.setItem('userEmail', data.email); // Save the user's email
-
-            alert('Login successful!');
-            window.location.href = 'profile.html';  // Redirect to profile page after login
-          } else {
-            alert(data.message || 'Login failed! Please check your credentials.');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('An error occurred during login.');
+                if (response.ok) {
+                    // Save user and redirect
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.href = 'profile.html';
+                } else {
+                    showError(data.message || 'Login failed');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showError('Network error - please try again');
+            }
         });
-    });
-  </script>
-</body>
 
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+            errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
 </html>
