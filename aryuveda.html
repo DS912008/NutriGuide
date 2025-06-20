@@ -1,122 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Matrix</title>
-    <style>
-       body {
-    background-color: black;
-    margin: 0;
-}
-
-.page-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 5px 70px;
-    width: 70%;
-    height: auto;
-    text-align: center;
-    margin-top: 20px;
-}
-
-        .image-box {
-            background: green;
-            padding: 3px;
-            border-radius: 15px;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-        }
-        img {
-            width: 100%;
-            height: auto;
-            max-height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        p {
-            margin-top: 10px;
-            font-size: 18px;
-            color: white;
-            font-weight: bold;
-        } .nav__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.nav__logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: white;
-    font-size: 24px;
-}
-
-.nav_menu_btn {
-    display: flex;
-    align-items: center;
-}
-
-.menu-icon {
-    width: 30px;
-    height: 30px;
-}
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aryuveda recipes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="page-wrapper">
-     <div class="nav__header">
-    <div class="nav_menu_btn" id="menu-btn">
-     <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
-     </div>
-    <div class="nav__logo">
-   Aryuvedic 
+<body class="bg-black text-white">
+
+  <!-- Navbar -->
+  <header class="w-full bg-gray-800 shadow-md">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+      <div class="flex items-center gap-3">
+        <a href="dhanu.html">
+          <img src="logo.jpg" alt="Menu" class="w-8 h-8 rounded-full"/>
+        </a>
+        <span class="text-2xl font-bold">Aryuvedic Recipes</span>
+      </div>
+      <div>
+        <img src="clogo.png" alt="Logo" class="w-8 h-8 rounded-full"/>
+      </div>
     </div>
-    <div class="nav_menu_btn" >
-     <img src="clogo.png" alt="Menu" class="menu-icon">
+  </header>
+
+  <!-- Image Grid -->
+  <main class="flex flex-col items-center justify-center min-h-screen pt-10 px-4">
+    <div class="grid grid-cols-2 gap-x-20 gap-y-10 w-full max-w-5xl text-center">
+      
+      <!-- Top Row -->
+      <div class="bg-green-600 p-2 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+        <a href="cold.html">
+          <img src="image1.jpg" alt="Cold" class="rounded-lg w-full h-48 object-cover"/>
+        </a>
+        <p class="mt-4 text-lg font-semibold">Cold</p>
+      </div>
+
+      <div class="bg-green-600 p-2 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+        <a href="fever.html">
+          <img src="image2.jpg" alt="Fever" class="rounded-lg w-full h-48 object-cover"/>
+        </a>
+        <p class="mt-4 text-lg font-semibold">Fever</p>
+      </div>
+
+      <!-- Spacer Row -->
+      <div class="col-span-2 h-12"></div>
+
+      <!-- Bottom Row -->
+      <div class="bg-green-600 p-2 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+        <a href="immunity.html">
+          <img src="image3.jpg" alt="Strong Immunity" class="rounded-lg w-full h-48 object-cover"/>
+        </a>
+        <p class="mt-4 text-lg font-semibold">Strong Immunity</p>
+      </div>
+
+      <div class="bg-green-600 p-2 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+        <a href="tea.html">
+          <img src="image4.jpg" alt="Tea" class="rounded-lg w-full h-48 object-cover"/>
+        </a>
+        <p class="mt-4 text-lg font-semibold">Tea</p>
+      </div>
+
     </div>
-  </div>
-    <div class="container">
-        <div class="image-box">
-            <a href="cold.html">
-                <img src="image1.jpg" alt="Image 1">
-            </a>
-            <p>Cold</p>
-        </div>
-        <div class="image-box">
-            <a href="fever.html">
-                <img src="image2.jpg" alt="Image 2">
-            </a>
-            <p>Fever</p>
-        </div>
-        <div style="grid-column: 1 / span 2; height: 70px;"></div> <!-- Increased spacing between rows -->
-        <div class="image-box">
-            <a href="immunity.html">
-                <img src="image3.jpg" alt="Image 3">
-            </a>
-            <p>Strong Immunity</p>
-        </div>
-        <div class="image-box">
-            <a href="tea.html">
-                <img src="image4.jpg" alt="Image 4">
-            </a>
-            <p>Tea</p>
-        </div>
-    </div>
-    </div>
+  </main>
+
 </body>
 </html>
