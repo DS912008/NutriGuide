@@ -1,211 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayurvedic Recipes for Fever</title>
-    <style>
-       
-       body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: black;
-            margin: 0;
-            padding-bottom: 20px;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            width: 80%;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .image-box {
-            background: green;
-            padding: 7px;
-            border-radius: 15px;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            max-width: 200px;
-        }
-        img {
-            width: 100%;
-            height: 100hV;
-            max-height: 3000px;
-            object-fit: cover;
-            border-radius: 10px;
-            aspect-ratio: 16/6;
-        }
-        .close-btn2 {
-            display: block;
-            background: green;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 30px;
-        }
-        
-        p {
-            margin-bottom: 10px;
-            font-size: 18px;
-            color: white;
-            font-weight: bold;
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-        }
-        .popup-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            max-width: 400px;
-            width: 90%;
-        }
-        .popup-content h2 {
-            text-align: center;
-        }
-        .popup-content ol {
-            padding-left: 20px;
-        }
-        .popup-content .advantages {
-            color: green;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .close-btn {
-            display: block;
-            background: green;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            margin-top: 10px;
-        }
-        .nav__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.nav__logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: white;
-    font-size: 24px;
-}
-
-.nav_menu_btn {
-    display: flex;
-    align-items: center;
-}
-
-.menu-icon {
-    width: 30px;
-    height: 30px;
-}
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ayurvedic Recipes for Fever</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="nav__header">
-        <div class="nav_menu_btn" id="menu-btn">
-         <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
-         </div>
-        <div class="nav__logo">
-       Fever
-        </div>
-        <div class="nav_menu_btn" >
-         <img src="clogo.png" alt="Menu" class="menu-icon">
-        </div>
-      </div>
-    
-    <div class="container">
-        <div class="image-box" onclick="showPopup(0)">
-            <img src="tulsi.jpg" alt="Recipe 1">
-            <p>Tulsi (Holy Basil) Kadha</p>
-        </div>
-        <div class="image-box" onclick="showPopup(1)">
-            <img src="coriander.jpg" alt="Recipe 2">
-            <p>Coriander Seed Tea</p>
-        </div>
-        <div class="image-box" onclick="showPopup(2)">
-            <img src="giloy.jpg" alt="Recipe 3">
-            <p>Giloy (Guduchi) Juice</p>
-        </div>
-        <div class="image-box" onclick="showPopup(3)">
-            <img src="ginger.jpg" alt="Recipe 4">
-            <p>Dry Ginger & Pepper Decoction</p>
-        </div>
-        <div class="image-box" onclick="showPopup(4)">
-            <img src="fenugreek.jpg" alt="Recipe 5">
-            <p>Fenugreek (Methi) Water</p>
-        </div>
-        <div class="image-box" onclick="showPopup(5)">
-            <img src="ajwain.jpg" alt="Recipe 6">
-            <p>Ajwain (Carom Seeds) Water</p>
-        </div>
-        <div class="image-box" onclick="showPopup(6)">
-            <img src="kadha.jpg" alt="Recipe 7">
-            <p>Kadha for Viral Fever</p>
-        </div>
-        <div class="image-box" onclick="showPopup(7)">
-            <img src="pomegranate.jpg" alt="Recipe 8">
-            <p>Pomegranate Juice</p>
-        </div>
-        <div class="image-box" onclick="showPopup(8)">
-            <img src="kanji.jpg" alt="Recipe 9">
-            <p>Rice Gruel (Kanji)</p>
-        </div>
+<body class="bg-black text-white min-h-screen flex flex-col items-center">
+
+  <!-- Navbar -->
+  <header class="w-full bg-gray-800 flex justify-between items-center px-6 py-4">
+    <div class="flex items-center gap-3">
+      <a href="dhanu.html">
+        <img src="logo.jpg" alt="Menu" class="w-8 h-8 rounded-full"/>
+      </a>
+      <span class="text-2xl font-bold">Fever</span>
     </div>
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <h2 id="recipe-title"></h2>
-            <ol id="recipe-steps"></ol>
-            <p class="advantages" id="recipe-advantages"></p>
-            <button class="close-btn" onclick="hidePopup()">Back</button>
-        </div>
+    <div>
+      <img src="clogo.png" alt="Logo" class="w-8 h-8 rounded-full"/>
     </div>
-    <a href="aryuveda.html"><button class="close-btn2" >Back</button></a>
-    <script>
-        const recipes = [
-            { title: "Tulsi (Holy Basil) Kadha", steps: ["Boil 2 cups of water.", "Add 8-10 tulsi leaves","1 tsp grated ginger"," and a pinch of black pepper.", "Simmer for 10 minutes and strain.", "Add 1 tsp honey and drink warm."], advantages: "Boosts immunity, reduces fever." },
-            { title: "Coriander Seed Tea", steps: ["Boil 2 cups of water, add 1 tbsp coriander seeds.", "Simmer for 5 minutes and strain.", "Add 1 tsp honey"," and drink warm."], advantages: "Reduces body heat, aids digestion." },
-            { title: "Giloy (Guduchi) Juice", steps: ["Blend 2-3 fresh giloy stems with 1 cup water.", "Strain ","and drink fresh."], advantages: "Boosts immunity, reduces fever." },
-            { title: "Dry Ginger & Pepper Decoction", steps: ["Boil 2 cups of water"," add 1 tsp dry ginger ","1/2 tsp black pepper.", "Simmer for 10 minutes, strain, and drink."], advantages: "Relieves cold and fever." },
-            { title: "Fenugreek (Methi) Water", steps: ["Soak 1 tbsp fenugreek seeds overnight in 1 cup water.", "Strain and drink in the morning."], advantages: "Detoxifies, controls fever." },
-            { title: "Ajwain (Carom Seeds) Water", steps: ["Boil 2 cups of water, add 1 tsp ajwain seeds.", "Simmer for 5 minutes, strain, and drink."], advantages: "Relieves cough and fever." },
-            { title: "Kadha for Viral Fever", steps: ["Boil 2 cups of water"," add 8-10 tulsi leaves, 1 small cinnamon stick, and a pinch of black pepper.", "Simmer for 15 minutes, strain, and drink."], advantages: "Boosts immunity, relieves fever." },
-            { title: "Pomegranate Juice", steps: ["Deseed 2 pomegranates.", "Blend seeds lightly (don’t over-blend).","Strain through a sieve or cloth.","Optional: Add sugar, honey, or black salt.","Serve chilled."], advantages: "Rich in antioxidants, boosts immunity." },
-            { title: "Rice Gruel (Kanji)", steps: ["Soak 1/2 cup rice in water overnight.", "Blend with 2 cups water and strain.", "Add a pinch of salt and drink."], advantages: "Hydrating, easy to digest." }
-        ];
-        function showPopup(index) { document.getElementById("recipe-title").innerText = recipes[index].title; document.getElementById("recipe-steps").innerHTML = recipes[index].steps.map(step => `<li>${step}</li>`).join(" "); document.getElementById("recipe-advantages").innerText = recipes[index].advantages; document.getElementById("popup").style.display = "flex"; }
-        function hidePopup() { document.getElementById("popup").style.display = "none"; }
-    </script>
+  </header>
+
+  <!-- Recipe Grid -->
+  <main class="w-full max-w-6xl mt-8 px-4">
+    <!-- Large screen layout -->
+    <div id="lg-cards" class="hidden lg:grid grid-cols-3 gap-8 justify-items-center"></div>
+
+    <!-- Small/Medium layout -->
+    <div class="lg:hidden flex flex-col gap-6 items-center">
+      <div id="smmd-cards" class="flex justify-center gap-6 flex-wrap"></div>
+    </div>
+  </main>
+
+  <!-- Popup -->
+  <div id="popup" role="dialog" aria-modal="true" class="fixed inset-0 hidden bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50">
+    <div class="bg-white rounded-xl p-6 w-11/12 max-w-md text-black">
+      <h2 id="recipe-title" class="text-xl font-bold text-center mb-4"></h2>
+      <ol id="recipe-steps" class="list-decimal list-inside space-y-1"></ol>
+      <p id="recipe-advantages" class="mt-4 font-bold text-green-700"></p>
+      <button onclick="hidePopup()" class="mt-6 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Back</button>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="aryuveda.html" class="mt-8">
+    <button class="bg-gradient-to-r from-green-500 to-gray-500 text-white font-bold py-2 px-6 rounded hover:bg-green-700">
+      Back
+    </button>
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    const recipes = [
+      { title: "Tulsi (Holy Basil) Kadha", img: "tulsi.jpg", steps: ["Boil 2 cups of water.", "Add 8-10 tulsi leaves", "1 tsp grated ginger", "a pinch of black pepper.", "Simmer for 10 minutes and strain.", "Add 1 tsp honey and drink warm."], advantages: "Boosts immunity, reduces fever." },
+      { title: "Coriander Seed Tea", img: "coriander.jpg", steps: ["Boil 2 cups of water, add 1 tbsp coriander seeds.", "Simmer for 5 minutes and strain.", "Add 1 tsp honey and drink warm."], advantages: "Reduces body heat, aids digestion." },
+      { title: "Giloy (Guduchi) Juice", img: "giloy.jpg", steps: ["Blend 2-3 fresh giloy stems with 1 cup water.", "Strain and drink fresh."], advantages: "Boosts immunity, reduces fever." },
+      { title: "Dry Ginger & Pepper Decoction", img: "ginger.jpg", steps: ["Boil 2 cups of water", "add 1 tsp dry ginger", "1/2 tsp black pepper.", "Simmer for 10 minutes, strain, and drink."], advantages: "Relieves cold and fever." },
+      { title: "Fenugreek (Methi) Water", img: "fenugreek.jpg", steps: ["Soak 1 tbsp fenugreek seeds overnight in 1 cup water.", "Strain and drink in the morning."], advantages: "Detoxifies, controls fever." },
+      { title: "Ajwain (Carom Seeds) Water", img: "ajwain.jpg", steps: ["Boil 2 cups of water, add 1 tsp ajwain seeds.", "Simmer for 5 minutes, strain, and drink."], advantages: "Relieves cough and fever." },
+      { title: "Kadha for Viral Fever", img: "kadha.jpg", steps: ["Boil 2 cups of water", "add 8-10 tulsi leaves, 1 small cinnamon stick, and a pinch of black pepper.", "Simmer for 15 minutes, strain, and drink."], advantages: "Boosts immunity, relieves fever." },
+      { title: "Pomegranate Juice", img: "pomegranate.jpg", steps: ["Deseed 2 pomegranates.", "Blend seeds lightly (don’t over-blend).", "Strain through a sieve or cloth.", "Optional: Add sugar, honey, or black salt.", "Serve chilled."], advantages: "Rich in antioxidants, boosts immunity." },
+      { title: "Rice Gruel (Kanji)", img: "kanji.jpg", steps: ["Soak 1/2 cup rice in water overnight.", "Blend with 2 cups water and strain.", "Add a pinch of salt and drink."], advantages: "Hydrating, easy to digest." }
+    ];
+
+    function createCard(recipe, index) {
+      return `
+        <div onclick="showPopup(${index})" class="bg-gradient-to-r from-green-500 to-gray-500 p-3 rounded-xl shadow-lg cursor-pointer transition-transform hover:scale-105 w-[300px] h-[220px]">
+          <img src="${recipe.img}" alt="${recipe.title}" class="w-full h-[150px] object-cover rounded-md"/>
+          <p class="mt-3 font-semibold text-center">${recipe.title}</p>
+        </div>
+      `;
+    }
+
+    // Render large screen layout
+    document.getElementById("lg-cards").innerHTML = recipes.map((r, i) => createCard(r, i)).join("");
+
+    // Render small/medium layout alternating 1-2-1
+    const smmdContainer = document.getElementById("smmd-cards");
+    for (let i = 0; i < recipes.length;) {
+      const group = document.createElement("div");
+      group.className = "flex justify-center gap-6 mb-4 flex-wrap";
+
+      if (i % 3 === 0) {
+        group.innerHTML = createCard(recipes[i], i);
+        i++;
+      } else {
+        for (let j = 0; j < 2 && i < recipes.length; j++, i++) {
+          group.innerHTML += createCard(recipes[i], i);
+        }
+      }
+      smmdContainer.appendChild(group);
+    }
+
+    function showPopup(index) {
+      document.getElementById("recipe-title").innerText = recipes[index].title;
+      document.getElementById("recipe-steps").innerHTML = recipes[index].steps.map(step => `<li>${step}</li>`).join("");
+      document.getElementById("recipe-advantages").innerText = recipes[index].advantages;
+      document.getElementById("popup").classList.remove("hidden");
+    }
+
+    function hidePopup() {
+      document.getElementById("popup").classList.add("hidden");
+    }
+  </script>
 </body>
 </html>
