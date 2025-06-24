@@ -1,276 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>User Profile - Nutrie Guide</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
- <style>
- * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      display: flex;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #fff;
-    }
-
-    .sidebar {
-      width: 250px;
-      background-color: #1f1f1f;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .sidebar img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 2px solid #4CAF50;
-    }
-
-    .sidebar h4 {
-      color: #4CAF50;
-      margin-bottom: 30px;
-      font-size: 1.5em;
-    }
-
-    .sidebar nav {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 100%;
-      align-items: center;
-    }
-
-    .sidebar nav a {
-      color: #4CAF50;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .sidebar nav a:hover {
-      color: white;
-    }
-
-    .main-content {
-      flex: 1;
-      padding: 50px;
-    }
-
-    .profile-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 30px;
-      background: #1e1e1e;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,255,0,0.05);
-    }
-
-    .profile-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #4CAF50;
-    }
-.profile-pic {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #4CAF50, #45a049);
-  margin-right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 2.5em;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  background-size: cover; /* Ensures the image covers the entire div */
-  background-position: center; /* Centers the image */
-}
-
-.profile-pic input[type="file"] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-
-
-    .profile-info h2 {
-      color: #4CAF50;
-      margin-bottom: 10px;
-    }
-
-    .profile-info p {
-      margin: 6px 0;
-    }
-
-    .editable-input {
-      background-color: #2a2a2a;
-      color: #fff;
-      border: 1px solid #4CAF50;
-      padding: 8px;
-      margin: 5px 0 10px 0;
-      border-radius: 5px;
-      width: 100%;
-      display: none;
-    }
-
-    .profile-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .profile-actions button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .edit-profile {
-      background: #4CAF50;
-      color: white;
-    }
-
-    .logout {
-      background: #f44336;
-      color: white;
-    }
-
-    .profile-actions button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6', // blue-500
+                        secondary: '#EF4444', // red-500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .calendar-day {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        .completed-day {
+            background-color: #10B981;
+            color: white;
+        }
+        .current-day {
+            border: 2px solid #3B82F6;
+            font-weight: bold;
+        }
+        .future-day {
+            background-color: #E5E7EB;
+            color: #9CA3AF;
+        }
+        .motivation-emoji {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
 </head>
-<body>
-
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <img src="logo.jpg" alt="Logo" />
-    <h4>NUTRIE GUIDE</h4>
-    <nav>
-      <a href="dhanu.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="sdg.html">SDG</a>
-      <a href="contact.html">Contact</a>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-gradient-to-r from-primary to-secondary shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-4">
+                    <img src="logo">
+        
+                    <div>
+                        <a href="#" class="flex items-center py-5 px-2 text-white">
+                            <span class="font-bold text-xl">Nutriguide</span>
+                        </a>
+                    </div>
+                    <!-- Primary Nav -->
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="dhanu.html" class="py-5 px-3 text-white hover:text-gray-200">Home</a>
+                        <a href="drishti.html" class="py-5 px-3 text-white hover:text-gray-200">Login</a>
+                        <a href="grace.html" class="py-5 px-3 text-white hover:text-gray-200">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
-  </div>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <div class="profile-container">
-      <div class="profile-header">
-        <div class="profile-pic" id="profilePic">
-          <input type="file" accept="image/*" onchange="changeProfilePic(event)">
-          <span id="profileInitials">U</span>
-        </div>
-        <div class="profile-info">
-          <h2 id="userName">User Name</h2>
-          <p id="userEmail">Email: user@example.com</p>
-          <p id="userPhoneText">Phone: +91-XXXXXXXXXX</p>
-          <input type="text" id="userPhoneInput" class="editable-input" value="+91-XXXXXXXXXX">
-          <p id="userAddressText">Address: City, State</p>
-          <input type="text" id="userAddressInput" class="editable-input" value="City, State">
-          <p id="fatherNameText">Father's Name: John Doe</p>
-          <input type="text" id="fatherNameInput" class="editable-input" value="John Doe">
-          <p id="userProfessionText">Profession: Software Engineer</p>
-          <input type="text" id="userProfessionInput" class="editable-input" value="Software Engineer">
-        </div>
-      </div>
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Profile Card -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <!-- Profile Header -->
+            <div class="bg-gradient-to-r from-primary to-secondary p-6 text-white">
+                <div class="flex items-center">
+                    <!-- Profile Picture or Initial -->
+                    <div class="relative">
+                        <div id="profileInitial" class="w-24 h-24 rounded-full bg-white flex items-center justify-center text-4xl font-bold text-primary shadow-lg">
+                            <!-- Initial will be inserted here by JS -->
+                        </div>
+                        <label for="profilePic" class="absolute bottom-0 right-0 bg-white rounded-full p-2 cursor-pointer shadow-md hover:bg-gray-100">
+                            <i class="fas fa-camera text-primary"></i>
+                            <input type="file" id="profilePic" class="hidden" accept="image/*">
+                        </label>
+                    </div>
+                    <div class="ml-6">
+                        <h1 id="profileNameDisplay" class="text-2xl font-bold">Your Profile</h1>
+                        <p id="profileDetails" class="text-white opacity-90"></p>
+                    </div>
+                </div>
+            </div>
 
-      <div class="profile-actions">
-        <button class="edit-profile" onclick="editProfile()">Edit Profile</button>
-        <button class="edit-profile" id="saveBtn" onclick="saveProfile()" style="display:none;">Save</button>
-        <button class="logout" onclick="logout()">Logout</button>
-      </div>
+            <!-- Profile Form -->
+            <div class="p-6">
+                <form id="profileForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Name -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Full Name*</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Branch -->
+                        <div>
+                            <label for="branch" class="block text-sm font-medium text-gray-700">Branch*</label>
+                            <select id="branch" name="branch" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                                <option value="">Select your branch</option>
+                                <option value="BECSE">BECSE</option>
+                                <option value="BCA">BCA</option>
+                                <option value="Nursing">Nursing</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Roll No (Optional) -->
+                        <div>
+                            <label for="rollno" class="block text-sm font-medium text-gray-700">Roll Number</label>
+                            <input type="text" id="rollno" name="rollno" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- LinkedIn -->
+                        <div>
+                            <label for="linkedin" class="block text-sm font-medium text-gray-700">LinkedIn Profile</label>
+                            <div class="mt-1 flex rounded-md shadow-sm">
+                                <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">https://</span>
+                                <input type="text" id="linkedin" name="linkedin" class="focus:ring-primary focus:border-primary flex-1 block w-full rounded-none rounded-r-md border-gray-300 py-2 px-3" placeholder="linkedin.com/in/username">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Program Selection -->
+                    <div class="mt-8 border-t border-gray-200 pt-6">
+                        <h2 class="text-lg font-medium text-gray-900">Select Your Health Programs</h2>
+                        <p class="mt-1 text-sm text-gray-500">Choose one meal plan and one exercise plan</p>
+
+                        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Meal Plan Selection -->
+                            <div class="border rounded-lg p-4 hover:border-primary transition-colors">
+                                <h3 class="font-medium text-gray-900">Meal Plan</h3>
+                                <div class="mt-2 space-y-2">
+                                    <div class="flex items-center">
+                                        <input id="underweight-meal" name="meal-plan" type="radio" value="underweight" class="h-4 w-4 text-primary focus:ring-primary border-gray-300">
+                                        <label for="underweight-meal" class="ml-2 block text-sm text-gray-700">
+                                            Underweight Meal Plan
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input id="overweight-meal" name="meal-plan" type="radio" value="overweight" class="h-4 w-4 text-primary focus:ring-primary border-gray-300">
+                                        <label for="overweight-meal" class="ml-2 block text-sm text-gray-700">
+                                            Overweight Meal Plan
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Exercise Plan Selection -->
+                            <div class="border rounded-lg p-4 hover:border-primary transition-colors">
+                                <h3 class="font-medium text-gray-900">Exercise Plan</h3>
+                                <div class="mt-2 space-y-2">
+                                    <div class="flex items-center">
+                                        <input id="underweight-yoga" name="exercise-plan" type="radio" value="underweight-yoga" class="h-4 w-4 text-primary focus:ring-primary border-gray-300">
+                                        <label for="underweight-yoga" class="ml-2 block text-sm text-gray-700">
+                                            Underweight Yoga Plan
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input id="overweight-yoga" name="exercise-plan" type="radio" value="overweight-yoga" class="h-4 w-4 text-primary focus:ring-primary border-gray-300">
+                                        <label for="overweight-yoga" class="ml-2 block text-sm text-gray-700">
+                                            Overweight Yoga Plan
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="mt-8">
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium hover:from-blue-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            Save Profile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div id="progressTracker" class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="bg-gradient-to-r from-primary to-secondary p-4 text-white">
+                <h2 class="text-xl font-bold">Your 30-Day Progress</h2>
+            </div>
+            <div class="p-6">
+                <!-- Calendar View -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium mb-2">Calendar View</h3>
+                    <div id="calendar-view" class="grid grid-cols-7 gap-2 mb-4">
+                        <!-- Calendar days will be inserted here by JavaScript -->
+                    </div>
+                    <div class="flex items-center justify-center space-x-4">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
+                            <span class="text-sm">Completed</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded-full border-2 border-blue-500 mr-2"></div>
+                            <span class="text-sm">Current</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 rounded-full bg-gray-200 mr-2"></div>
+                            <span class="text-sm">Upcoming</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Summary -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Meal Progress -->
+                    <div id="mealProgress" class="border rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-medium text-gray-900">Meal Plan Progress</h3>
+                            <span id="mealDaysLeft" class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">0 days left</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span id="mealDay" class="text-xl font-bold text-primary">Day 0</span>
+                            <div>
+                                <span id="mealStatus" class="text-green-500"><i class="fas fa-check-circle"></i></span>
+                                <span id="mealMotivation" class="ml-2 text-yellow-500"><i class="fas fa-fire"></i></span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                            <div id="mealProgressBar" class="bg-primary h-2.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <p id="mealEncouragement" class="text-sm text-gray-600 flex items-center">
+                            <span class="motivation-emoji mr-2">😊</span>
+                            <span>Start your meal plan journey!</span>
+                        </p>
+                    </div>
+
+                    <!-- Exercise Progress -->
+                    <div id="exerciseProgress" class="border rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-medium text-gray-900">Exercise Plan Progress</h3>
+                            <span id="exerciseDaysLeft" class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">0 days left</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span id="exerciseDay" class="text-xl font-bold text-secondary">Day 0</span>
+                            <div>
+                                <span id="exerciseStatus" class="text-green-500"><i class="fas fa-check-circle"></i></span>
+                                <span id="exerciseMotivation" class="ml-2 text-yellow-500"><i class="fas fa-fire"></i></span>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                            <div id="exerciseProgressBar" class="bg-secondary h-2.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <p id="exerciseEncouragement" class="text-sm text-gray-600 flex items-center">
+                            <span class="motivation-emoji mr-2">💪</span>
+                            <span>Start your exercise plan journey!</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Scripts -->
-  <script>
-    function editProfile() {
-      document.getElementById("saveBtn").style.display = "inline-block";
-      toggleField("userPhone");
-      toggleField("userAddress");
-      toggleField("fatherName");
-      toggleField("userProfession");
-    }
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved profile data
+            const savedProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
+            const savedProgress = JSON.parse(localStorage.getItem('healthProgress')) || {
+                meal: { currentDay: 0, completedDays: [] },
+                exercise: { currentDay: 0, completedDays: [] }
+            };
 
-    function saveProfile() {
-      document.getElementById("saveBtn").style.display = "none";
-      saveField("userPhone");
-      saveField("userAddress");
-      saveField("fatherName");
-      saveField("userProfession");
-    }
+            // DOM Elements
+            const profileForm = document.getElementById('profileForm');
+            const profileNameDisplay = document.getElementById('profileNameDisplay');
+            const profileDetails = document.getElementById('profileDetails');
+            const profileInitial = document.getElementById('profileInitial');
+            const profilePicInput = document.getElementById('profilePic');
+            const calendarView = document.getElementById('calendar-view');
+            const progressTracker = document.getElementById('progressTracker');
 
-    function toggleField(id) {
-      document.getElementById(id + "Text").style.display = "none";
-      document.getElementById(id + "Input").style.display = "block";
-    }
+            // Initialize form with saved data
+            if (savedProfile.name) {
+                document.getElementById('name').value = savedProfile.name;
+                profileNameDisplay.textContent = savedProfile.name;
+                profileInitial.textContent = savedProfile.name.charAt(0).toUpperCase();
+            }
+            if (savedProfile.branch) document.getElementById('branch').value = savedProfile.branch;
+            if (savedProfile.rollno) document.getElementById('rollno').value = savedProfile.rollno;
+            if (savedProfile.linkedin) document.getElementById('linkedin').value = savedProfile.linkedin;
+            if (savedProfile.mealPlan) document.querySelector(`input[name="meal-plan"][value="${savedProfile.mealPlan}"]`).checked = true;
+            if (savedProfile.exercisePlan) document.querySelector(`input[name="exercise-plan"][value="${savedProfile.exercisePlan}"]`).checked = true;
 
-    function saveField(id) {
-      const value = document.getElementById(id + "Input").value;
-      const labelMap = {
-        userPhone: "Phone",
-        userAddress: "Address",
-        fatherName: "Father's Name",
-        userProfession: "Profession"
-      };
-      document.getElementById(id + "Text").textContent = `${labelMap[id]}: ${value}`;
-      document.getElementById(id + "Text").style.display = "block";
-      document.getElementById(id + "Input").style.display = "none";
-    }
+            // Update profile details display
+            updateProfileDetails();
 
-    function changeProfilePic(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          document.getElementById("profilePic").style.backgroundImage = `url('${e.target.result}')`;
-          document.getElementById("profileInitials").style.display = "none";
-        };
-        reader.readAsDataURL(file);
-      }
-    }
+            // Profile picture handling
+            profilePicInput.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        profileInitial.innerHTML = `<img src="${event.target.result}" class="w-full h-full rounded-full object-cover" alt="Profile Picture">`;
+                        // Save to localStorage
+                        savedProfile.profilePic = event.target.result;
+                        localStorage.setItem('userProfile', JSON.stringify(savedProfile));
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
 
-    function logout() {
-      localStorage.clear();
-      alert("Logging out...");
-      window.location.href = 'drishti.html'; 
-    }
+            // Form submission
+            profileForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const branch = document.getElementById('branch').value;
+                const rollno = document.getElementById('rollno').value;
+                const linkedin = document.getElementById('linkedin').value;
+                const mealPlan = document.querySelector('input[name="meal-plan"]:checked')?.value;
+                const exercisePlan = document.querySelector('input[name="exercise-plan"]:checked')?.value;
+                
+                // Save profile data
+                const profileData = {
+                    name,
+                    branch,
+                    rollno,
+                    linkedin,
+                    mealPlan,
+                    exercisePlan,
+                    profilePic: savedProfile.profilePic
+                };
+                localStorage.setItem('userProfile', JSON.stringify(profileData));
+                
+                // Update UI
+                profileNameDisplay.textContent = name;
+                profileInitial.textContent = name.charAt(0).toUpperCase();
+                updateProfileDetails();
+                
+                // Show progress tracker
+                progressTracker.classList.remove('hidden');
+                
+                // Update progress displays
+                updateProgressDisplays();
+                
+                // Show success message
+                alert('Profile saved successfully!');
+            });
 
-    window.onload = function () {
-      const name = localStorage.getItem('userName') || "User Name";
-      const email = localStorage.getItem('userEmail') || "user@example.com";
+            // Update profile details text
+            function updateProfileDetails() {
+                let details = [];
+                if (savedProfile.branch) details.push(savedProfile.branch);
+                if (savedProfile.rollno) details.push(`Roll No: ${savedProfile.rollno}`);
+                if (savedProfile.linkedin) details.push(`LinkedIn: ${savedProfile.linkedin}`);
+                profileDetails.textContent = details.join(' • ');
+            }
 
-      document.getElementById("userName").textContent = name;
-      document.getElementById("userEmail").textContent = "Email: " + email;
+            // Update progress displays
+            function updateProgressDisplays() {
+                // Load current progress
+                const mealProgress = savedProgress.meal || { currentDay: 0, completedDays: [] };
+                const exerciseProgress = savedProgress.exercise || { currentDay: 0, completedDays: [] };
+                
+                // Update meal progress
+                if (mealProgress.currentDay > 0) {
+                    document.getElementById('mealDay').textContent = `Day ${mealProgress.currentDay}`;
+                    document.getElementById('mealDaysLeft').textContent = `${30 - mealProgress.currentDay} days left`;
+                    document.getElementById('mealProgressBar').style.width = `${(mealProgress.currentDay/30)*100}%`;
+                    document.getElementById('mealEncouragement').innerHTML = `
+                        <span class="motivation-emoji mr-2">${mealProgress.currentDay >= 30 ? '🎉' : '😊'}</span>
+                        <span>${mealProgress.currentDay >= 30 ? 'Completed! Amazing job!' : `Only ${30 - mealProgress.currentDay} more days to go!`}</span>
+                    `;
+                }
+                
+                // Update exercise progress
+                if (exerciseProgress.currentDay > 0) {
+                    document.getElementById('exerciseDay').textContent = `Day ${exerciseProgress.currentDay}`;
+                    document.getElementById('exerciseDaysLeft').textContent = `${30 - exerciseProgress.currentDay} days left`;
+                    document.getElementById('exerciseProgressBar').style.width = `${(exerciseProgress.currentDay/30)*100}%`;
+                    document.getElementById('exerciseEncouragement').innerHTML = `
+                        <span class="motivation-emoji mr-2">${exerciseProgress.currentDay >= 30 ? '🎉' : '💪'}</span>
+                        <span>${exerciseProgress.currentDay >= 30 ? 'Completed! You rock!' : `Only ${30 - exerciseProgress.currentDay} more days to go!`}</span>
+                    `;
+                }
+                
+                // Update calendar view
+                updateCalendarView(mealProgress, exerciseProgress);
+            }
 
-      const initials = name.charAt(0).toUpperCase();
-      document.getElementById("profileInitials").textContent = initials;
-    };
-  </script>
+            // Update calendar view
+            function updateCalendarView(mealProgress, exerciseProgress) {
+                calendarView.innerHTML = '';
+                const totalDays = 30;
+                
+                for (let day = 1; day <= totalDays; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day rounded-full flex items-center justify-center text-sm';
+                    
+                    // Determine day status
+                    if (mealProgress.completedDays.includes(day) || exerciseProgress.completedDays.includes(day)) {
+                        dayElement.classList.add('completed-day');
+                    } else if (day === mealProgress.currentDay || day === exerciseProgress.currentDay) {
+                        dayElement.classList.add('current-day');
+                    } else if (day > Math.max(mealProgress.currentDay, exerciseProgress.currentDay)) {
+                        dayElement.classList.add('future-day');
+                    }
+                    
+                    dayElement.textContent = day;
+                    calendarView.appendChild(dayElement);
+                }
+            }
 
+            // Initialize progress displays
+            updateProgressDisplays();
+        });
+    </script>
 </body>
 </html>
