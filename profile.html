@@ -51,10 +51,10 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between">
                 <div class="flex space-x-4">
-                    <img src="logo.jpg" class="h-10 w-10 rounded-full">
-        
+                   <img src="logo.png" alt="Logo" class="h-10 w-10 rounded-full">
+                    <!-- Logo or Brand Name -->
                     <div>
-                        <a href="#" class="flex items-center py-5 px-2 text-white">
+                        <a href="dhanu.html" class="flex items-center py-5 px-2 text-white">
                             <span class="font-bold text-xl">Nutriguide</span>
                         </a>
                     </div>
@@ -62,7 +62,8 @@
                     <div class="hidden md:flex items-center space-x-1">
                         <a href="dhanu.html" class="py-5 px-3 text-white hover:text-gray-200">Home</a>
                         <a href="drishti.html" class="py-5 px-3 text-white hover:text-gray-200">Login</a>
-                        <a href="grace.html" class="py-5 px-3 text-white hover:text-gray-200">Sign Up</a>
+                        <a href="contact.html" class="py-5 px-3 text-white hover:text-gray-200">contact</a>
+                        
                     </div>
                 </div>
             </div>
@@ -286,8 +287,15 @@
             if (savedProfile.name) {
                 document.getElementById('name').value = savedProfile.name;
                 profileNameDisplay.textContent = savedProfile.name;
-                profileInitial.textContent = savedProfile.name.charAt(0).toUpperCase();
+                
+                // Check if profile picture exists in localStorage
+                if (savedProfile.profilePic) {
+                    profileInitial.innerHTML = `<img src="${savedProfile.profilePic}" class="w-full h-full rounded-full object-cover" alt="Profile Picture">`;
+                } else {
+                    profileInitial.textContent = savedProfile.name.charAt(0).toUpperCase();
+                }
             }
+            
             if (savedProfile.branch) document.getElementById('branch').value = savedProfile.branch;
             if (savedProfile.rollno) document.getElementById('rollno').value = savedProfile.rollno;
             if (savedProfile.linkedin) document.getElementById('linkedin').value = savedProfile.linkedin;
@@ -302,7 +310,9 @@
                 if (e.target.files && e.target.files[0]) {
                     const reader = new FileReader();
                     reader.onload = function(event) {
+                        // Display the new profile picture
                         profileInitial.innerHTML = `<img src="${event.target.result}" class="w-full h-full rounded-full object-cover" alt="Profile Picture">`;
+                        
                         // Save to localStorage
                         savedProfile.profilePic = event.target.result;
                         localStorage.setItem('userProfile', JSON.stringify(savedProfile));
@@ -323,7 +333,7 @@
                 const mealPlan = document.querySelector('input[name="meal-plan"]:checked')?.value;
                 const exercisePlan = document.querySelector('input[name="exercise-plan"]:checked')?.value;
                 
-                // Save profile data
+                // Save profile data (including existing profilePic if it exists)
                 const profileData = {
                     name,
                     branch,
@@ -331,13 +341,20 @@
                     linkedin,
                     mealPlan,
                     exercisePlan,
-                    profilePic: savedProfile.profilePic
+                    profilePic: savedProfile.profilePic || null // Preserve existing picture or set to null
                 };
                 localStorage.setItem('userProfile', JSON.stringify(profileData));
                 
                 // Update UI
                 profileNameDisplay.textContent = name;
-                profileInitial.textContent = name.charAt(0).toUpperCase();
+                
+                // Update profile picture/initial display
+                if (savedProfile.profilePic) {
+                    profileInitial.innerHTML = `<img src="${savedProfile.profilePic}" class="w-full h-full rounded-full object-cover" alt="Profile Picture">`;
+                } else {
+                    profileInitial.textContent = name.charAt(0).toUpperCase();
+                }
+                
                 updateProfileDetails();
                 
                 // Show progress tracker
