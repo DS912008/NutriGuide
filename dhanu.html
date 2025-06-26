@@ -8,14 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    body{
-          animation: animateBg 5s linear infinite;
-    }     
-    @keyframes animateBg {
-      100% {
-        filter: hue-rotate(360deg);
-      }
-    }
+   
     .message {
       padding: 10px;
       margin-bottom: 8px;
@@ -51,6 +44,34 @@
     .voice-pulse {
       animation: pulse 1.5s infinite;
     }
+    <style>
+    /* Add these styles to your existing style section */
+    #suggestionsList {
+      display: none;
+      position: absolute;
+      z-index: 50;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    #suggestionsList li {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    #suggestionsList li:hover {
+      background-color: #f0fdf4;
+    }
+    #searchInput::placeholder {
+      color: #4b5563;
+      opacity: 0.7;
+    }
+</style>
   </style>
 </head>
 <body class="bg-gradient-to-br from-white to-green-100 text-gray-800 font-sans">
@@ -67,13 +88,23 @@
       <li><a href="drishti.html" class="hover:text-yellow-300">Login</a></li>
       <li><a href="contact.html" class="hover:text-yellow-300">Contact</a></li>
     </ul>
-    <div class="hidden md:flex items-center space-x-2 relative">
-      <a href="profile.html">
-        <div id="navProfilePic" class="w-10 h-10 rounded-full border-2 border-white shadow-md bg-white flex items-center justify-center text-lg font-bold text-green-800">
-          <!-- Initial will be inserted here by JS -->
-        </div>
-      </a>
+  <!-- In your navbar section, replace the current div with profile pic with this: -->
+<div class="hidden md:flex items-center space-x-4 relative">
+  <!-- Search Button and Bar -->
+  <div class="flex items-center">
+    <div class="relative">
+      <input type="text" id="searchInput" placeholder="Search pages..." 
+             class="px-4 py-1 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 w-48 transition-all duration-300">
+      <ul id="suggestionsList" class="absolute z-50 top-full left-0 w-full bg-white shadow-lg rounded-lg mt-1 hidden max-h-60 overflow-auto"></ul>
     </div>
+  </div>
+  
+  <a href="profile.html">
+    <div id="navProfilePic" class="w-10 h-10 rounded-full border-2 border-white shadow-md bg-white flex items-center justify-center text-lg font-bold text-green-800">
+      <!-- Initial will be inserted here by JS -->
+    </div>
+  </a>
+</div>
   </nav>
 
   <!-- Hero -->
