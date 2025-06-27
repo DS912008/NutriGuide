@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-   
     .message {
       padding: 10px;
       margin-bottom: 8px;
@@ -44,8 +42,8 @@
     .voice-pulse {
       animation: pulse 1.5s infinite;
     }
-    <style>
-    /* Add these styles to your existing style section */
+    
+    /* Search suggestions styles */
     #suggestionsList {
       display: none;
       position: absolute;
@@ -54,7 +52,7 @@
       left: 0;
       width: 100%;
       background: white;
-      border-radius: 0.5rem;
+      border-radius: 0 0 0.5rem 0.5rem;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       max-height: 60vh;
       overflow-y: auto;
@@ -71,7 +69,26 @@
       color: #4b5563;
       opacity: 0.7;
     }
-</style>
+    
+    /* Voice settings modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    .modal-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      width: 20rem;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-white to-green-100 text-gray-800 font-sans">
@@ -88,23 +105,25 @@
       <li><a href="drishti.html" class="hover:text-yellow-300">Login</a></li>
       <li><a href="contact.html" class="hover:text-yellow-300">Contact</a></li>
     </ul>
-  <!-- In your navbar section, replace the current div with profile pic with this: -->
-<div class="hidden md:flex items-center space-x-4 relative">
-  <!-- Search Button and Bar -->
-  <div class="flex items-center">
-    <div class="relative">
-      <input type="text" id="searchInput" placeholder="Search pages..." 
-             class="px-4 py-1 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 w-48 transition-all duration-300">
-      <ul id="suggestionsList" class="absolute z-50 top-full left-0 w-full bg-white shadow-lg rounded-lg mt-1 hidden max-h-60 overflow-auto"></ul>
+    <div class="hidden md:flex items-center space-x-4 relative">
+      <!-- Search Button and Bar -->
+      <div class="flex items-center">
+        <div class="relative flex">
+          <input type="text" id="searchInput" placeholder="Search pages..." 
+                class="px-4 py-1 rounded-l-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 w-48 transition-all duration-300">
+          <button id="searchButton" class="bg-green-600 text-white px-3 py-1 rounded-r-full hover:bg-green-700 transition-colors">
+            <i class="fas fa-search"></i>
+          </button>
+          <ul id="suggestionsList" class="absolute z-50 top-full left-0 w-full bg-white shadow-lg rounded-b-lg mt-0 hidden max-h-60 overflow-auto"></ul>
+        </div>
+      </div>
+      
+      <a href="profile.html">
+        <div id="navProfilePic" class="w-10 h-10 rounded-full border-2 border-white shadow-md bg-white flex items-center justify-center text-lg font-bold text-green-800">
+          <!-- Initial will be inserted here by JS -->
+        </div>
+      </a>
     </div>
-  </div>
-  
-  <a href="profile.html">
-    <div id="navProfilePic" class="w-10 h-10 rounded-full border-2 border-white shadow-md bg-white flex items-center justify-center text-lg font-bold text-green-800">
-      <!-- Initial will be inserted here by JS -->
-    </div>
-  </a>
-</div>
   </nav>
 
   <!-- Hero -->
@@ -158,7 +177,30 @@
 
   <!-- Chatbot Window -->
   <div id="chatbotWindow" class="hidden fixed bottom-24 right-6 w-80 h-[28rem] bg-white rounded-xl shadow-2xl flex flex-col z-50 border-2 border-green-500 overflow-hidden transform transition-all duration-300">
-    <!-- Chatbot content -->
+    <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-4 flex justify-between items-center">
+      <h3 class="font-bold text-lg">NutriGuide AI</h3>
+      <div>
+        <button id="voiceSettingsBtn" class="text-white hover:text-yellow-300 mr-2">
+          <i class="fas fa-cog"></i>
+        </button>
+        <button onclick="toggleChatbot()" class="text-white hover:text-yellow-300">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div id="chatContainer" class="flex-1 p-4 overflow-y-auto flex flex-col space-y-2">
+      <div class="bot-message message chat-enter">
+        Hi there! 👋 I'm NutriGuide AI. How can I help you today?
+      </div>
+    </div>
+    <div class="p-4 border-t border-gray-200">
+      <div class="flex space-x-2">
+        <input type="text" id="userInput" placeholder="Type your message..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+        <button onclick="sendMessage()" class="bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-green-700">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Chatbot Toggle Button -->
@@ -170,7 +212,7 @@
   </div>
 
   <script>
-    // Load and display profile info
+    // Load and display profile info (preserved exactly as you wanted)
     document.addEventListener('DOMContentLoaded', function() {
       const savedProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
       const navProfilePic = document.getElementById('navProfilePic');
@@ -180,12 +222,327 @@
       } else if (savedProfile.name) {
         navProfilePic.textContent = savedProfile.name.charAt(0).toUpperCase();
       }
+
+      // Initialize search functionality
+      initSearch();
+      
+      // Initialize voice settings
+      initVoiceSettings();
+      
+      // Add event listener for voice settings button
+      document.getElementById('voiceSettingsBtn').addEventListener('click', showVoiceSettings);
     });
 
-    // Chatbot functions would go here
+    // Search functionality
+    function initSearch() {
+      const searchInput = document.getElementById('searchInput');
+      const searchButton = document.getElementById('searchButton');
+      const suggestionsList = document.getElementById('suggestionsList');
+      const pages = [
+        { name: "Home", link: "dhanu.html" },
+        { name: "About", link: "about.html" },
+        { name: "SDG", link: "sdg.html" },
+        { name: "Login", link: "drishti.html" },
+        { name: "Contact", link: "contact.html" },
+        { name: "Recipes", link: "overweight.html" },
+        { name: "OverweightRecipes", link: "overweight.html" },
+        { name: "UnderRecipes", link: "underrweight.html" },
+        { name: "Ayurveda", link: "aryuveda.html" },
+        { name: "Cold", link: "cold.html" },
+        { name: "Fever", link: "fever.html" },
+        { name: "Tea", link: "tea.html" },
+        { name: "Immunity", link: "immunity.html" },
+        { name: "Exercise", link: "Overweightyoga.html" },
+        { name: "OverweightExercise", link: "overweightyoga.html" },
+        { name: "UnderExercise", link: "underweightyoga.html" }
+      ];
+
+      function performSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query.length > 0) {
+          const foundPage = pages.find(page => 
+            page.name.toLowerCase().includes(query)
+          );
+          if (foundPage) {
+            window.location.href = foundPage.link;
+          } else {
+            alert("No matching pages found. Try another search term.");
+          }
+        }
+      }
+
+      searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        suggestionsList.innerHTML = '';
+        
+        if (query.length > 0) {
+          const filteredPages = pages.filter(page => 
+            page.name.toLowerCase().includes(query)
+          );
+          
+          if (filteredPages.length > 0) {
+            filteredPages.forEach(page => {
+              const li = document.createElement('li');
+              li.textContent = page.name;
+              li.onclick = () => {
+                window.location.href = page.link;
+              };
+              suggestionsList.appendChild(li);
+            });
+            suggestionsList.style.display = 'block';
+          } else {
+            const li = document.createElement('li');
+            li.textContent = 'No results found';
+            li.style.pointerEvents = 'none';
+            suggestionsList.appendChild(li);
+            suggestionsList.style.display = 'block';
+          }
+        } else {
+          suggestionsList.style.display = 'none';
+        }
+      });
+
+      searchButton.addEventListener('click', performSearch);
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+
+      // Hide suggestions when clicking outside
+      document.addEventListener('click', (e) => {
+        if (e.target !== searchInput && e.target !== searchButton) {
+          suggestionsList.style.display = 'none';
+        }
+      });
+    }
+
+    // Voice settings functionality
+    function initVoiceSettings() {
+      // Initialize voice settings if not exists
+      if (!localStorage.getItem('voiceSettings')) {
+        localStorage.setItem('voiceSettings', JSON.stringify({
+          enabled: false,
+          gender: 'female'
+        }));
+      }
+    }
+
+    function showVoiceSettings() {
+      const settings = JSON.parse(localStorage.getItem('voiceSettings'));
+      
+      // Create modal
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.innerHTML = `
+        <div class="modal-content">
+          <h3 class="text-lg font-bold mb-4">Voice Settings</h3>
+          <div class="mb-4">
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" id="voiceEnabled" ${settings.enabled ? 'checked' : ''} class="rounded text-green-600">
+              <span>Enable Voice</span>
+            </label>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-2">Voice Gender:</label>
+            <div class="flex space-x-4">
+              <label class="flex items-center space-x-2">
+                <input type="radio" name="voiceGender" value="female" ${settings.gender === 'female' ? 'checked' : ''} class="text-green-600">
+                <span>Female</span>
+              </label>
+              <label class="flex items-center space-x-2">
+                <input type="radio" name="voiceGender" value="male" ${settings.gender === 'male' ? 'checked' : ''} class="text-green-600">
+                <span>Male</span>
+              </label>
+            </div>
+          </div>
+          <div class="flex justify-end space-x-2">
+            <button id="cancelVoiceSettings" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">Cancel</button>
+            <button id="saveVoiceSettings" class="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700">Save</button>
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+      
+      // Add event listeners for modal buttons
+      document.getElementById('cancelVoiceSettings').addEventListener('click', function() {
+        modal.remove();
+      });
+      
+      document.getElementById('saveVoiceSettings').addEventListener('click', function() {
+        const enabled = document.getElementById('voiceEnabled').checked;
+        const gender = document.querySelector('input[name="voiceGender"]:checked').value;
+        
+        localStorage.setItem('voiceSettings', JSON.stringify({
+          enabled,
+          gender
+        }));
+        
+        // Close the modal
+        modal.remove();
+        
+        // Notify user
+        const chatContainer = document.getElementById('chatContainer');
+        const botMessage = document.createElement('div');
+        botMessage.className = 'bot-message message chat-enter';
+        botMessage.textContent = `Voice settings updated! Voice is now ${enabled ? 'enabled' : 'disabled'} (${gender} voice).`;
+        chatContainer.appendChild(botMessage);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      });
+    }
+
+    // Chatbot functions
     function toggleChatbot() {
       const chatbot = document.getElementById('chatbotWindow');
       chatbot.classList.toggle('hidden');
+    }
+
+    function sendMessage() {
+      const userInput = document.getElementById('userInput');
+      const chatContainer = document.getElementById('chatContainer');
+      const message = userInput.value.trim();
+      
+      if (message === '') return;
+      
+      // Add user message
+      const userMessage = document.createElement('div');
+      userMessage.className = 'user-message message chat-enter';
+      userMessage.textContent = message;
+      chatContainer.appendChild(userMessage);
+      
+      // Clear input
+      userInput.value = '';
+      
+      // Scroll to bottom
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      
+      // Process message and generate bot response
+      setTimeout(() => {
+        const botResponse = generateBotResponse(message);
+        const botMessage = document.createElement('div');
+        botMessage.className = 'bot-message message chat-enter';
+        botMessage.innerHTML = botResponse;
+        chatContainer.appendChild(botMessage);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        
+        // Speak the response if voice is enabled
+        speakResponse(botResponse);
+      }, 500);
+    }
+
+    // Handle Enter key in chat input
+    document.getElementById('userInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    // Bot response logic
+    function generateBotResponse(message) {
+      const lowerMsg = message.toLowerCase();
+      
+      // Greetings
+      const greetings = [
+        "Hello! How can I assist you with your nutrition journey today?",
+        "Hi there! Ready to improve your health?",
+        "Greetings! What would you like to know about nutrition?"
+      ];
+      
+      // Meal plan flow
+      if (lowerMsg.includes('meal plan') || lowerMsg.includes('diet plan') || lowerMsg.includes('food plan')) {
+        return `To help you with the right meal plan, are you:<br><br>
+                <button onclick="handleWeightResponse('underweight')" class="bg-green-100 hover:bg-green-200 text-green-800 px-3 py-1 rounded-md m-1">Underweight</button>
+                <button onclick="handleWeightResponse('overweight')" class="bg-green-100 hover:bg-green-200 text-green-800 px-3 py-1 rounded-md m-1">Overweight</button>
+                <button onclick="handleWeightResponse('healthy')" class="bg-green-100 hover:bg-green-200 text-green-800 px-3 py-1 rounded-md m-1">Healthy</button>
+                <br><br>If you're not sure, visit our <a href="bmi.html" class="text-green-600 underline">Weight Management</a> section to calculate your BMI first.`;
+      }
+      
+      // Exercise
+      if (lowerMsg.includes('exercise') || lowerMsg.includes('workout') || lowerMsg.includes('yoga')) {
+        return `For exercise recommendations:<br><br>
+                • <a href="overweightyoga.html" class="text-green-600 underline">Overweight workouts</a><br>
+                • <a href="underweightyoga.html" class="text-green-600 underline">Underweight workouts</a><br><br>
+                Would you like a personalized plan?`;
+      }
+      
+      // Health issues
+      if (lowerMsg.includes('sick') || lowerMsg.includes('cold') || lowerMsg.includes('fever') || lowerMsg.includes('ill')) {
+        return `For health remedies, check out our <a href="aryuveda.html" class="text-green-600 underline">Ayurvedic section</a>. Need expert help? Visit our <a href="contact.html" class="text-green-600 underline">contact page</a> to connect with nutritionists.`;
+      }
+      
+      // Insults (handled professionally)
+      if (lowerMsg.includes('stupid') || lowerMsg.includes('idiot') || lowerMsg.includes('dumb')) {
+        return "I'm here to help you with nutrition and health. Let me know how I can assist you with meal plans, exercises, or health tips!";
+      }
+      
+      // Default response
+      const defaultResponses = [
+        "I specialize in nutrition advice. Could you clarify your question?",
+        "I'm happy to help with meal plans, exercises, or health tips. What do you need?",
+        "For detailed help, you might want to check our <a href='contact.html' class='text-green-600 underline'>contact page</a> to speak with an expert."
+      ];
+      
+      return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+    }
+
+    function handleWeightResponse(weightType) {
+      const chatContainer = document.getElementById('chatContainer');
+      let response = '';
+      
+      if (weightType === 'underweight') {
+        response = `For underweight meal plans, search for <strong>UnderRecipes</strong> in our search bar or <a href="underrweight.html" class="text-green-600 underline">click here</a>. We recommend a plan to gain 2-4kg in a month.`;
+      } 
+      else if (weightType === 'overweight') {
+        response = `For overweight meal plans, search for <strong>OverweightRecipes</strong> in our search bar or <a href="overweight.html" class="text-green-600 underline">click here</a>. We offer a 30-day plan to lose ~10kg.`;
+      }
+      else {
+        response = `For maintaining your healthy weight, search for <strong>Recipes</strong> in our search bar or <a href="overweight.html" class="text-green-600 underline">click here</a> for balanced meal options.`;
+      }
+      
+      const botMessage = document.createElement('div');
+      botMessage.className = 'bot-message message chat-enter';
+      botMessage.innerHTML = response;
+      chatContainer.appendChild(botMessage);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      
+      // Speak the response if voice is enabled
+      speakResponse(response);
+    }
+
+    // Text-to-speech function
+    function speakResponse(text) {
+      const settings = JSON.parse(localStorage.getItem('voiceSettings'));
+      if (!settings.enabled) return;
+      
+      // Remove HTML tags from text
+      const cleanText = text.replace(/<[^>]*>/g, '');
+      
+      // Create speech synthesis
+      const speech = new SpeechSynthesisUtterance();
+      speech.text = cleanText;
+      speech.volume = 1;
+      speech.rate = 1;
+      speech.pitch = 1;
+      
+      // Set voice gender
+      const voices = window.speechSynthesis.getVoices();
+      const preferredVoice = settings.gender === 'female' 
+        ? voices.find(voice => voice.name.includes('Female')) 
+        : voices.find(voice => voice.name.includes('Male'));
+      
+      if (preferredVoice) {
+        speech.voice = preferredVoice;
+      }
+      
+      window.speechSynthesis.speak(speech);
+    }
+
+    // Load voices when they become available
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = function() {
+        // Voices are now loaded
+      };
     }
   </script>
 </body>
