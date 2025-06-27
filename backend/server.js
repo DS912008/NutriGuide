@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, '..')));
 
 // Route for root
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'..', 'index.html'));
+    res.sendFile(path.join(__dirname,'..', 'nutriguide.html'));
 });
 
 // Route for login page
