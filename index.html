@@ -7,95 +7,155 @@
     <meta name="theme-color" content="#4CAF50">
     <title>Nutrie Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        :root {
+            --primary: #10B981;
+            --primary-dark: #059669;
+            --secondary: #F59E0B;
+            --accent: #3B82F6;
+            --dark: #1F2937;
+            --light: #F9FAFB;
         }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB;
+            color: #1F2937;
+            scroll-behavior: smooth;
         }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9));
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-        @keyframes fadeInCaption {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .animate-fade-in {
-            animation: fadeIn 1s forwards;
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .animate-slide-up {
-            animation: slideUp 1s forwards;
-        }
-        .animate-bounce {
-            animation: bounce 2s infinite;
-        }
-        .animate-caption {
-            animation: fadeInCaption 0.5s ease;
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 </head>
-<body class="font-inter bg-gray-50 text-gray-800">
+<body class="font-sans">
     <!-- Skip to Main Content Link -->
-    <a href="#main-content" class="sr-only focus:not-sr-only fixed top-0 left-0 bg-green-500 text-white px-4 py-2 z-50 transform -translate-y-full focus:translate-y-0 transition-transform">
+    <a href="#main-content" class="sr-only focus:not-sr-only fixed top-0 left-0 bg-green-500 text-white px-4 py-2 z-50 transform -translate-y-full focus:translate-y-0 transition-transform duration-300">
         Skip to main content
     </a>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 flex justify-between items-center px-4 md:px-8 py-3 bg-white bg-opacity-95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
-        <div class="flex items-center">
-            <img src="logo.jpg" alt="Nutrie Guide Logo" class="w-10 h-10 md:w-12 md:h-12 mr-2 transition-transform duration-300 hover:rotate-12">
-            <a href="#" class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent animate-bounce">
-                Nutrie Guide
-            </a>
-        </div>
-        
-        <button class="md:hidden text-green-600 text-2xl focus:outline-none" id="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <div class="hidden md:flex items-center space-x-1 lg:space-x-4">
-            <ul class="flex space-x-1 lg:space-x-4">
-                <li><a href="dhanu.html" class="px-3 py-2 text-green-600 hover:text-orange-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-orange-500 after:to-red-500 after:transition-all after:duration-300 hover:after:w-full">Home</a></li>
-                <li><a href="about.html" class="px-3 py-2 text-green-600 hover:text-orange-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-orange-500 after:to-red-500 after:transition-all after:duration-300 hover:after:w-full">About</a></li>
-                <li><a href="sdg.html" class="px-3 py-2 text-green-600 hover:text-orange-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-orange-500 after:to-red-500 after:transition-all after:duration-300 hover:after:w-full">SDG</a></li>
-                <li><a href="/login" class="px-3 py-2 text-green-600 hover:text-orange-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-orange-500 after:to-red-500 after:transition-all after:duration-300 hover:after:w-full">Login</a></li>
-                <li><a href="contact.html" class="px-3 py-2 text-green-600 hover:text-orange-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-orange-500 after:to-red-500 after:transition-all after:duration-300 hover:after:w-full">Contact</a></li>
-            </ul>
-            
-            <div class="relative ml-4">
-                <input type="text" id="searchInput" placeholder="Search pages..." 
-                       class="pl-4 pr-10 py-2 w-40 md:w-48 lg:w-64 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300">
-                <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-green-600">
-                    <i class="fas fa-search"></i>
-                </button>
-                <ul id="suggestionsList" class="absolute left-0 right-0 mt-1 bg-white shadow-lg rounded-lg py-1 z-10 hidden max-h-60 overflow-y-auto">
-                    <!-- Suggestions will appear here -->
-                </ul>
+    <!-- Enhanced Navbar -->
+    <nav class="fixed top-0 left-0 right-0 glass-nav shadow-sm z-50 transition-all duration-300 py-3 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="logo.jpg" alt="Nutrie Guide Logo" class="w-10 h-10 md:w-12 md:h-12 transition-transform duration-300 hover:rotate-12">
+                <a href="#" class="text-2xl md:text-3xl font-extrabold gradient-text">
+                    Nutrie Guide
+                </a>
             </div>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <ul class="flex space-x-6">
+                    <li><a href="dhanu.html" class="text-gray-700 hover:text-green-600 font-medium relative nav-link transition-colors duration-300">Home</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-green-600 font-medium relative nav-link transition-colors duration-300">About</a></li>
+                    <li><a href="sdg.html" class="text-gray-700 hover:text-green-600 font-medium relative nav-link transition-colors duration-300">SDG</a></li>
+                    <li><a href="/login" class="text-gray-700 hover:text-green-600 font-medium relative nav-link transition-colors duration-300">Login</a></li>
+                    <li><a href="contact.html" class="text-gray-700 hover:text-green-600 font-medium relative nav-link transition-colors duration-300">Contact</a></li>
+                </ul>
+                
+                <div class="relative ml-4">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search pages..." 
+                               class="pl-4 pr-10 py-2 w-48 lg:w-64 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-300">
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-green-600 transition-colors duration-300">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <ul id="suggestionsList" class="absolute left-0 right-0 mt-1 bg-white shadow-lg rounded-lg py-1 z-10 hidden max-h-60 overflow-y-auto">
+                        <!-- Suggestions will appear here -->
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="md:hidden text-gray-700 text-2xl focus:outline-none" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed top-16 left-0 right-0 bg-white shadow-lg z-40 hidden md:hidden transition-all duration-300">
+    <div id="mobile-menu" class="fixed top-16 left-0 right-0 bg-white shadow-lg z-40 hidden md:hidden transition-all duration-300 transform origin-top">
         <ul class="px-4 py-2 space-y-2">
-            <li><a href="dhanu.html" class="block px-4 py-2 text-green-600 hover:bg-gray-100 rounded-lg">Home</a></li>
-            <li><a href="about.html" class="block px-4 py-2 text-green-600 hover:bg-gray-100 rounded-lg">About</a></li>
-            <li><a href="sdg.html" class="block px-4 py-2 text-green-600 hover:bg-gray-100 rounded-lg">SDG</a></li>
-            <li><a href="drishti.html" class="block px-4 py-2 text-green-600 hover:bg-gray-100 rounded-lg">Login</a></li>
-            <li><a href="contact.html" class="block px-4 py-2 text-green-600 hover:bg-gray-100 rounded-lg">Contact</a></li>
+            <li><a href="dhanu.html" class="block px-4 py-3 text-gray-700 hover:bg-green-50 rounded-lg transition-colors duration-300">Home</a></li>
+            <li><a href="about.html" class="block px-4 py-3 text-gray-700 hover:bg-green-50 rounded-lg transition-colors duration-300">About</a></li>
+            <li><a href="sdg.html" class="block px-4 py-3 text-gray-700 hover:bg-green-50 rounded-lg transition-colors duration-300">SDG</a></li>
+            <li><a href="drishti.html" class="block px-4 py-3 text-gray-700 hover:bg-green-50 rounded-lg transition-colors duration-300">Login</a></li>
+            <li><a href="contact.html" class="block px-4 py-3 text-gray-700 hover:bg-green-50 rounded-lg transition-colors duration-300">Contact</a></li>
         </ul>
         <div class="px-4 py-3 border-t border-gray-200">
             <div class="relative">
                 <input type="text" placeholder="Search pages..." 
-                       class="w-full pl-4 pr-10 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400">
-                <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500">
+                       class="w-full pl-4 pr-10 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300">
+                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
@@ -104,175 +164,271 @@
 
     <!-- Main Content -->
     <main id="main-content" class="pt-16">
-        <!-- Hero Section -->
-        <section class="relative h-screen max-h-[800px] flex items-center justify-center text-center bg-gradient-to-br from-green-600 to-green-800 overflow-hidden">
+        <!-- Hero Section with Parallax -->
+        <section class="relative h-screen max-h-[800px] flex items-center justify-center text-center hero-gradient overflow-hidden parallax" style="background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80')">
             <div class="absolute inset-0 bg-black opacity-40"></div>
-            <div class="relative z-10 px-6 max-w-4xl mx-auto animate-fade-in">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 animate-slide-up">
-                    Your Personalized Nutrition Companion
+            <div class="relative z-10 px-6 max-w-4xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
+                    Your Personalized <span class="gradient-text">Nutrition</span> Companion
                 </h1>
-                <p class="text-xl sm:text-2xl text-white mb-8 opacity-90 animate-slide-up" style="animation-delay: 0.2s">
-                    Discover healthy recipes, nutrition plans, and tools tailored for you.
+                <p class="text-xl sm:text-2xl text-white mb-8 opacity-90 animate__animated animate__fadeIn animate__delay-1s">
+                    Discover healthy recipes, nutrition plans, and tools tailored just for you.
                 </p>
-                <a href="dhanu.html" class="inline-block px-8 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 animate-slide-up" style="animation-delay: 0.4s">
-                    Get Started
-                </a>
+                <div class="animate__animated animate__fadeIn animate__delay-2s">
+                    <a href="dhanu.html" class="inline-block px-8 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 mr-4">
+                        Get Started
+                    </a>
+                    <a href="#features" class="inline-block px-6 py-3 bg-white text-green-600 font-semibold rounded-full shadow hover:shadow-md transition-all duration-300">
+                        Learn More
+                    </a>
+                </div>
             </div>
             
             <!-- Scrolling indicator -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator">
                 <i class="fas fa-chevron-down text-white text-2xl"></i>
             </div>
         </section>
 
         <!-- Features Section -->
-        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
             <div class="max-w-7xl mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose Nutrie Guide?</h2>
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Choose <span class="gradient-text">Nutrie Guide</span>?</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our platform combines modern nutrition science with personalized recommendations to help you achieve your health goals.</p>
+                </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Feature 1 -->
-                    <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-utensils text-green-600 text-2xl"></i>
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 card-hover fade-in-section">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-utensils text-green-600 text-3xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Personalized Meal Plans</h3>
-                        <p class="text-gray-600">Customized nutrition plans based on your dietary preferences, health goals, and lifestyle.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-center text-gray-800">Personalized Meal Plans</h3>
+                        <p class="text-gray-600 text-center">Customized nutrition plans based on your dietary preferences, health goals, and lifestyle, updated weekly.</p>
                     </div>
                     
                     <!-- Feature 2 -->
-                    <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-weight text-orange-600 text-2xl"></i>
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 card-hover fade-in-section" style="transition-delay: 0.1s">
+                        <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-weight text-orange-600 text-3xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Weight Management</h3>
-                        <p class="text-gray-600">Tools and guidance for healthy weight loss or gain, tailored to your body type.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-center text-gray-800">Smart Weight Management</h3>
+                        <p class="text-gray-600 text-center">AI-powered tools and guidance for healthy weight loss or gain, tailored to your unique metabolism.</p>
                     </div>
                     
                     <!-- Feature 3 -->
-                    <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                            <i class="fas fa-spa text-blue-600 text-2xl"></i>
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 card-hover fade-in-section" style="transition-delay: 0.2s">
+                        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-spa text-blue-600 text-3xl"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Ayurvedic Solutions</h3>
-                        <p class="text-gray-600">Traditional Ayurvedic remedies and recipes for holistic wellness.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-center text-gray-800">Holistic Ayurvedic Solutions</h3>
+                        <p class="text-gray-600 text-center">Traditional Ayurvedic remedies and recipes personalized for your dosha and wellness needs.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Image Gallery Section -->
-        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
             <div class="max-w-7xl mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Explore Nutrie Guide</h2>
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Explore <span class="gradient-text">Nutrie Guide</span></h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Discover how our platform can transform your health journey through personalized nutrition.</p>
+                </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Image 1 -->
-                    <div class="relative group overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <img src="intro.png" alt="Nutrie Guide Dashboard" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                            <h3 class="text-xl font-semibold text-white">Personalized Dashboard</h3>
+                    <div class="relative group overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-500 fade-in-section">
+                        <img src="intro.png" alt="Nutrie Guide Dashboard" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Personalized Dashboard</h3>
+                                <p class="text-gray-200">Track your nutrition journey with real-time analytics</p>
+                            </div>
                         </div>
                     </div>
                     
                     <!-- Image 2 -->
-                    <div class="relative group overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <img src="intro2.png" alt="Recipe Collection" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                            <h3 class="text-xl font-semibold text-white">Healthy Recipes</h3>
+                    <div class="relative group overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-500 fade-in-section" style="transition-delay: 0.1s">
+                        <img src="intro2.png" alt="Recipe Collection" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Healthy Recipes</h3>
+                                <p class="text-gray-200">Thousands of delicious, nutritionist-approved meals</p>
+                            </div>
                         </div>
                     </div>
                     
                     <!-- Image 3 -->
-                    <div class="relative group overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <img src="intro3.png" alt="Fitness Plans" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                            <h3 class="text-xl font-semibold text-white">Fitness Plans</h3>
+                    <div class="relative group overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-500 fade-in-section" style="transition-delay: 0.2s">
+                        <img src="intro3.png" alt="Fitness Plans" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Fitness Plans</h3>
+                                <p class="text-gray-200">Exercise routines tailored to complement your nutrition</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="text-center mt-10">
-                    <button id="view-more-btn" class="px-6 py-2 border-2 border-green-600 text-green-600 font-medium rounded-full hover:bg-green-600 hover:text-white transition-colors duration-300">
-                        View More Features
+                <div class="text-center mt-12 fade-in-section">
+                    <button id="view-more-btn" class="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-full shadow hover:shadow-md transform hover:-translate-y-1 transition-all duration-300">
+                        View More Features <i class="fas fa-arrow-right ml-2"></i>
                     </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our <span class="gradient-text">Users Say</span></h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Join thousands of satisfied users who transformed their health with Nutrie Guide.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md fade-in-section">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Sarah J.</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"Lost 20lbs in 3 months! Nutrie Guide made it effortless with personalized meal plans that actually fit my busy schedule."</p>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md fade-in-section" style="transition-delay: 0.1s">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Raj K." class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Raj K.</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"The Ayurvedic solutions helped me balance my digestion issues after years of struggling. Life-changing!"</p>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md fade-in-section" style="transition-delay: 0.2s">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya M." class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Priya M.</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"Finally gained healthy weight with the right nutrition plan. The recipes are delicious and easy to make."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-600 to-green-700 text-white">
+            <div class="max-w-4xl mx-auto text-center fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Health?</h2>
+                <p class="text-xl mb-8 opacity-90">Join thousands of users who achieved their health goals with personalized nutrition guidance.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="dhanu.html" class="px-8 py-3 bg-white text-green-600 font-semibold rounded-full shadow hover:shadow-md transform hover:-translate-y-1 transition-all duration-300">
+                        Start Free Trial
+                    </a>
+                    <a href="contact.html" class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-green-600 transition-all duration-300">
+                        Contact Our Experts
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Popup Image Viewer -->
-    <div id="popup-overlay" class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
-            <div class="flex justify-between items-center border-b p-4">
-                <h2 id="popup-title" class="text-xl font-bold text-gray-800">Nutrie Guide Overview</h2>
-                <button id="close-popup" class="text-gray-500 hover:text-gray-700 text-2xl">
-                    &times;
-                </button>
-            </div>
-            
-            <div class="flex-1 overflow-y-auto p-6">
-                <img id="popup-image" src="" alt="" class="w-full h-auto max-h-[60vh] object-contain mx-auto">
-                <p id="popup-caption" class="text-center mt-4 text-blue-600 font-medium italic animate-caption"></p>
-            </div>
-            
-            <div class="border-t p-4 flex justify-between">
-                <button id="prev-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors">
-                    <i class="fas fa-chevron-left mr-2"></i> Previous
-                </button>
-                <button id="next-btn" class="px-6 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded hover:opacity-90 transition-opacity">
-                    Next <i class="fas fa-chevron-right ml-2"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <h3 class="text-lg font-bold mb-4">Nutrie Guide</h3>
+    <footer class="bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div class="fade-in-section">
+                <div class="flex items-center mb-4">
+                    <img src="logo.jpg" alt="Nutrie Guide Logo" class="w-10 h-10 mr-2">
+                    <span class="text-2xl font-extrabold gradient-text">Nutrie Guide</span>
+                </div>
                 <p class="text-gray-400">Your personalized nutrition companion for healthy living.</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="dhanu.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a></li>
-                    <li><a href="sdg.html" class="text-gray-400 hover:text-white transition-colors">SDG</a></li>
-                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4">Features</h4>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Meal Plans</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Recipes</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Fitness</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Ayurveda</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4">Connect With Us</h4>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white text-xl transition-colors">
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-xl transition-colors duration-300">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white text-xl transition-colors">
+                    <a href="#" class="text-gray-400 hover:text-white text-xl transition-colors duration-300">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white text-xl transition-colors">
+                    <a href="#" class="text-gray-400 hover:text-white text-xl transition-colors duration-300">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white text-xl transition-colors">
+                    <a href="#" class="text-gray-400 hover:text-white text-xl transition-colors duration-300">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
-                <p class="mt-4 text-gray-400">support@nutrieguide.com</p>
+            </div>
+            
+            <div class="fade-in-section" style="transition-delay: 0.1s">
+                <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="dhanu.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors duration-300">About</a></li>
+                    <li><a href="sdg.html" class="text-gray-400 hover:text-white transition-colors duration-300">SDG</a></li>
+                    <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="fade-in-section" style="transition-delay: 0.2s">
+                <h4 class="text-lg font-bold mb-4">Features</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Meal Plans</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Recipes</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Fitness</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Ayurveda</a></li>
+                </ul>
+            </div>
+            
+            <div class="fade-in-section" style="transition-delay: 0.3s">
+                <h4 class="text-lg font-bold mb-4">Contact Us</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope text-gray-400 mt-1 mr-3"></i>
+                        <span class="text-gray-400">support@nutrieguide.com</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-phone-alt text-gray-400 mt-1 mr-3"></i>
+                        <span class="text-gray-400">+1 (555) 123-4567</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1 mr-3"></i>
+                        <span class="text-gray-400">123 Wellness St, Health City</span>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2023 Nutrie Guide. All rights reserved.</p>
+        
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 fade-in-section">
+            <p>&copy; 2023 Nutrie Guide. All rights reserved. | <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a> | <a href="#" class="hover:text-white transition-colors duration-300">Terms of Service</a></p>
         </div>
     </footer>
 
@@ -283,6 +439,7 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('animate__fadeInDown');
         });
 
         // Close mobile menu when clicking outside
@@ -296,24 +453,24 @@
         const searchInput = document.getElementById('searchInput');
         const suggestionsList = document.getElementById('suggestionsList');
 
-       const pages = [
-  { name: "Home", link: "dhanu.html" },
-  { name: "About", link: "about.html" },
-  { name: "SDG", link: "sdg.html" },
-  { name: "Login", link: "drishti.html" },
-  { name: "Contact", link: "contact.html" },
-  { name: "Recipes", link: "overweight.html" },
-  { name: "OverweightRecipes", link: "overweight.html" },
-  { name: "UnderRecipes", link: "underrweight.html" },
-  { name: "Ayurveda", link: "aryuveda.html" },
-  { name: "Cold", link: "cold.html" },
-  { name: "Fever", link: "fever.html" },
-  { name: "Tea", link: "tea.html" },
-  { name: "Immunity", link: "immunity.html" },
-  { name: "Exercise", link: "Overweightyoga.html" },
-  { name: "OverweightExercise", link: "overweightyoga.html" },
-  { name: "UnderExercise", link: "underweightyoga.html" }
-];
+        const pages = [
+            { name: "Home", link: "dhanu.html" },
+            { name: "About", link: "about.html" },
+            { name: "SDG", link: "sdg.html" },
+            { name: "Login", link: "drishti.html" },
+            { name: "Contact", link: "contact.html" },
+            { name: "Recipes", link: "overweight.html" },
+            { name: "OverweightRecipes", link: "overweight.html" },
+            { name: "UnderRecipes", link: "underrweight.html" },
+            { name: "Ayurveda", link: "aryuveda.html" },
+            { name: "Cold", link: "cold.html" },
+            { name: "Fever", link: "fever.html" },
+            { name: "Tea", link: "tea.html" },
+            { name: "Immunity", link: "immunity.html" },
+            { name: "Exercise", link: "Overweightyoga.html" },
+            { name: "OverweightExercise", link: "overweightyoga.html" },
+            { name: "UnderExercise", link: "underweightyoga.html" }
+        ];
 
         function showSuggestions(searchTerm) {
             suggestionsList.innerHTML = '';
@@ -329,8 +486,8 @@
             if (filteredPages.length > 0) {
                 filteredPages.forEach(page => {
                     const li = document.createElement('li');
-                    li.className = 'px-4 py-2 hover:bg-gray-100 cursor-pointer';
-                    li.innerHTML = `<a href="${page.url}" class="block text-gray-800">${page.name}</a>`;
+                    li.className = 'px-4 py-3 hover:bg-gray-100 cursor-pointer transition-colors duration-300';
+                    li.innerHTML = `<a href="${page.link}" class="block text-gray-800">${page.name}</a>`;
                     suggestionsList.appendChild(li);
                 });
                 suggestionsList.classList.remove('hidden');
@@ -350,90 +507,48 @@
             }
         });
 
-        // Image Gallery Popup
-        const images = [
-            { src: "intro.png", caption: "Personalized Dashboard - Track your nutrition journey" },
-            { src: "intro2.png", caption: "Recipe Collection - Discover healthy meal options" },
-            { src: "intro3.png", caption: "Fitness Plans - Exercise routines tailored for you" },
-            { src: "intro4.png", caption: "Nutrition Tracking - Monitor your daily intake" },
-            { src: "intro6.jpg", caption: "Community Support - Connect with others" },
-            { src: "intro5.png", caption: "Ayurvedic Solutions - Traditional wellness approaches" },
-            { src: "intro8.png", caption: "Progress Reports - Visualize your improvements" }
-        ];
+        // Scroll animations
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
 
-        const popupOverlay = document.getElementById('popup-overlay');
-        const popupImage = document.getElementById('popup-image');
-        const popupCaption = document.getElementById('popup-caption');
-        const popupTitle = document.getElementById('popup-title');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const closePopup = document.getElementById('close-popup');
-        const viewMoreBtn = document.getElementById('view-more-btn');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
 
-        let currentImageIndex = 0;
-
-        function openPopup(index) {
-            currentImageIndex = index;
-            updatePopup();
-            popupOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function updatePopup() {
-            popupImage.src = images[currentImageIndex].src;
-            popupCaption.textContent = images[currentImageIndex].caption;
-            
-            // Update button states
-            prevBtn.disabled = currentImageIndex === 0;
-            nextBtn.textContent = currentImageIndex === images.length - 1 ? 'Finish' : 'Next';
-        }
-
-        // Navigation buttons
-        prevBtn.addEventListener('click', () => {
-            if (currentImageIndex > 0) {
-                currentImageIndex--;
-                updatePopup();
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (currentImageIndex < images.length - 1) {
-                currentImageIndex++;
-                updatePopup();
-            } else {
-                popupOverlay.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        closePopup.addEventListener('click', () => {
-            popupOverlay.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        });
-
-        // Open popup when clicking view more button
-        viewMoreBtn.addEventListener('click', () => {
-            openPopup(0);
-        });
-
-        // Close popup when clicking outside
-        popupOverlay.addEventListener('click', (e) => {
-            if (e.target === popupOverlay) {
-                popupOverlay.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
+        fadeInSections.forEach(section => {
+            observer.observe(section);
         });
 
         // Make navbar sticky on scroll
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('nav');
             if (window.scrollY > 50) {
-                navbar.classList.add('py-2', 'shadow-md');
+                navbar.classList.add('shadow-lg', 'py-2');
                 navbar.classList.remove('py-3');
             } else {
                 navbar.classList.add('py-3');
-                navbar.classList.remove('py-2', 'shadow-md');
+                navbar.classList.remove('shadow-lg', 'py-2');
             }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
 
         // Lazy loading for images
