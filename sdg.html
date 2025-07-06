@@ -3,194 +3,424 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sustainable Development Goals</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>NutriGuide - Sustainable Development Goals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #0b4b4b;
+      --primary-dark: #344640;
+      --secondary: #F59E0B;
+      --accent: #3B82F6;
+      --dark: #1F2937;
+      --light: #F9FAFB;
+    }
+    
     * {
       box-sizing: border-box;
-    }
-    body {
       margin: 0;
+      padding: 0;
+    }
+    
+    body {
       font-family: 'Inter', sans-serif;
-      color: #333;
+      color: var(--dark);
+      background-color: #F9FAFB;
+      line-height: 1.6;
     }
-    .header, footer, .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem;
+    
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
+    
+    /* Navigation */
+    .nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .nav-logo a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .nav-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .nav-icon:hover {
+      transform: scale(1.1);
+    }
+    
+    .nav-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    /* Hero Section */
     .hero {
       position: relative;
       background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=2070&q=80');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       color: white;
       text-align: center;
-      padding: 6rem 1rem;
+      padding: 8rem 1rem;
+      margin-bottom: 3rem;
     }
+    
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.5);
     }
+    
     .hero-content {
       position: relative;
       z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
     }
-    h1, h2 {
+    
+    .hero h1 {
+      font-size: 2.5rem;
       font-weight: 700;
+      margin-bottom: 1rem;
     }
+    
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+    
+    .section-intro {
+      font-size: 1.1rem;
+      color: #4B5563;
+      margin-bottom: 3rem;
+      max-width: 800px;
+    }
+    
+    /* SDG Cards */
     .cards-grid {
       display: grid;
       gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      margin-bottom: 4rem;
     }
+    
     .card {
-      border-left: 5px solid #ccc;
-      border-radius: 8px;
       background: white;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
     }
-    .card .icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 0.5rem;
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+      padding: 1.5rem;
+      border-left: 5px solid;
+    }
+    
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 9999px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-    .badge {
-      padding: 0.25rem 0.5rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      border: 1px solid #ddd;
-      display: inline-block;
-      margin-right: 0.5rem;
+    
+    .card-icon img {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
       margin-bottom: 0.5rem;
     }
-    .recipe-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+    
+    .card-content {
+      padding: 0 1.5rem 1.5rem;
     }
-    .recipe-footer {
-      margin-top: 1rem;
+    
+    /* SDG Specific Colors */
+    .sdg-2 {
+      border-left-color: #22C55E;
     }
-    .cta {
-      background: #ecfdf5;
-      border-radius: 1rem;
-      padding: 2rem;
-      margin-top: 4rem;
+    
+    .sdg-2 .card-header {
+      background-color: #DCFCE7;
     }
-    .cta img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
+    
+    .sdg-3 {
+      border-left-color: #EF4444;
     }
+    
+    .sdg-3 .card-header {
+      background-color: #FEE2E2;
+    }
+    
+    .sdg-12 {
+      border-left-color: #F59E0B;
+    }
+    
+    .sdg-12 .card-header {
+      background-color: #FEF3C7;
+    }
+    
+    /* Action Section */
+    .action-section {
+      background: linear-gradient(to right, #ECFDF5, #F0FDF4);
+      border-radius: 16px;
+      padding: 3rem;
+      margin: 4rem 0;
+      text-align: center;
+    }
+    
+    .action-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .action-text {
+      color: #4B5563;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
     .btn {
       display: inline-block;
       padding: 0.75rem 1.5rem;
-      background: #16a34a;
+      background: var(--primary);
       color: white;
       border: none;
       border-radius: 8px;
       font-weight: 600;
       cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
     }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Footer */
     footer {
-      border-top: 1px solid #e5e5e5;
-      background: #fff;
+      background: white;
+      border-top: 1px solid #E5E7EB;
+      padding: 2rem;
       text-align: center;
-      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+    
+    .footer-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links a {
+      color: #4B5563;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .footer-copyright {
+      color: #6B7280;
       font-size: 0.875rem;
-    }.nav_menu_btn {
-    display: flex;
-    width:30px;
-    height: 30px;
-} 
-.nav__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-}
-.nav__header a {
-    text-decoration: none;
-    color: white;
-    font-size: 24px;
-}.menu-icon {
-    display: flex;
-    width: 30px;
-    height: 30px;
-}
-img{
-  height:50px;
-  width:50px;
-  
-}
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 6rem 1rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .nav-header {
+        padding: 1rem;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .action-section {
+        padding: 2rem 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-    <div class="nav__header">
-        <div class="nav_menu_btn" id="menu-btn">
-         <a href="dhanu.html"> <img src="logo.jpg" alt="Menu" class="menu-icon"></a>
-         </div>
-        <div class="nav__logo">
-          <a href="dhanu.html">SDG GOALS</a>
-        </div>
-        <div class="nav_menu_btn" >
-         <img src="clogo.png" alt="Menu" class="menu-icon">
-        </div>
-      </div>
-  <header class="header">
-    <h2>Nutriguide Sustainability</h2>
+  <!-- Navigation -->
+  <header class="nav-header">
+    <div class="nav-icon">
+      <a href="dhanu.html"><img src="logo.jpg" alt="NutriGuide Logo"></a>
+    </div>
+    <div class="nav-logo">
+      <a href="dhanu.html">NutriGuide</a>
+    </div>
+    <div class="nav-icon">
+      <img src="clogo.png" alt="SDG Logo">
+    </div>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1 class="text-3xl">Sustainable Development Goals</h1>
+      <h1>Sustainable Development Goals</h1>
       <p>Nourishing our bodies while protecting our planet through sustainable food choices</p>
     </div>
   </section>
 
+  <!-- Main Content -->
   <div class="container">
-    <h2>How Food Choices Impact Global Goals</h2>
-    <p>The United Nations Sustainable Development Goals (SDGs) provide a blueprint for a more sustainable future...</p>
+    <h2 class="section-title">How Food Choices Impact Global Goals</h2>
+    <p class="section-intro">The United Nations Sustainable Development Goals (SDGs) provide a blueprint for a more sustainable future. At NutriGuide, we're committed to these goals through our nutrition recommendations and sustainable practices.</p>
 
+    <!-- SDG Cards -->
     <div class="cards-grid">
-      <div class="card" style="border-left-color: #22c55e;">
-        <div class="icon" style="background-color: #dcfce7;"><span><img src="sdg2.png"></span></div>
-        <h3>Zero Hunger (SDG 2)</h3>
-        <p>Sustainable food systems help end hunger...</p>
+      <!-- SDG 2 Card -->
+      <div class="card">
+        <div class="card-header sdg-2">
+          <div class="card-icon">
+            <img src="sdg2.png" alt="SDG 2 Icon">
+          </div>
+          <h3 class="card-title">Zero Hunger (SDG 2)</h3>
+        </div>
+        <div class="card-content">
+          <p>Sustainable food systems help end hunger by promoting agricultural practices that increase productivity while maintaining ecosystems. Our meal plans emphasize locally-sourced, seasonal foods to support this goal.</p>
+          <div class="recipe-footer" style="margin-top: 1rem;">
+            <span class="badge" style="background: #DCFCE7; color: #166534;">Nutrition</span>
+            <span class="badge" style="background: #DCFCE7; color: #166534;">Food Security</span>
+          </div>
+        </div>
       </div>
       
-      <div class="card" style="border-left-color: #ef4444;">
-        <div class="icon" style="background-color: #fee2e2;"><span><img src="sdg3.png"></span></div>
-        <h3>Good Health (SDG 3)</h3>
-        <p>Nutritious diets support good health and prevent disease.</p>
+      <!-- SDG 3 Card -->
+      <div class="card">
+        <div class="card-header sdg-3">
+          <div class="card-icon">
+            <img src="sdg3.png" alt="SDG 3 Icon">
+          </div>
+          <h3 class="card-title">Good Health (SDG 3)</h3>
+        </div>
+        <div class="card-content">
+          <p>Nutritious diets support good health and prevent disease. Our recommendations focus on whole, unprocessed foods that promote wellbeing while reducing the risk of diet-related illnesses.</p>
+          <div class="recipe-footer" style="margin-top: 1rem;">
+            <span class="badge" style="background: #FEE2E2; color: #991B1B;">Wellbeing</span>
+            <span class="badge" style="background: #FEE2E2; color: #991B1B;">Prevention</span>
+          </div>
+        </div>
       </div>
       
-      <div class="card" style="border-left-color: #f59e0b;">
-        <div class="icon" style="background-color: #fef3c7;"><span><img src="sdg12.png"></span></div>
-        <h3>Responsible Consumption (SDG 12)</h3>
-        <p>Reducing food waste helps conserve resources and reduce emissions.</p>
+      <!-- SDG 12 Card -->
+      <div class="card">
+        <div class="card-header sdg-12">
+          <div class="card-icon">
+            <img src="sdg12.png" alt="SDG 12 Icon">
+          </div>
+          <h3 class="card-title">Responsible Consumption (SDG 12)</h3>
+        </div>
+        <div class="card-content">
+          <p>Reducing food waste helps conserve resources and reduce emissions. Our portion guidance and meal planning tools help minimize waste while ensuring nutritional needs are met.</p>
+          <div class="recipe-footer" style="margin-top: 1rem;">
+            <span class="badge" style="background: #FEF3C7; color: #92400E;">Sustainability</span>
+            <span class="badge" style="background: #FEF3C7; color: #92400E;">Waste Reduction</span>
+          </div>
+        </div>
       </div>
     </div>
 
-   
-        
+    <!-- Action Section -->
+    <div class="action-section">
+      <h3 class="action-title">Join Our Sustainable Nutrition Movement</h3>
+      <p class="action-text">Discover how you can contribute to these global goals through your daily food choices with NutriGuide's sustainable meal plans and recipes.</p>
+      <a href="dhanu.html" class="btn">Explore Sustainable Recipes</a>
+    </div>
+  </div>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Nutriguide. All rights reserved.</p>
+    <div class="footer-logo">NutriGuide</div>
+    <div class="footer-links">
+      <a href="dhanu.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="sdg.html">SDGs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-copyright">&copy; 2025 NutriGuide. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
