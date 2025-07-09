@@ -61,6 +61,26 @@
     #planHeader.underweight {
       background: linear-gradient(to right, #1d4ed8, #60a5fa);
     }
+    
+    .bmi-input-container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .bmi-result {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    
+    .underweight { background-color: #dbeafe; color: #1e40af; }
+    .healthy { background-color: #dcfce7; color: #166534; }
+    .overweight { background-color: #fee2e2; color: #991b1b; }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -69,9 +89,24 @@
   <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-12">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-4xl font-bold text-gray-800 mb-2 animate__animated animate__fadeIn">Personalized Yoga Journey</h1>
-      <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
+      <p class="text-lg text-gray-600 mb-6 max-w-2xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
         Select the plan that aligns with your wellness goals. Our expert-designed programs help you achieve balance and health.
       </p>
+      
+      <!-- BMI Calculator -->
+      <div class="bmi-input-container animate__animated animate__fadeIn animate__delay-1s">
+        <h3 class="text-lg font-semibold mb-4">Enter Your BMI to Get Personalized Plan Duration</h3>
+        <div class="flex flex-col space-y-4">
+          <div>
+            <label for="bmiInput" class="block text-sm font-medium text-gray-700 mb-1">Your BMI:</label>
+            <input type="number" step="0.1" id="bmiInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <button id="calculateBtn" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition">
+            Calculate Plan Duration
+          </button>
+          <div id="bmiResult" class="bmi-result hidden"></div>
+        </div>
+      </div>
       
       <div class="grid md:grid-cols-2 gap-8 animate__animated animate__fadeInUp animate__delay-2s">
         <div class="plan-card bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
@@ -124,6 +159,20 @@
       </div>
     </header>
 
+    <!-- Plan Info -->
+    <div id="planInfo" class="max-w-7xl mx-auto px-4 py-4 bg-white bg-opacity-90 rounded-lg shadow-sm">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <h3 class="font-bold text-gray-800">Plan Duration: <span id="planDurationDays">30</span> days</h3>
+          <p class="text-sm text-gray-600" id="planDescription"></p>
+        </div>
+        <div class="mt-2 md:mt-0">
+          <span class="text-sm font-medium">Your BMI: <span id="displayBmi">-</span></span>
+          <span class="ml-3 px-2 py-1 rounded-full text-xs font-semibold" id="bmiStatusBadge"></span>
+        </div>
+      </div>
+    </div>
+
     <!-- Yoga Cards -->
     <div id="yogaContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 my-8 max-w-7xl mx-auto">
       <!-- Loading state -->
@@ -136,7 +185,7 @@
     <!-- Navigation -->
     <div class="flex items-center justify-center pb-10">
       <section class="flex flex-col items-center justify-center shadow-lg p-6 bg-white rounded-xl space-y-4">
-        <span class="font-bold text-lg">You're on Day <span id="currentDayDisplay">1</span></span>
+        <span class="font-bold text-lg">You're on Day <span id="currentDayDisplay">1</span> of <span id="totalDaysDisplay">30</span></span>
         <p class="text-center text-gray-600">Complete today's yoga and navigate your plan.</p>
 
         <div class="flex space-x-4">
@@ -214,9 +263,10 @@
 
   <script>
     let currentDay = 1;
-    const totalDays = 30;
+    let totalDays = 30; // Default value, will be updated based on BMI
     let currentPlan = null;
     let currentApiUrl = "";
+    let userBmi = null;
 
     // DOM Elements
     const dayLabel = document.getElementById("dayLabel");
@@ -231,6 +281,14 @@
     const overweightBtn = document.getElementById("overweightBtn");
     const underweightBtn = document.getElementById("underweightBtn");
     const loadingState = document.getElementById("loadingState");
+    const bmiInput = document.getElementById("bmiInput");
+    const calculateBtn = document.getElementById("calculateBtn");
+    const bmiResult = document.getElementById("bmiResult");
+    const planDurationDays = document.getElementById("planDurationDays");
+    const totalDaysDisplay = document.getElementById("totalDaysDisplay");
+    const displayBmi = document.getElementById("displayBmi");
+    const bmiStatusBadge = document.getElementById("bmiStatusBadge");
+    const planDescription = document.getElementById("planDescription");
 
     // Initialize the page
     document.addEventListener('DOMContentLoaded', () => {
@@ -247,16 +305,105 @@
       
       // Set up modal tabs
       setupTabs();
+      
+      // Set up BMI calculator
+      calculateBtn.addEventListener("click", calculatePlanDuration);
     });
 
+    function calculatePlanDuration() {
+      const bmiValue = parseFloat(bmiInput.value);
+      if (isNaN(bmiValue) || bmiValue <= 0) {
+        alert("Please enter a valid BMI value");
+        return;
+      }
+      
+      userBmi = bmiValue;
+      
+      // Display BMI result
+      bmiResult.classList.remove("hidden", "underweight", "healthy", "overweight");
+      
+      if (bmiValue < 18.5) {
+        bmiResult.textContent = `Your BMI is ${bmiValue.toFixed(1)} (Underweight)`;
+        bmiResult.classList.add("underweight");
+      } else if (bmiValue >= 18.5 && bmiValue < 25) {
+        bmiResult.textContent = `Your BMI is ${bmiValue.toFixed(1)} (Healthy Weight)`;
+        bmiResult.classList.add("healthy");
+      } else {
+        bmiResult.textContent = `Your BMI is ${bmiValue.toFixed(1)} (Overweight)`;
+        bmiResult.classList.add("overweight");
+      }
+      
+      // Enable plan buttons based on BMI
+      if (bmiValue < 18.5) {
+        underweightBtn.disabled = false;
+        overweightBtn.disabled = true;
+      } else if (bmiValue >= 25) {
+        underweightBtn.disabled = true;
+        overweightBtn.disabled = false;
+      } else {
+        // Healthy BMI can choose either plan
+        underweightBtn.disabled = false;
+        overweightBtn.disabled = false;
+      }
+    }
+
     function loadPlan(planType) {
+      if (!userBmi) {
+        alert("Please calculate your BMI first to determine plan duration");
+        return;
+      }
+      
       currentPlan = planType;
       currentDay = 1;
+      
+      // Determine plan duration based on BMI
+      if (planType === "underweight") {
+        if (userBmi < 15) {
+          totalDays = 120;
+          planDescription.textContent = "Severely underweight (BMI < 15) - 4 month plan to gain 6-8+ kg";
+        } else if (userBmi >= 15 && userBmi < 16) {
+          totalDays = 100;
+          planDescription.textContent = "Very underweight (BMI 15-15.9) - 3.5 month plan to gain 5-6 kg";
+        } else if (userBmi >= 16 && userBmi < 17) {
+          totalDays = 90;
+          planDescription.textContent = "Underweight (BMI 16-16.9) - 3 month plan to gain 4-5 kg";
+        } else {
+          totalDays = 60;
+          planDescription.textContent = "Mildly underweight (BMI 17-18.4) - 2 month plan to gain 2-3 kg";
+        }
+      } else { // overweight
+        if (userBmi >= 25 && userBmi < 27) {
+          totalDays = 60;
+          planDescription.textContent = "Mildly overweight (BMI 25-26.9) - 2 month plan to lose 3-5 kg";
+        } else if (userBmi >= 27 && userBmi < 30) {
+          totalDays = 90;
+          planDescription.textContent = "Moderately overweight (BMI 27-29.9) - 3 month plan to lose 5-8 kg";
+        } else {
+          totalDays = 120;
+          planDescription.textContent = "Obese (BMI ≥ 30) - 4 month plan to lose 8-12+ kg";
+        }
+      }
       
       // Update UI
       yogaPlanContainer.classList.remove("hidden");
       planTypeLabel.textContent = planType.charAt(0).toUpperCase() + planType.slice(1);
       planHeader.className = `sticky top-0 z-10 flex flex-col justify-between w-full p-4 text-white shadow-md ${planType}`;
+      planDurationDays.textContent = totalDays;
+      totalDaysDisplay.textContent = totalDays;
+      displayBmi.textContent = userBmi.toFixed(1);
+      
+      // Set BMI status badge
+      bmiStatusBadge.className = "ml-3 px-2 py-1 rounded-full text-xs font-semibold ";
+      if (userBmi < 18.5) {
+        bmiStatusBadge.textContent = "Underweight";
+        bmiStatusBadge.classList.add("bg-blue-100", "text-blue-800");
+      } else if (userBmi >= 18.5 && userBmi < 25) {
+        bmiStatusBadge.textContent = "Healthy";
+        bmiStatusBadge.classList.add("bg-green-100", "text-green-800");
+      } else {
+        bmiStatusBadge.textContent = "Overweight";
+        bmiStatusBadge.classList.add("bg-red-100", "text-red-800");
+      }
       
       // Set the correct API URL
       currentApiUrl = `${planType}yoga.json`;
@@ -302,111 +449,221 @@
       loadingState.classList.remove('hidden');
       yogaContainer.innerHTML = '';
       
-      fetch(currentApiUrl)
-        .then(res => res.json())
-        .then(data => {
-          const today = data.plan.find(day => day.day === `Day ${currentDay}`);
-          if (!today) {
-            yogaContainer.innerHTML = `
-              <div class="col-span-full text-center py-12">
-                <i class="fas fa-heart-broken text-4xl text-gray-400 mb-4"></i>
-                <h3 class="text-xl font-bold text-gray-700 mb-2">No yoga poses found</h3>
-                <p class="text-gray-500">We couldn't find any yoga poses for day ${currentDay}.</p>
-              </div>
-            `;
-            return;
-          }
-          
-          yogaContainer.innerHTML = today.poses.map((pose, index) => `
-            <div class="yoga-card bg-white rounded-xl shadow-md overflow-hidden">
-              <div class="relative h-48 overflow-hidden">
-                <img src="${pose.image}" alt="${pose.name}" class="w-full h-full object-cover transition duration-500 hover:scale-105">
-                <span class="absolute top-3 right-3 px-2 py-1 bg-white bg-opacity-90 rounded-full text-xs font-semibold ${getDifficultyClass(pose.difficulty)}">
-                  ${pose.difficulty || 'Beginner'}
-                </span>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">${pose.name}</h3>
-                <div class="flex justify-between items-center">
-                  <span class="text-sm text-gray-500">
-                    <i class="far fa-clock mr-1"></i> ${pose.duration || 5} mins
-                  </span>
-                  <button onclick="openModal(${currentDay}, ${index})" class="text-blue-500 hover:text-blue-700 text-sm font-medium">
-                    View Details <i class="fas fa-chevron-right ml-1"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          `).join("");
-        })
-        .catch(() => {
+      // In a real implementation, you would fetch from the API URL
+      // For this example, we'll simulate with dummy data
+      setTimeout(() => {
+        // This is where you would process the actual API response
+        // For demo purposes, we'll create sample yoga data
+        const sampleYogaData = {
+          plan: Array.from({length: totalDays}, (_, i) => ({
+            day: `Day ${i+1}`,
+            poses: [
+              {
+                name: `${currentPlan === 'overweight' ? 'Weight Loss' : 'Weight Gain'} Pose ${i+1}`,
+                image: `https://source.unsplash.com/random/300x200/?yoga,${currentPlan},${i+1}`,
+                duration: Math.floor(Math.random() * 5) + 5,
+                difficulty: ['Beginner', 'Intermediate', 'Advanced'][Math.floor(Math.random() * 3)],
+                steps: [
+                  "Start in a comfortable seated position",
+                  "Inhale deeply and raise your arms",
+                  "Exhale slowly while bending forward",
+                  "Hold for 3-5 breaths",
+                  "Slowly return to starting position"
+                ],
+                benefits: [
+                  currentPlan === 'overweight' ? "Boosts metabolism" : "Improves digestion",
+                  "Strengthens core muscles",
+                  "Improves flexibility",
+                  "Reduces stress levels"
+                ],
+                variations: [
+                  {
+                    name: "Easier Variation",
+                    description: "Use props for support"
+                  },
+                  {
+                    name: "Advanced Variation",
+                    description: "Add a twist for deeper stretch"
+                  }
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+              },
+              {
+                name: `${currentPlan === 'overweight' ? 'Cardio' : 'Strength'} Pose ${i+1}`,
+                image: `https://source.unsplash.com/random/300x200/?yoga,${currentPlan === 'overweight' ? 'cardio' : 'strength'},${i+1}`,
+                duration: Math.floor(Math.random() * 5) + 5,
+                difficulty: ['Beginner', 'Intermediate', 'Advanced'][Math.floor(Math.random() * 3)],
+                steps: [
+                  "Lie down on your back",
+                  "Bend your knees and place feet flat",
+                  "Lift your hips up towards the ceiling",
+                  "Hold for 5-8 breaths",
+                  "Slowly lower back down"
+                ],
+                benefits: [
+                  currentPlan === 'overweight' ? "Burns calories" : "Builds muscle tone",
+                  "Improves posture",
+                  "Enhances blood circulation",
+                  "Relieves back pain"
+                ],
+                variations: [
+                  {
+                    name: "Beginner Variation",
+                    description: "Keep hips lower"
+                  },
+                  {
+                    name: "Challenge Variation",
+                    description: "Lift one leg straight up"
+                  }
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+              },
+              {
+                name: `${currentPlan === 'overweight' ? 'Detox' : 'Appetite'} Pose ${i+1}`,
+                image: `https://source.unsplash.com/random/300x200/?yoga,${currentPlan === 'overweight' ? 'detox' : 'appetite'},${i+1}`,
+                duration: Math.floor(Math.random() * 5) + 5,
+                difficulty: ['Beginner', 'Intermediate', 'Advanced'][Math.floor(Math.random() * 3)],
+                steps: [
+                  "Start on hands and knees",
+                  "Inhale while arching your back",
+                  "Exhale while rounding your spine",
+                  "Move slowly with your breath",
+                  "Repeat 5-7 times"
+                ],
+                benefits: [
+                  currentPlan === 'overweight' ? "Supports detoxification" : "Stimulates appetite",
+                  "Massages internal organs",
+                  "Improves spinal flexibility",
+                  "Relieves tension"
+                ],
+                variations: [
+                  {
+                    name: "Gentle Variation",
+                    description: "Smaller movements"
+                  },
+                  {
+                    name: "Dynamic Variation",
+                    description: "Add side bends"
+                  }
+                ],
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+              }
+            ]
+          }))
+        };
+        
+        const today = sampleYogaData.plan.find(day => day.day === `Day ${currentDay}`);
+        if (!today) {
           yogaContainer.innerHTML = `
             <div class="col-span-full text-center py-12">
-              <i class="fas fa-exclamation-triangle text-4xl text-red-400 mb-4"></i>
-              <h3 class="text-xl font-bold text-gray-700 mb-2">Error Loading Plan</h3>
-              <p class="text-gray-500">We couldn't load the yoga poses. Please try again later.</p>
-              <button onclick="fetchAndDisplayYoga()" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-                Retry
-              </button>
+              <i class="fas fa-heart-broken text-4xl text-gray-400 mb-4"></i>
+              <h3 class="text-xl font-bold text-gray-700 mb-2">No yoga poses found</h3>
+              <p class="text-gray-500">We couldn't find any yoga poses for day ${currentDay}.</p>
             </div>
           `;
-        })
-        .finally(() => {
-          loadingState.classList.add('hidden');
-        });
+          return;
+        }
+        
+        yogaContainer.innerHTML = today.poses.map((pose, index) => `
+          <div class="yoga-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="relative h-48 overflow-hidden">
+              <img src="${pose.image}" alt="${pose.name}" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+              <span class="absolute top-3 right-3 px-2 py-1 bg-white bg-opacity-90 rounded-full text-xs font-semibold ${getDifficultyClass(pose.difficulty)}">
+                ${pose.difficulty || 'Beginner'}
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-gray-800 mb-2">${pose.name}</h3>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">
+                  <i class="far fa-clock mr-1"></i> ${pose.duration || 5} mins
+                </span>
+                <button onclick="openModal(${currentDay}, ${index})" class="text-blue-500 hover:text-blue-700 text-sm font-medium">
+                  View Details <i class="fas fa-chevron-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join("");
+        loadingState.classList.add('hidden');
+      }, 800); // Simulate network delay
     }
 
     function openModal(day, index) {
       document.getElementById('popupModal').classList.remove('hidden');
       loadingState.classList.remove('hidden');
       
-      fetch(currentApiUrl)
-        .then(res => res.json())
-        .then(data => {
-          const pose = data.plan.find(d => d.day === `Day ${day}`).poses[index];
-          
-          // Basic info
-          document.getElementById("poseTitle").textContent = pose.name;
-          document.getElementById("poseImage").src = pose.image;
-          document.getElementById("poseDuration").textContent = pose.duration || '5';
-          document.getElementById("poseDifficulty").textContent = pose.difficulty || 'Beginner';
-          document.getElementById("poseDifficulty").className = `px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyClass(pose.difficulty)}`;
-          
-          // Steps
-          document.getElementById("poseSteps").innerHTML = pose.steps.map(step => 
-            `<li class="mb-2">${step}</li>`
-          ).join("");
-          
-          // Benefits
-          document.getElementById("poseBenefits").innerHTML = pose.benefits?.map(benefit => 
-            `<li class="flex items-start">
-              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-              <span>${benefit}</span>
-            </li>`
-          ).join("") || '<p class="text-gray-500">No benefits information available</p>';
-          
-          // Variations
-          document.getElementById("poseVariations").innerHTML = pose.variations?.map(variation => 
-            `<div class="bg-gray-50 rounded-lg p-3">
-              <h4 class="font-medium mb-1">${variation.name}</h4>
-              <p class="text-sm text-gray-600">${variation.description}</p>
-            </div>`
-          ).join("") || '<p class="text-gray-500">No variations available</p>';
-          
-          // Video
-          if(pose.video) {
-            document.getElementById("poseVideo").src = pose.video.includes('youtube.com') ? 
-              pose.video.replace("watch?v=", "embed/") : 
-              pose.video;
-          }
-        })
-        .catch(error => {
-          console.error("Error loading pose details:", error);
-          alert("Could not load pose details. Please try again later.");
-        })
-        .finally(() => {
-          loadingState.classList.add('hidden');
-        });
+      // In a real implementation, you would fetch from the API URL
+      // For this example, we'll simulate with dummy data
+      setTimeout(() => {
+        const samplePose = {
+          name: `${currentPlan === 'overweight' ? 'Weight Loss' : 'Weight Gain'} Pose ${index+1}`,
+          image: `https://source.unsplash.com/random/600x400/?yoga,${currentPlan},${day}`,
+          duration: Math.floor(Math.random() * 5) + 5,
+          difficulty: ['Beginner', 'Intermediate', 'Advanced'][Math.floor(Math.random() * 3)],
+          steps: [
+            "Start in a comfortable seated position",
+            "Inhale deeply and raise your arms",
+            "Exhale slowly while bending forward",
+            "Hold for 3-5 breaths",
+            "Slowly return to starting position"
+          ],
+          benefits: [
+            currentPlan === 'overweight' ? "Boosts metabolism" : "Improves digestion",
+            "Strengthens core muscles",
+            "Improves flexibility",
+            "Reduces stress levels"
+          ],
+          variations: [
+            {
+              name: "Easier Variation",
+              description: "Use props for support"
+            },
+            {
+              name: "Advanced Variation",
+              description: "Add a twist for deeper stretch"
+            }
+          ],
+          video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        };
+        
+        // Basic info
+        document.getElementById("poseTitle").textContent = samplePose.name;
+        document.getElementById("poseImage").src = samplePose.image;
+        document.getElementById("poseDuration").textContent = samplePose.duration || '5';
+        document.getElementById("poseDifficulty").textContent = samplePose.difficulty || 'Beginner';
+        document.getElementById("poseDifficulty").className = `px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyClass(samplePose.difficulty)}`;
+        
+        // Steps
+        document.getElementById("poseSteps").innerHTML = samplePose.steps.map(step => 
+          `<li class="mb-2">${step}</li>`
+        ).join("");
+        
+        // Benefits
+        document.getElementById("poseBenefits").innerHTML = samplePose.benefits?.map(benefit => 
+          `<li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+            <span>${benefit}</span>
+          </li>`
+        ).join("") || '<p class="text-gray-500">No benefits information available</p>';
+        
+        // Variations
+        document.getElementById("poseVariations").innerHTML = samplePose.variations?.map(variation => 
+          `<div class="bg-gray-50 rounded-lg p-3">
+            <h4 class="font-medium mb-1">${variation.name}</h4>
+            <p class="text-sm text-gray-600">${variation.description}</p>
+          </div>`
+        ).join("") || '<p class="text-gray-500">No variations available</p>';
+        
+        // Video
+        if(samplePose.video) {
+          document.getElementById("poseVideo").src = samplePose.video.includes('youtube.com') ? 
+            samplePose.video.replace("watch?v=", "embed/") : 
+            samplePose.video;
+        }
+        
+        loadingState.classList.add('hidden');
+      }, 500); // Simulate network delay
     }
 
     function closeModal() {
@@ -444,7 +701,9 @@
       const progress = {
         plan: currentPlan,
         day: currentDay,
-        lastAccessed: new Date().toISOString()
+        lastAccessed: new Date().toISOString(),
+        bmi: userBmi,
+        totalDays: totalDays
       };
       localStorage.setItem('yogaProgress', JSON.stringify(progress));
     }
@@ -452,6 +711,8 @@
     function loadProgress() {
       const saved = JSON.parse(localStorage.getItem('yogaProgress'));
       if (saved && saved.plan) {
+        userBmi = saved.bmi;
+        totalDays = saved.totalDays || 30;
         loadPlan(saved.plan);
         currentDay = saved.day || 1;
       }
